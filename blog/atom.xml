@@ -5,11 +5,24 @@
   <subtitle><![CDATA[Sebastian's projects]]></subtitle>
   <link href="/blog/atom.xml" rel="self" type="application/atom+xml" />
   <link href="/blog/" rel="alternate" type="text/html" />
-  <updated>2021-12-15T00:00:39+01:00</updated>
+  <updated>2021-12-15T00:07:01+01:00</updated>
   <author>
     <name>Sebastian Franjou</name>
     <uri>/</uri>
   </author>
+  <entry xml:lang="en">
+    <id>/blog/potato-remash/</id>
+    <title>Potato Remash</title>
+    <content type="html">
+      <![CDATA[<h1 id="interactive-music-systems-final-project">Interactive Music Systems Final Project:</h1>
+<p>A tool for mashups made in Python using Kivy. Once the user imports audio files, it can detect and change key and bpm, and then uses spleeter to extract stems. The user can combine the stems in a DAW-like interface where the user can move, split, apply effects and and mix the audio. The DAW interface was my main contribution.</p>
+<h2 id="silent-demo">(Silent) Demo:</h2>
+<iframe width="531" height="399" src="https://www.youtube.com/embed/WuRCtd_MHe4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]]>
+    </content>
+    <link href="/blog/potato-remash/" rel="alternate" type="text/html" />
+    <published>2021-12-15T00:07:01+01:00</published>
+    <updated>2021-12-15T00:07:01+01:00</updated>
+  </entry>
   <entry xml:lang="en">
     <id>/blog/daft-punk/</id>
     <title>Glitchbox</title>

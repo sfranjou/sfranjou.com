@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/blog/daft-punk/</loc>
+    <loc>/</loc>
     <lastmod>2021-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>/</loc>
+    <loc>/blog/potato-remash/</loc>
+    <lastmod>2021-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>/blog/daft-punk/</loc>
     <lastmod>2021-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

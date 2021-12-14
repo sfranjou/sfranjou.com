@@ -1,19 +1,22 @@
-title: The Butler
-baseline: Your blogging assistant
-description: A ready to use static blog, powered by Cecil.
-baseurl: /
-canonicalurl: true
-keywords: [Cecil, Static Site Generator, SSG]
-author: Arnaud Ligny
-date:
-  format: j F Y
-  timezone: Europe/Paris
+baseline: Portfolio
 theme:
   - hyde
   - netlify
   - netlify-cms
+keywords:
+  - Cecil
+  - Static Site Generator
+  - SSG
+author: Arnaud Ligny
+description: Sebastian's projects
+date:
+  format: j F Y
+  timezone: Europe/Paris
 hyde:
   sidebar:
-    sticky: true # Content to the bottom of the sidebar
-  theme: '' # red, orange, yellow, green, cyan, blue, magenta, brown or cecil
-  reverse: false # Reverse layout
+    sticky: true
+  theme: ""
+  reverse: false
+title: Sebastian Franjou
+baseurl: /
+canonicalurl: true

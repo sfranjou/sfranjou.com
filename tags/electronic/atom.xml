@@ -1,63 +1,20 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
-  <head>
-    <link href="https://gmpg.org/xfn/11" rel="profile">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>Sebastian Franjou &middot; Portfolio</title>
-    <meta name="description" content="Sebastian&#039;s projects" />
-    <meta name="keywords" content="Cecil, Static Site Generator, SSG" />
-    <meta name="author" content="Arnaud Ligny" />
-    <meta name="robots" content="index,follow" />
-    <link rel="canonical" type="text/html" title="Sebastian Franjou &middot; Portfolio" href="/" />
-    <link rel="alternate" type="application/atom+xml" title="Sebastian Franjou &middot; Portfolio (ATOM)" href="/atom.xml" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="Sebastian Franjou" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Sebastian Franjou &middot; Portfolio" />
-    <meta property="og:description" content="Sebastian&#039;s projects" />
-    <meta property="og:url" content="/" />
-    <meta name="twitter:title" content="Sebastian Franjou &middot; Portfolio" />
-    <meta name="twitter:description" content="Sebastian&#039;s projects" />
-    <meta name="twitter:card" content="summary" />
-
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/styles.eb5057fc511d5020f6f3ff77f5f045a7.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-    <link rel="stylesheet" href="/css/monokai-sublime.0c8b4c0e8a584e7142b08d914644cd9d.min.css">
-    <script src="/js/highlight-9.13.1.min.2fa064f94c70848f3999ad3402ca49c8.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-
-    <!-- Netlify Identity -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script>if(window.netlifyIdentity){window.netlifyIdentity.on('init',user=>{if(!user){window.netlifyIdentity.on('login',()=>{document.location.href="/admin/"})}})}</script>
-    <meta name="generator" content="Cecil 5.79.4" />
-  </head>
-  <body class="">
-    <div class="sidebar">
-      <div class="container  sidebar-sticky">
-        <div class="sidebar-about">
-          <h1>
-            <a href="/">Sebastian Franjou</a>
-          </h1>
-          <p class="lead">Sebastian's projects</p>
-        </div>
-        <nav class="sidebar-nav">
-          <a class="sidebar-nav-item active item-weight-0" href="/">Home</a>
-          <a class="sidebar-nav-item item-weight-100" href="/blog/">Blog</a>
-        </nav>
-        <p>Powered by <a href="https://cecil.app/#5.79.4">Cecil</a> &amp; <a href="https://github.com/poole/hyde#readme">Hyde</a>.</p>
-      </div>
-    </div>
-    <div class="content container">
-      <div class="posts">
-        <div class="post">
-          <h1 class="post-title"><a href="/blog/daft-punk/">Glitchbox</a></h1>
-          <span class="post-date">15 Dec 2021</span>
-          <img src="/images/esp32-front.jpg" />
-          <!--StartFragment-->
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>/tags/electronic/</id>
+  <title>Sebastian Franjou - Electronic</title>
+  <subtitle><![CDATA[Sebastian's projects]]></subtitle>
+  <link href="/tags/electronic/atom.xml" rel="self" type="application/atom+xml" />
+  <link href="/tags/electronic/" rel="alternate" type="text/html" />
+  <updated>2021-12-15T00:00:39+01:00</updated>
+  <author>
+    <name>Sebastian Franjou</name>
+    <uri>/</uri>
+  </author>
+  <entry xml:lang="en">
+    <id>/blog/daft-punk/</id>
+    <title>Glitchbox</title>
+    <content type="html">
+      <![CDATA[<!--StartFragment-->
 <p>21M.370 final project: </p>
 <p>Glitchbox</p>
 <h1 id="demo">Demo</h1>
@@ -107,17 +64,10 @@
 <p>I was originally using automatonism’s looper module, then abandoned it mostly because it kept making pureData crash, but also because the stutter effect gave me most of what I was trying to get out of the looper. Lowering the data rates was also important in getting the system to be stable.</p>
 <p>I am most satisfied with the sound design of this instrument. The glitches sound good and have a smooth progression from a perfectly clean signal to complete chaos. For this reason, and because Wekinator allows for precise calibrating, it also feels nice to play: I really feel in control using the tilt parameters. What I also like is the possibility it has for collaboration. In my final performance, I essentially collaborated with myself by playing the piano alongside the glitchbox, but I could have had someone else playing the piano, or any other instrument. I could imagine it becoming part of a DJ concert for example, to introduce gestural visuals for a climactic moment. However, in its current state, it’s unclear that it could be used as the main instrument for an entire concert without a lot of pre-composition happening. Perhaps allowing for switches between different glitch types or a full-fledged looper could help bring more versatility to the instrument. And the biggest problem right now is the hardware, which is made of cardboard and could be sturdier and better looking. </p>
 <p>I like the idea of integrating the glitchbox with other players and instruments, and I am planning to make a more robust version that I could use in my own concerts. Enhancing one handed control, so I could use this more easily while playing the guitar for example, would also be very nice.</p>
-<!--EndFragment-->
-          <footer class="readmore">
-            <a href="/blog/daft-punk/#more">Read more ›</a>
-          </footer>
-        </div>
-      </div>
-      <div class="lastposts">
-        <h2>Recent posts</h2>
-        <ul>
-        </ul>
-      </div>
-    </div>
-  </body>
-</html>
+<!--EndFragment-->]]>
+    </content>
+    <link href="/blog/daft-punk/" rel="alternate" type="text/html" />
+    <published>2021-12-15T00:00:39+01:00</published>
+    <updated>2021-12-15T00:00:39+01:00</updated>
+  </entry>
+</feed>

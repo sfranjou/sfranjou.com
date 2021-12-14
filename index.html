@@ -55,22 +55,69 @@
     <div class="content container">
       <div class="posts">
         <div class="post">
-          <h1 class="post-title"><a href="/blog/potato-remash/">Potato Remash</a></h1>
+          <h1 class="post-title"><a href="/blog/daft-punk/">Glitchbox</a></h1>
           <span class="post-date">15 Dec 2021</span>
-          <img src="/images/remash-title.png" />
-          <h1 id="interactive-music-systems-final-project">Interactive Music Systems Final Project:</h1>
-<p>A tool for mashups made in Python using Kivy. Once the user imports audio files, it can detect and change key and bpm, and then uses spleeter to extract stems. The user can combine the stems in a DAW-like interface where the user can move, split, apply effects and and mix the audio. The DAW interface was my main contribution.</p>
-<h2 id="silent-demo">(Silent) Demo:</h2>
-<iframe width="531" height="399" src="https://www.youtube.com/embed/WuRCtd_MHe4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <img src="/images/esp32-front.jpg" />
+          <!--StartFragment-->
+<p>21M.370 final project: </p>
+<p>Glitchbox</p>
+<h1 id="demo">Demo</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zhbkYABmBxc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h1 id="aesthetic-goals">Aesthetic Goals</h1>
+<p>Coming into the class, I had already looked into the field of Digital Musical Instrument design and had acquired a narrow view of what I valued in a new instrument. I was focused on allowing enough control over pitch generation for it to be able to be played like a conventional instrument, and put a lot of weight on the potential for virtuosity. I also wanted the instrument to be reusable, versatile… In short, I expected it to behave like a traditional instrument. During the course of this class, I was exposed to approaches that deviated from this standard and were successful in doing so, and I wanted my final project to break from these rules too. While preparing the presentation on Myriam Bleau, I realized that giving up real-time control of some aspect of the performance that I considered previously crucial could allow me to give a better performance. This drove me to design an instrument that would manipulate a pre-existing signal rather than synthesize sound from scratch. Since I’ve always been a fan of glitches of all kinds, I decided to try to control glitches gesturally. The instrument acts on pre-recorded samples playing back, and can also glitch live audio input. Of all the works we studied this semester, I believe Myriam Bleau’s work translated best to video, and I took my inspiration from her for the final performance, filming in a dark setting using flashing LEDs.</p>
+<h1 id="hardware">Hardware</h1>
+<p>I wanted to use the accelerometer to allow for gestural control by moving the handheld instrument. Any additional controls had to be easily accessible while moving the device, so I opted for buttons. I recycled the buttons enclosed in cardboard that I used for my group instrument, and secured the ESP32 on the opposing side, with the accelerometer soldered to the board. </p>
+<!---
+![](https://lh4.googleusercontent.com/ZG68SKYgArWAWYp_8yeRYnsmpICe-XWA1Fc3eT6Zt8qu5CmIg7KIBgiV-3vvF8oCTSN3zmF6Fw3wtsS4CX4ajD2CzB7BMKQ1hwzLkRl30VY-MYjZxX_XNM0g6-j8bllJRdSRP-zu)
+-->
+<img src="https://lh4.googleusercontent.com/ZG68SKYgArWAWYp_8yeRYnsmpICe-XWA1Fc3eT6Zt8qu5CmIg7KIBgiV-3vvF8oCTSN3zmF6Fw3wtsS4CX4ajD2CzB7BMKQ1hwzLkRl30VY-MYjZxX_XNM0g6-j8bllJRdSRP-zu" height="500" />
+<p>The three buttons on the back are easily accessible with my fingers while I hold the devices with both hands, putting my thumbs on the thumb rests shown in the picture above. I sometimes also hold the device with my left hand, using only the left thumb rest. In one hand operation, all buttons but the furthest back button are usable, but it is difficult to press front and back buttons at the same time. The device is connected to the computer using a mini-USB cable for both serial communication and power.</p>
+<img src="https://lh6.googleusercontent.com/s6OaeDdonOgn9cEFh1NsfWmguoL2cdTKCJV-aes7JN4g1Uj1dY_M_WrJsrxZHpd1kwazGgsHLO0a7niUZ5e65G0hkkfgXJUR1RK8AMYyDjWAdNnEjH9FuVyPSJWJ6BMFAWhHGOfG" height="300" />
+<img src="https://lh5.googleusercontent.com/xPjJR3VDRQ6osuu1NW0JWufL1FzQcwfvCaDOMGGHLzbbtk8sG1R0W_ETMISDcT111VJ2pykT1jZZJUX0tC4-QEw01MnOv7pjEd1yu_25p-wOs3OA3nucG2bN8o5Y3IT8ZI9tPhHO" height="300" />
+<h1 id="software">Software</h1>
+<img src="https://lh6.googleusercontent.com/-jMqo2CvNKw7aD1-yMGn6KHFFmAxgEei6S3nCeM8YyhlrzH-iAnnYlyrEFAZXWUcfVlFJyfEiNrStxgXLasbmhYve9OIGynFah0--_MbwkPOVRBScAru_VApRngXlFO8mK8ULnmj" height="600" />
+<p>After reading about Wekinator, an application that learns OSC mappings using machine learning, I decided to use it for the final project. The setup process for Wekinator is fairly simple: after choosing the number and types of inputs and outputs, I choose an output value for all relevant parameters and record examples of when I would like it to output those values. For example, if I want the crush output value to be 1 when I tilt the accelerometer to the left, I set crush to 1, tilt the accelerometer, and press “Start Recording”. Repeating the process for all relevant parameters, I had a mapping that was both easy to calibrate and very stable in the neutral position. I fed all of the raw accelerometer inputs to Wekinator, in addition to tilt for all three dimensions. The calculations for tilt were made in pd. As outputs, I had four continuous parameters varying from 0 to 1, which were mapped to the parameters described in the sound processing section, namely bitcrushing, pitchglitch, fftglitch, and playbackrate. I had to lower the rate at which python sends data to PureData to keep it from crashing.</p>
+<h3 id="wekinator-ui">Wekinator UI:</h3>
+<img src="https://lh6.googleusercontent.com/R_FgeWyKlZtRk3qmPlyIkGpsRuVsBHFZJzuZYLd3066TYfg71oeNjPRDUWH5EI1yupPE9T3P-ZoPFq83rVyh8gMNLxkXnM7im79EnBmK-lhe7gXq9ziMF-cNRodSw3aSZ6Pf2wnq" height="300" />
+<p>Wekinator Inputs:  accelX accelY accelZ tiltX tiltY tiltZ accelMag giroX giroY giroZ</p>
+<p>Wekinator Outputs: crush pitchglitch fftglitch playbackrate </p>
+<h2 id="formatting-messages-to-send-to-wekinator">Formatting Messages to send to Wekinator:</h2>
+<img src="https://lh4.googleusercontent.com/vowImSTZQgV22JisghND2qJXE7AnmKDKQaCQCPkOPgXOiKCUeRO9YuxHeM3T4kiqJJLwjRqdsgsO5aVuPoHfm3DOVcCdbJX5AGvQt3s_vK3_R8wVlKdUK6Kr2oiaFEhZunabPbox" height="300" />
+<p>Control Messages Flow:</p>
+<img src="https://lh3.googleusercontent.com/VKyQjnk2tk0Ex38YWPjX3O4vjENq0jVdCnzKJF9M1m-mCHZHwynuJ11_RNQiDLZzuciuM9ZvzVMCBUhQ1ZMv8ZW5woRwHy2_abLtPdE_j7zxkcsbnT7IHbyZnj1_mvpOIJaiw_TF" height="500" />
+<h1 id="sound-processing">Sound Processing:</h1>
+<img src="https://lh6.googleusercontent.com/-jMqo2CvNKw7aD1-yMGn6KHFFmAxgEei6S3nCeM8YyhlrzH-iAnnYlyrEFAZXWUcfVlFJyfEiNrStxgXLasbmhYve9OIGynFah0--_MbwkPOVRBScAru_VApRngXlFO8mK8ULnmj" height="500" />
+<h3 id="sample-playback-playback-rate-manipulation">Sample playback, playback rate manipulation:</h3>
+<p>I used a phasor\~ object to index into a tabread4\~. This allowed me to have full control on the playback speed and location of the sample. This allowed me to vary the playback rate simply by multiplying the output of the phasor by a constant. </p>
+<h3 id="stutter">Stutter:</h3>
+<p>Because of the tabread4\~ approach, I just had to subtract a number to the output of the phasor\~ object to get a stutter effect. The implementation is simply a metronome regularly increasing the indexing offset. The stutter rate can be changed continuously, by adjusting the amount added to the counter and the metronome delay.</p>
+<p>The above modules only acted on the sample being played by the tabread4~. The following modules also act on the live audio input. </p>
+<h3 id="bitcrusher">Bitcrusher:</h3>
+<img src="https://lh4.googleusercontent.com/4doSHZPZVQlQu2Rya2LsBEtbfVxh-pKF0aO2yp-UqYGi4aq3wNEPLSiGPS0BQpWnBximT7zJDGrEM8SnjKOVs3CH-t_Miti2HLtmcP3AyWJFNI1Gl-4n5NvxgZkM6-9V1_ZgWtgy" height="500" />
+<p>I used the bitcrusher module in automatonism, and made a combined parameter which increased the wet mix and decreased the bitrate. This allowed me to get an unmodified sound at 0 and a fully crushed sound at 1.</p>
+<h3 id="low-resolution-fft-reconstruction">Low-resolution FFT reconstruction:</h3>
+<img src="https://lh6.googleusercontent.com/fQvQb34Aw6TFBL9kZ7KgjzMm3fffJ9-7iqVrT04lPSPn87oRBOUDqb5wbkDX2TPoPomsk47-WWYk77EyMDW6zy_ZNDVfIU30qlslJaT9lvH7b392ZYf5jPD3U20l1YxXPer88HaX" height="500" />
+<p>I decomposed the signal into the 5 loudest partials using the sigmund~ external, and then resynthesized the signal based on these partials, discarding the phase information. This gives a somewhat low-pass filtered sound, and any noise introduces a lot of fast moving notes, making it sound like independent sine wave voices. I can control the dry/wet mix with the original signal.</p>
+<h3 id="pitch-shift-glitches">Pitch-shift glitches:</h3>
+<p>By pitch shifting the sound down and back up again, artefacts are introduced due to mistuning stacking and loss of resolution in lower frequencies, while retaining the original pitch of the signal. I used a modified version of the example pitch-shifting patch, and controlled the pitch shifting amount. This patch introduces a short but noticeable delay, which isn’t a problem when the sound is glitchy but should be avoided for the clean signal. To remedy this, the effect only activates when the pitch shifting is greater than 2 semitones, akin to how true bypass on guitar pedals bypasses the processing when the effect is off.</p>
+<img src="https://lh3.googleusercontent.com/gcowgD7G37jJWDgzbD_mchk-RHm1NM_nXiTx4_TYaoOoSZy9WLxytioFFaPiW5Y31KXj6I0FiYjh7n5FFdzwDDVnYpVnHWl4sSdDCx_f7PedWlaT7K1xTlYLNCZQ_795CD0QUxZD" height="500" />
+<h1 id="mapping">Mapping</h1>
+<p>The 3 continuous parameters for bitcrushing, fft glitches, and pitch glitches are mapped to tilting towards me, left, and right respectively. These glitches are post-stutter, so any stuttering sample can be glitched while stuttering. Larger gestures and increases in acceleration map to the playback and stutter rates parameters, but these aren’t always active because the effect is quite dramatic. One of the front buttons enables the playback rate to be modified by this parameter. The other activates stutter mode. The buttons on the back shorten the stutter length by factors of 2, 4, and 8, and the stutter rate continuous parameter mentioned above also contributes to changing this length.</p>
+<p>The precise control that the tilting provides contrasts nicely with the chaos that the acceleration based parameters introduce, and the visual aspect of the performance reflect this: using the playback rate controls requires making big, fast gestures, while tilting requires being relatively still. </p>
+<h1 id="challenges-and-reflection">Challenges and Reflection</h1>
+<p>I was originally using automatonism’s looper module, then abandoned it mostly because it kept making pureData crash, but also because the stutter effect gave me most of what I was trying to get out of the looper. Lowering the data rates was also important in getting the system to be stable.</p>
+<p>I am most satisfied with the sound design of this instrument. The glitches sound good and have a smooth progression from a perfectly clean signal to complete chaos. For this reason, and because Wekinator allows for precise calibrating, it also feels nice to play: I really feel in control using the tilt parameters. What I also like is the possibility it has for collaboration. In my final performance, I essentially collaborated with myself by playing the piano alongside the glitchbox, but I could have had someone else playing the piano, or any other instrument. I could imagine it becoming part of a DJ concert for example, to introduce gestural visuals for a climactic moment. However, in its current state, it’s unclear that it could be used as the main instrument for an entire concert without a lot of pre-composition happening. Perhaps allowing for switches between different glitch types or a full-fledged looper could help bring more versatility to the instrument. And the biggest problem right now is the hardware, which is made of cardboard and could be sturdier and better looking. </p>
+<p>I like the idea of integrating the glitchbox with other players and instruments, and I am planning to make a more robust version that I could use in my own concerts. Enhancing one handed control, so I could use this more easily while playing the guitar for example, would also be very nice.</p>
+<!--EndFragment-->
           <footer class="readmore">
-            <a href="/blog/potato-remash/#more">Read more ›</a>
+            <a href="/blog/daft-punk/#more">Read more ›</a>
           </footer>
         </div>
       </div>
       <div class="lastposts">
         <h2>Recent posts</h2>
         <ul>
-          <li><a href="/blog/daft-punk/">Glitchbox</a></li>
+          <li><a href="/blog/potato-remash/">Potato Remash</a></li>
         </ul>
       </div>
     </div>

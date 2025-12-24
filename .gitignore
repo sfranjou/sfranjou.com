@@ -5,3 +5,4 @@ _site/
 themes/*
 cecil.phar
 composer.phar
+.DS_Store

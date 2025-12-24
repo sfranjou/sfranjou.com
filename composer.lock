@@ -58,16 +58,16 @@
         },
         {
             "name": "cecil/theme-hyde",
-            "version": "1.18.2",
+            "version": "1.19.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Cecilapp/theme-hyde.git",
-                "reference": "840996ce794ef8d96ae787c9de671532dc6db1fe"
+                "reference": "5713ec195a3cf5feb93ebdb6fba7925b9be41f99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Cecilapp/theme-hyde/zipball/840996ce794ef8d96ae787c9de671532dc6db1fe",
-                "reference": "840996ce794ef8d96ae787c9de671532dc6db1fe",
+                "url": "https://api.github.com/repos/Cecilapp/theme-hyde/zipball/5713ec195a3cf5feb93ebdb6fba7925b9be41f99",
+                "reference": "5713ec195a3cf5feb93ebdb6fba7925b9be41f99",
                 "shasum": ""
             },
             "require": {
@@ -92,15 +92,23 @@
             ],
             "support": {
                 "issues": "https://github.com/Cecilapp/theme-hyde/issues",
-                "source": "https://github.com/Cecilapp/theme-hyde/tree/1.18.2"
+                "source": "https://github.com/Cecilapp/theme-hyde/tree/1.19.2"
             },
             "funding": [
                 {
                     "url": "https://www.paypal.me/narno",
                     "type": "custom"
+                },
+                {
+                    "url": "https://github.com/ArnaudLigny",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/cecil",
+                    "type": "open_collective"
                 }
             ],
-            "time": "2020-11-10T00:50:23+00:00"
+            "time": "2022-09-01T19:45:46+00:00"
         },
         {
             "name": "cecil/theme-installer",
@@ -269,10 +277,10 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }

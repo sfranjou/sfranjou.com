@@ -1,18 +1,2 @@
 [build]
-  publish = "_site"
-  command = "chmod +x ./scripts/netlify-build.sh && bash ./scripts/netlify-build.sh"
-[build.environment]
-  CECIL_ENV = "production"
-
-[context.deploy-preview.environment]
-  CECIL_ENV = "preview"
-
-[context.branch-deploy.environment]
-  CECIL_ENV = "branch"
-
-[template.environment]
-  CECIL_TITLE = "Blog's title"
-  CECIL_BASELINE = "Short description (~ 20 characters)"
-  CECIL_DESCRIPTION = "Full description (~ 250 characters)"
-  CECIL_AUTHOR = "Your name"
-  CECIL_THEME = "Theme (use 'hyde' or 'garth')"
+  publish = "."

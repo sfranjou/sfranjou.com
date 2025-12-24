@@ -178,6 +178,18 @@
     </div>
 
     <script>
+        // Personalization Logic
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        
+        if (name) {
+            const firstGreeting = document.querySelector('.msg-1 h1');
+            const lastGreeting = document.querySelector('.msg-4 h1');
+            
+            if (firstGreeting) firstGreeting.textContent = `Merry Christmas, ${name}`;
+            if (lastGreeting) lastGreeting.textContent = `Merry Christmas, ${name}!`;
+        }
+
         // Simple procedural snow for that "premium" feel
         const snowContainer = document.getElementById('snow');
         for (let i = 0; i < 50; i++) {

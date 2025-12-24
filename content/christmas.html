@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #c41e3a;
+            --dark-red: #8b0000;
+            --gold: #ffd700;
+            --white: #f8f9fa;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(circle at center, #1a472a 0%, #013220 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+        }
+
+        /* Festive Background Elements */
+        .snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Message Logic */
+        .message-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            height: 400px; /* Give it some height for absolute children */
+        }
+
+        .greeting {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(100vh);
+            opacity: 0;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+            animation: greetingSequence 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .greeting h1 {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin: 0;
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .greeting p {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            margin-top: 1rem;
+            line-height: 1.6;
+            font-weight: 300;
+            color: #fff;
+        }
+
+        /* Sequential Delays */
+        .msg-1 { animation-delay: 0.5s; }
+        .msg-2 { animation-delay: 7s; }
+        .msg-3 { animation-delay: 13.5s; }
+
+        @keyframes greetingSequence {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            15% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            85% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh); /* Leave via TOP instead of back to bottom for better "flow" */
+                opacity: 0;
+            }
+        }
+
+        /* Premium Decorations */
+        .ornament {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="snow-container" id="snow"></div>
+
+    <div class="message-container">
+        <div class="greeting msg-1">
+            <span class="ornament">🎄</span>
+            <h1>Merry Christmas</h1>
+            <p>From the depths of the winter frost, sending you warmth and cheer.</p>
+        </div>
+
+        <div class="greeting msg-2">
+            <span class="ornament">✨</span>
+            <h1>Season's Joy</h1>
+            <p>May your home be filled with laughter and your heart with endless light.</p>
+        </div>
+
+        <div class="greeting msg-3">
+            <span class="ornament">❄️</span>
+            <h1>A New Dawn</h1>
+            <p>Wishing you a wonderful holiday season and a prosperous New Year.</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple procedural snow for that "premium" feel
+        const snowContainer = document.getElementById('snow');
+        for (let i = 0; i < 50; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            
+            const size = Math.random() * 5 + 2 + 'px';
+            snowflake.style.width = size;
+            snowflake.style.height = size;
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            snowflake.style.filter = `blur(${Math.random() * 2}px)`;
+            
+            snowContainer.appendChild(snowflake);
+        }
+    </script>
+</body>
+</html>

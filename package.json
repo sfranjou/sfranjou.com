@@ -1,5 +1,0 @@
-{
-  "scripts": {
-    "build": "bash ./scripts/vercel-install.sh && bash ./scripts/vercel-build.sh"
-  }
-}

@@ -106,10 +106,18 @@
             color: #fff;
         }
 
+        .greeting img {
+            max-width: 100%;
+            max-height: 30vh;
+            object-fit: contain;
+            border-radius: 16px;
+            margin-top: 1.5rem;
+        }
         /* Sequential Delays */
         .msg-1 { animation-delay: 0.5s; }
         .msg-2 { animation-delay: 7s; }
         .msg-3 { animation-delay: 13.5s; }
+        .msg-4 { animation-delay: 20s; }
 
         @keyframes greetingSequence {
             0% {
@@ -145,19 +153,27 @@
         <div class="greeting msg-1">
             <span class="ornament">🎄</span>
             <h1>Merry Christmas</h1>
-            <p>From the depths of the winter frost, sending you warmth and cheer.</p>
+            <img src = img/Xmas1.jpg>
+            <p>What a pretty tree!</p>
         </div>
 
         <div class="greeting msg-2">
             <span class="ornament">✨</span>
-            <h1>Season's Joy</h1>
-            <p>May your home be filled with laughter and your heart with endless light.</p>
+            <h1>A present! Is it for me?</h1>
+            <img src = img/Xmas2.jpg>
         </div>
 
         <div class="greeting msg-3">
             <span class="ornament">❄️</span>
-            <h1>A New Dawn</h1>
-            <p>Wishing you a wonderful holiday season and a prosperous New Year.</p>
+            <h1>What's this?</h1>
+            <img src = img/Xmas3.jpg>
+        </div>
+
+        <div class="greeting msg-4">
+            <span class="ornament">❄️</span>
+            <h1>Merry Christmas!</h1>
+            <img src = img/Xmas4.jpg>
+            <p>I forgot it at home, but you'll get it in the mail</p>
         </div>
     </div>
 

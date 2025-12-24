@@ -87,7 +87,20 @@
             padding: 2.5rem;
             border-radius: 24px;
             box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-            animation: greetingSequence 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease;
+            pointer-events: none;
+        }
+
+        .greeting.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .greeting.exit {
+            transform: translateY(-100vh);
+            opacity: 0;
+            pointer-events: none;
         }
 
         .greeting h1 {
@@ -113,30 +126,7 @@
             border-radius: 16px;
             margin-top: 1.5rem;
         }
-        /* Sequential Delays */
-        .msg-1 { animation-delay: 0.5s; }
-        .msg-2 { animation-delay: 7s; }
-        .msg-3 { animation-delay: 13.5s; }
-        .msg-4 { animation-delay: 20s; }
-
-        @keyframes greetingSequence {
-            0% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-            15% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            85% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh); /* Leave via TOP instead of back to bottom for better "flow" */
-                opacity: 0;
-            }
-        }
+        /* Sequential Delays removed - now handled via JS */
 
         /* Premium Decorations */
         .ornament {
@@ -152,9 +142,8 @@
     <div class="message-container">
         <div class="greeting msg-1">
             <span class="ornament">🎄</span>
-            <h1>Merry Christmas</h1>
+            <h1>What a pretty tree!</h1>
             <img src = img/Xmas1.jpg>
-            <p>What a pretty tree!</p>
         </div>
 
         <div class="greeting msg-2">
@@ -183,11 +172,11 @@
         const name = urlParams.get('name');
         
         if (name) {
-            const firstGreeting = document.querySelector('.msg-1 h1');
+            // const firstGreeting = document.querySelector('.msg-1 h1');
             const lastGreeting = document.querySelector('.msg-4 h1');
             
-            if (firstGreeting) firstGreeting.textContent = `Merry Christmas, ${name}`;
-            if (lastGreeting) lastGreeting.textContent = `Merry Christmas, ${name}!`;
+            // if (firstGreeting) firstGreeting.textContent = `Merry Christmas, ${name}`;
+            if (lastGreeting) lastGreeting.textContent = `Merry Christmas ${name}!`;
         }
 
         // Simple procedural snow for that "premium" feel
@@ -206,6 +195,52 @@
             
             snowContainer.appendChild(snowflake);
         }
+
+        // Animation Controller
+        const greetings = document.querySelectorAll('.greeting');
+        let currentIndex = -1;
+        let animationTimer;
+        const DURATION = 15000; // 15 seconds
+
+        function showNextGreeting() {
+            if (animationTimer) clearTimeout(animationTimer);
+
+            // Hide current
+            if (currentIndex >= 0 && currentIndex < greetings.length) {
+                greetings[currentIndex].classList.remove('active');
+                greetings[currentIndex].classList.add('exit');
+            }
+
+            currentIndex++;
+
+            // Show next
+            if (currentIndex < greetings.length) {
+                const next = greetings[currentIndex];
+                // Wait for the exit animation of previous to finish if any
+                setTimeout(() => {
+                    next.classList.add('active');
+                }, currentIndex === 0 ? 500 : 1000);
+
+                // Auto progress
+                animationTimer = setTimeout(showNextGreeting, DURATION + 1000);
+            }
+        }
+
+        // Start the sequence
+        showNextGreeting();
+
+        // Click/Touch to skip
+        window.addEventListener('click', () => {
+            if (currentIndex < greetings.length - 1) {
+                showNextGreeting();
+            }
+        });
+        window.addEventListener('touchstart', (e) => {
+            // Prevent double trigger with click on some mobile browsers
+            if (currentIndex < greetings.length - 1) {
+                showNextGreeting();
+            }
+        });
     </script>
 </body>
 </html>

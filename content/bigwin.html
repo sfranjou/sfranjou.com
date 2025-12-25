@@ -108,12 +108,46 @@
 <div class="win-container">
     <h2>Congratulations!</h2>
     <h1>YOU WON!</h1>
-    <div class="prize">$453,000,000</div>
+    <div class="prize" id="prize-amount" data-target="200">$0</div>
     <br>
     <a href="powerball.html" class="back-btn">Check More Numbers</a>
 </div>
 
 <script>
+    // Counter Animation Logic
+    function animateCounter() {
+        const prizeElement = document.getElementById('prize-amount');
+        const target = parseInt(prizeElement.getAttribute('data-target'));
+        const duration = 2000; // 2 seconds
+        const startTime = performance.now();
+        
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0
+        });
+
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Easing function: easeOutExpo
+            const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            
+            const currentValue = Math.floor(easeProgress * target);
+            prizeElement.textContent = formatter.format(currentValue);
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    // Start counter after a short delay
+    setTimeout(animateCounter, 500);
+
     // Premium Confetti Animation
     const canvas = document.getElementById('confetti');
     const ctx = canvas.getContext('2d');

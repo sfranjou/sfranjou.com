@@ -1,23 +1,39 @@
 /* 
- * VINTAGE SOUL PALETTE
- * Cream: #F9F4EF
- * Dark Brown: #3E2723
- * Burnt Orange: #D84315
- * Mustard Yellow: #F9A825
- * Teal/Blue (Accent): #006064
+ * ==========================================
+ * ONEREDCENT - VINTAGE SOUL STYLESHEET
+ * ==========================================
+ * This stylesheet creates a "Vintage Funk & Soul" aesthetic using:
+ * - A warm, earthy color palette
+ * - Bold, retro typography
+ * - Distorted layouts (rotations, offsets) for a handmade feel
+ * - Texture overlays and hard shadows
  */
 
+/* 
+ * 1. COLOR PALETTE & DESIGN TOKENS
+ * Modify these variables to change the entire theme of the site.
+ */
 :root {
-    --bg-color: #F9F4EF;
-    --text-color: #3E2723;
-    --primary-color: #D84315;
-    --secondary-color: #F9A825;
-    --accent-color: #006064;
+    /* Palette Colors */
+    --bg-color: #F9F4EF;       /* Soft Cream: Main background */
+    --text-color: #3E2723;     /* Dark Brown: Primary text and borders */
+    --primary-color: #D84315;  /* Burnt Orange: Brand highlight color */
+    --secondary-color: #F9A825;/* Mustard Yellow: Accents and highlights */
+    --accent-color: #006064;   /* Deep Teal: Contrast color for shadows/headers */
+
+    /* Typography 
+     * Shrikhand: Heavy, display font for main titles
+     * Abril Fatface: Elegant, high-contrast serif for sub-headers
+     * Syne: Modern, geometric sans-serif for body text
+     */
     --header-font: 'Shrikhand', cursive;
     --sub-header-font: 'Abril Fatface', cursive;
     --body-font: 'Syne', sans-serif;
 }
 
+/* 
+ * 2. CORE LAYOUT & GLOBAL STYLES
+ */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -25,10 +41,14 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevent horizontal scroll from rotated elements */
 }
 
-/* Vintage Texture Overlay */
+/* 
+ * GRAIN/NOISE OVERLAY
+ * This creates a subtle "film grain" effect over the whole page.
+ * Modify 'opacity' (currently 0.05) to increase or decrease the intensity of the grain.
+ */
 body::before {
     content: "";
     position: fixed;
@@ -36,17 +56,21 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
+    pointer-events: none; /* Allow clicks to pass through to elements below */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     z-index: 999;
 }
 
+/* 
+ * 3. HEADER & TITLE STYLING
+ */
 header {
     text-align: center;
     padding: 4rem 1rem;
     background: radial-gradient(circle, var(--secondary-color) 0%, var(--primary-color) 100%);
     color: var(--bg-color);
     position: relative;
+    /* Clip-path creates the curved bottom edge of the header */
     clip-path: ellipse(150% 100% at 50% 0%);
 }
 
@@ -56,7 +80,9 @@ h1 {
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 2px;
+    /* Retro "Hard" Shadow: No blur, creates a 3D sticker effect */
     text-shadow: 4px 4px 0px var(--accent-color);
+    /* Slight rotation adds dynamic/hand-drawn feel */
     transform: rotate(-3deg);
 }
 
@@ -74,13 +100,20 @@ h2 {
     padding-bottom: 0.5rem;
 }
 
+/* 
+ * 4. LAYOUT CONTAINERS
+ */
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto; /* Center the container */
     padding: 2rem;
 }
 
-/* BAND MEMBERS */
+/* 
+ * BAND MEMBERS GRID
+ * Uses 'auto-fit' to automatically determine number of columns based on screen width.
+ * Minmax(250px) ensures cards don't get too narrow before wrapping.
+ */
 .members-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -88,16 +121,21 @@ h2 {
     margin-bottom: 4rem;
 }
 
+/* 
+ * 5. COMPONENT: MEMBER CARDS
+ */
 .member-card {
     background: #fff;
     border: 2px solid var(--text-color);
     padding: 1rem;
     text-align: center;
+    /* Shifted shadow: creates a "brutalism" inspired look */
     box-shadow: 8px 8px 0px var(--secondary-color);
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .member-card:hover {
+    /* "Push-in" effect on hover */
     transform: translate(-3px, -3px);
     box-shadow: 11px 11px 0px var(--secondary-color);
 }
@@ -107,7 +145,7 @@ h2 {
     height: 250px;
     background-color: var(--text-color);
     margin-bottom: 1rem;
-    border-radius: 50%; /* Circle photos */
+    border-radius: 50%; /* Perfect circles */
     overflow: hidden;
     border: 4px solid var(--secondary-color);
 }
@@ -115,8 +153,8 @@ h2 {
 .member-photo img {
      width: 100%;
      height: 100%;
-     object-fit: cover;
-     display: block; /* removes bottom space */
+     object-fit: cover; /* Fill the circle without stretching */
+     display: block;
 }
 
 .member-name {
@@ -132,16 +170,21 @@ h2 {
     font-size: 0.9rem;
 }
 
-/* CONCERTS */
+/* 
+ * 6. SECTION: CONCERTS (TOUR DATES)
+ */
 .concerts-section {
-    background-color: #fff; /* Paper look */
+    background-color: #fff; /* White background acts like a sheet of paper */
     padding: 2rem;
     border: 3px solid var(--text-color);
     position: relative;
     margin-bottom: 4rem;
 }
 
-/* "Next Gig" Highlight */
+/* 
+ * NEXT GIG HIGHLIGHT
+ * A prominent, slightly tilted box to draw attention to the very next event.
+ */
 .next-gig {
     background-color: var(--accent-color);
     color: var(--bg-color);
@@ -149,6 +192,7 @@ h2 {
     text-align: center;
     margin-bottom: 2rem;
     border: 4px dashed var(--secondary-color);
+    /* Tilted for a "flyer" look */
     transform: rotate(1deg);
 }
 
@@ -159,14 +203,17 @@ h2 {
     color: var(--secondary-color);
 }
 
+/* 
+ * TOUR DATE LISTING
+ */
 .gig-list {
-    list-style: none;
+    list-style: none; /* Remove default bullets */
     padding: 0;
 }
 
 .gig-item {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Push title to left, date to right */
     align-items: center;
     padding: 1rem;
     border-bottom: 1px solid #ccc;
@@ -174,7 +221,7 @@ h2 {
 }
 
 .gig-item:last-child {
-    border-bottom: none;
+    border-bottom: none; /* Clean finish for the last item */
 }
 
 .gig-date {
@@ -183,13 +230,21 @@ h2 {
     font-size: 1.2rem;
 }
 
-/* MEDIA */
+/* 
+ * 7. MEDIA SECTION & VIDEO HANDLING
+ */
 .media-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
+/* 
+ * VIDEO ASPECT RATIO BOX
+ * This technique ensures videos (iframes) maintain a 16:9 ratio.
+ * - padding-bottom: 56.25% is calculated as (9 / 16 * 100).
+ * - The iframe is then absolutely positioned to fill the space.
+ */
 .video-wrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
@@ -207,6 +262,9 @@ h2 {
     height: 100%;
 }
 
+/* 
+ * 8. FOOTER & UTILITIES
+ */
 footer {
     text-align: center;
     padding: 2rem;
@@ -215,5 +273,5 @@ footer {
     margin-top: 4rem;
 }
 
-/* Utility */
+/* Helper Class: Reuse for centering text anywhere */
 .text-center { text-align: center; }

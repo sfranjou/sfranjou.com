@@ -213,11 +213,42 @@ h2 {
 
 .gig-item {
     display: flex;
-    justify-content: space-between; /* Push title to left, date to right */
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 1rem;
     border-bottom: 1px solid #ccc;
     font-weight: 700;
+}
+
+.gig-header-row {
+     display: flex;
+     justify-content: space-between;
+     width: 100%;
+     align-items: baseline;
+}
+
+.gig-item-link {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.gig-item-blurb {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-top: 0.2rem;
+    font-weight: normal;
+}
+
+/* Links in the Next Gig section */
+.gig-link {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 2px solid currentColor;
+}
+
+.next-gig-blurb {
+    font-style: italic;
+    margin-top: 0.5rem;
 }
 
 .gig-item:last-child {
@@ -228,6 +259,8 @@ h2 {
     color: var(--primary-color);
     font-family: var(--sub-header-font);
     font-size: 1.2rem;
+    white-space: nowrap;
+    margin-left: 1rem;
 }
 
 /* 

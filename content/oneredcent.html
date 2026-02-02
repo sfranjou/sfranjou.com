@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/ico" href="/img/oneredcent.ico"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>oneredcent | Soul, Funk & Groove</title>
@@ -14,7 +15,7 @@
 <body>
 
     <header>
-        <h1>oneredcent</h1>
+        <h1>One Red Cent</h1>
         <p style="font-size: 1.5rem; letter-spacing: 3px; font-weight: bold; margin-top: 0;">GROOVE • SOUL • FUNK</p>
     </header>
 
@@ -123,16 +124,57 @@
     </footer>
 
     <!-- Script for Concert Logic (Placeholder) -->
-    <script>
-        // MOCK DATA - To be replaced by Google Sheets CSV fetch
-        const concerts = [
-            { date: '2025-12-15', title: 'The Basement Jam', location: 'Downtown' }, // Past
-            { date: '2026-02-14', title: 'Valentine Soul Special', location: 'The Love Shack' }, // Future (Next)
-            { date: '2026-03-20', title: 'Spring Equinox Funk', location: 'City Park' }, // Future
-            { date: '2026-05-01', title: 'May Day Groove', location: 'Labor Hall' } // Future
-        ];
+    <!-- PapaParse for CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
-        function renderConcerts() {
+    <script>
+        const GIGS_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQM1FZ_1CDBMdL8jOOIrpHcQOaqag3lBE2o4yu5vLaDgGHE9btfRada2VJqMcqHyHaJe93qHOZ5uEsr/pub?gid=55127937&single=true&output=csv';
+
+        function fetchGigs() {
+            if (GIGS_SHEET_URL === 'PLACEHOLDER_GOOGLE_SHEETS_CSV_URL') {
+                console.warn('Google Sheets URL is missing. Please update GIGS_SHEET_URL in the script.');
+                // Fallback or just show nothing/loading
+                document.getElementById('upcoming-gigs').innerHTML = '<li class="gig-item">Calendar configuration missing.</li>';
+                document.getElementById('past-gigs').innerHTML = '<li class="gig-item">Calendar configuration missing.</li>';
+                return;
+            }
+
+            Papa.parse(GIGS_SHEET_URL, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    processGigs(results.data);
+                },
+                error: function(err) {
+                    console.error('Error fetching gigs:', err);
+                    document.getElementById('upcoming-gigs').innerHTML = '<li class="gig-item">Error loading gigs.</li>';
+                }
+            });
+        }
+
+        function processGigs(data) {
+            // Expected columns: Name, Venue, Address, Date, Show on website, Blurb, Link, Internal notes
+            
+            // Map raw data to our structure
+            const gigs = data.map(row => {
+                // Combine Venue and Address for location, handling missing pieces
+                const locationParts = [row['Venue'], row['Address']].filter(part => part && part.trim() !== '');
+                const location = locationParts.join(', ');
+
+                return {
+                    title: row['Name'],
+                    location: location,
+                    date: row['Date'],
+                    link: row['Link'],
+                    blurb: row['Blurb'],
+                    // Data is already filtered for 'Show on website' by the sheet export itself per user req
+                };
+            }).filter(gig => gig.title && gig.date); // Basic validity check
+
+            renderConcerts(gigs);
+        }
+
+        function renderConcerts(concerts) {
             const today = new Date();
             // Sort by date
             concerts.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -143,36 +185,67 @@
             // Render Next Gig
             const nextGig = upcoming[0];
             const nextGigContainer = document.getElementById('next-gig-container');
+            
             if (nextGig) {
-                document.getElementById('next-gig-title').textContent = nextGig.title;
+                nextGigContainer.style.display = 'block'; // Ensure it's visible if we previously hid it
+                
+                // Title with Link if available
+                const titleEl = document.getElementById('next-gig-title');
+                if (nextGig.link) {
+                    titleEl.innerHTML = `<a href="${nextGig.link}" target="_blank" class="gig-link">${nextGig.title}</a>`;
+                } else {
+                    titleEl.textContent = nextGig.title;
+                }
                 
                 const dateObj = new Date(nextGig.date);
                 const dateStr = dateObj.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
                 document.getElementById('next-gig-date').innerHTML = `<time datetime="${nextGig.date}">${dateStr}</time>`;
                 document.getElementById('next-gig-location').textContent = nextGig.location;
+                
+                // Add Blurb for next gig if exists
+                let blurbEl = document.getElementById('next-gig-blurb');
+                if (!blurbEl) {
+                    blurbEl = document.createElement('p');
+                    blurbEl.id = 'next-gig-blurb';
+                    blurbEl.className = 'next-gig-blurb';
+                    document.getElementById('next-gig-location').after(blurbEl);
+                }
+                blurbEl.textContent = nextGig.blurb || '';
+
             } else {
                 nextGigContainer.style.display = 'none';
             }
 
             // Render Lists
             const upcomingList = document.getElementById('upcoming-gigs');
-            upcomingList.innerHTML = upcoming.slice(1).map(gig => `
-                <li class="gig-item">
-                    <span>${gig.title} @ ${gig.location}</span>
-                    <span class="gig-date"><time datetime="${gig.date}">${new Date(gig.date).toLocaleDateString()}</time></span>
-                </li>
-            `).join('') || '<li class="gig-item">No more upcoming shows announced.</li>';
+            upcomingList.innerHTML = upcoming.slice(1).map(gig => createGigListItem(gig)).join('') || '<li class="gig-item">No more upcoming shows announced.</li>';
 
              const pastList = document.getElementById('past-gigs');
-            pastList.innerHTML = past.reverse().map(gig => `
-                <li class="gig-item">
-                    <span>${gig.title} @ ${gig.location}</span>
-                    <span class="gig-date"><time datetime="${gig.date}">${new Date(gig.date).toLocaleDateString()}</time></span>
-                </li>
-            `).join('') || '<li class="gig-item">No past shows found.</li>';
+            pastList.innerHTML = past.reverse().map(gig => createGigListItem(gig)).join('') || '<li class="gig-item">No past shows found.</li>';
         }
 
-        document.addEventListener('DOMContentLoaded', renderConcerts);
+        function createGigListItem(gig) {
+            let content = `<span>${gig.title} @ ${gig.location}</span>`;
+            
+            // If there's a link, wrap the title/location part
+            if (gig.link) {
+                content = `<span><a href="${gig.link}" target="_blank" class="gig-item-link">${gig.title}</a> @ ${gig.location}</span>`;
+            }
+
+            const blurbHtml = gig.blurb ? `<div class="gig-item-blurb">${gig.blurb}</div>` : '';
+
+            return `
+                <li class="gig-item">
+                    <div class="gig-header-row">
+                        ${content}
+                        <span class="gig-date"><time datetime="${gig.date}">${new Date(gig.date).toLocaleDateString()}</time></span>
+                    </div>
+                    ${blurbHtml}
+                </li>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchGigs);
     </script>
 </body>
 </html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oneredcent | Soul, Funk & Groove</title>
+    <!-- Google Fonts for that Vintage Vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Shrikhand&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/oneredcent.css">
+</head>
+<body>
+
+    <header>
+        <h1>oneredcent</h1>
+        <p style="font-size: 1.5rem; letter-spacing: 3px; font-weight: bold; margin-top: 0;">GROOVE • SOUL • FUNK</p>
+    </header>
+
+    <main class="container">
+
+        <section id="band" class="text-center">
+            <h2>The Band</h2>
+            <div class="members-grid">
+                <!-- Example Profiles -->
+                <article class="member-card">
+                    <div class="member-photo">
+                        <img src="https://placehold.co/400x400/3E2723/F9F4EF?text=Singer" alt="Lead Singer">
+                    </div>
+                    <h3 class="member-name">Diana Ross-ish</h3>
+                    <div class="member-role">Lead Vocals</div>
+                    <p>Bringing the house down with vocal acrobatics and soul-stirring melodies.</p>
+                </article>
+                <article class="member-card">
+                    <div class="member-photo">
+                        <img src="https://placehold.co/400x400/D84315/F9F4EF?text=Guitar" alt="Guitarist">
+                    </div>
+                    <h3 class="member-name">Funky Phil</h3>
+                    <div class="member-role">Guitar</div>
+                    <p>Master of the wah-wah pedal and the syncopated rhythm.</p>
+                </article>
+                <article class="member-card">
+                    <div class="member-photo">
+                        <img src="https://placehold.co/400x400/006064/F9F4EF?text=Bass" alt="Bassist">
+                    </div>
+                    <h3 class="member-name">Bootsy B.</h3>
+                    <div class="member-role">Bass</div>
+                    <p>Keeping it low, heavy, and undeniably groovy.</p>
+                </article>
+                 <article class="member-card">
+                    <div class="member-photo">
+                        <img src="https://placehold.co/400x400/F9A825/3E2723?text=Drums" alt="Drummer">
+                    </div>
+                    <h3 class="member-name">Rhythm Ray</h3>
+                    <div class="member-role">Drums</div>
+                    <p>The heartbeat of the band, precise and powerful.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="concerts">
+            <div class="text-center">
+                <h2>Tour Dates</h2>
+            </div>
+            
+            <div class="concerts-section">
+                <!-- Dynamic Content Will Go Here -->
+                
+                <article id="next-gig-container" class="next-gig">
+                     <p style="text-transform: uppercase; font-weight: bold; letter-spacing: 2px;">Next Live Performance</p>
+                     <h3 id="next-gig-title">Loading...</h3>
+                     <p id="next-gig-date" style="font-size: 1.5rem;">Check back soon!</p>
+                     <p id="next-gig-location">Planet Earth</p>
+                </article>
+
+                <h3 style="font-family: var(--sub-header-font);">Upcoming Shows</h3>
+                <ul class="gig-list" id="upcoming-gigs">
+                    <li class="gig-item">Loading list...</li>
+                </ul>
+
+                <h3 style="font-family: var(--sub-header-font); margin-top: 2rem; color: #777;">Past Gigs</h3>
+                <ul class="gig-list" id="past-gigs" style="opacity: 0.7;">
+                    <li class="gig-item">Loading list...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="media" class="text-center">
+            <h2>Media & Vibes</h2>
+            <div class="media-grid">
+               <!-- Placeholder for Video 1 -->
+               <div class="video-wrapper">
+                    <!-- Example YouTube Placeholder -->
+                   <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+               </div>
+               <!-- Placeholder for Video 2 -->
+               <div class="video-wrapper">
+                   <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+               </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 oneredcent. All Rights Reserved. Keep it funky.</p>
+    </footer>
+
+    <!-- Script for Concert Logic (Placeholder) -->
+    <script>
+        // MOCK DATA - To be replaced by Google Sheets CSV fetch
+        const concerts = [
+            { date: '2025-12-15', title: 'The Basement Jam', location: 'Downtown' }, // Past
+            { date: '2026-02-14', title: 'Valentine Soul Special', location: 'The Love Shack' }, // Future (Next)
+            { date: '2026-03-20', title: 'Spring Equinox Funk', location: 'City Park' }, // Future
+            { date: '2026-05-01', title: 'May Day Groove', location: 'Labor Hall' } // Future
+        ];
+
+        function renderConcerts() {
+            const today = new Date();
+            // Sort by date
+            concerts.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            const upcoming = concerts.filter(c => new Date(c.date) >= today);
+            const past = concerts.filter(c => new Date(c.date) < today);
+
+            // Render Next Gig
+            const nextGig = upcoming[0];
+            const nextGigContainer = document.getElementById('next-gig-container');
+            if (nextGig) {
+                document.getElementById('next-gig-title').textContent = nextGig.title;
+                
+                const dateObj = new Date(nextGig.date);
+                const dateStr = dateObj.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById('next-gig-date').innerHTML = `<time datetime="${nextGig.date}">${dateStr}</time>`;
+                document.getElementById('next-gig-location').textContent = nextGig.location;
+            } else {
+                nextGigContainer.style.display = 'none';
+            }
+
+            // Render Lists
+            const upcomingList = document.getElementById('upcoming-gigs');
+            upcomingList.innerHTML = upcoming.slice(1).map(gig => `
+                <li class="gig-item">
+                    <span>${gig.title} @ ${gig.location}</span>
+                    <span class="gig-date"><time datetime="${gig.date}">${new Date(gig.date).toLocaleDateString()}</time></span>
+                </li>
+            `).join('') || '<li class="gig-item">No more upcoming shows announced.</li>';
+
+             const pastList = document.getElementById('past-gigs');
+            pastList.innerHTML = past.reverse().map(gig => `
+                <li class="gig-item">
+                    <span>${gig.title} @ ${gig.location}</span>
+                    <span class="gig-date"><time datetime="${gig.date}">${new Date(gig.date).toLocaleDateString()}</time></span>
+                </li>
+            `).join('') || '<li class="gig-item">No past shows found.</li>';
+        }
+
+        document.addEventListener('DOMContentLoaded', renderConcerts);
+    </script>
+</body>
+</html>

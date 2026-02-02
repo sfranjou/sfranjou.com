@@ -1,0 +1,219 @@
+/* 
+ * VINTAGE SOUL PALETTE
+ * Cream: #F9F4EF
+ * Dark Brown: #3E2723
+ * Burnt Orange: #D84315
+ * Mustard Yellow: #F9A825
+ * Teal/Blue (Accent): #006064
+ */
+
+:root {
+    --bg-color: #F9F4EF;
+    --text-color: #3E2723;
+    --primary-color: #D84315;
+    --secondary-color: #F9A825;
+    --accent-color: #006064;
+    --header-font: 'Shrikhand', cursive;
+    --sub-header-font: 'Abril Fatface', cursive;
+    --body-font: 'Syne', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--body-font);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Vintage Texture Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    z-index: 999;
+}
+
+header {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: radial-gradient(circle, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: var(--bg-color);
+    position: relative;
+    clip-path: ellipse(150% 100% at 50% 0%);
+}
+
+h1 {
+    font-family: var(--header-font);
+    font-size: 5rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 4px 4px 0px var(--accent-color);
+    transform: rotate(-3deg);
+}
+
+h2 {
+    font-family: var(--sub-header-font);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px double var(--secondary-color);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* BAND MEMBERS */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.member-card {
+    background: #fff;
+    border: 2px solid var(--text-color);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 8px 8px 0px var(--secondary-color);
+    transition: transform 0.2s;
+}
+
+.member-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 11px 11px 0px var(--secondary-color);
+}
+
+.member-photo {
+    width: 100%;
+    height: 250px;
+    background-color: var(--text-color);
+    margin-bottom: 1rem;
+    border-radius: 50%; /* Circle photos */
+    overflow: hidden;
+    border: 4px solid var(--secondary-color);
+}
+
+.member-photo img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     display: block; /* removes bottom space */
+}
+
+.member-name {
+    font-family: var(--sub-header-font);
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.member-role {
+    font-weight: bold;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* CONCERTS */
+.concerts-section {
+    background-color: #fff; /* Paper look */
+    padding: 2rem;
+    border: 3px solid var(--text-color);
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+/* "Next Gig" Highlight */
+.next-gig {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    border: 4px dashed var(--secondary-color);
+    transform: rotate(1deg);
+}
+
+.next-gig h3 {
+    font-family: var(--header-font);
+    font-size: 3rem;
+    margin: 0;
+    color: var(--secondary-color);
+}
+
+.gig-list {
+    list-style: none;
+    padding: 0;
+}
+
+.gig-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    font-weight: 700;
+}
+
+.gig-item:last-child {
+    border-bottom: none;
+}
+
+.gig-date {
+    color: var(--primary-color);
+    font-family: var(--sub-header-font);
+    font-size: 1.2rem;
+}
+
+/* MEDIA */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    background: #000;
+    border: 4px solid var(--text-color);
+    box-shadow: 6px 6px 0px var(--primary-color);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    margin-top: 4rem;
+}
+
+/* Utility */
+.text-center { text-align: center; }

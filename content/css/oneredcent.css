@@ -19,6 +19,7 @@
     --text-color: #3E2723;     /* Dark Brown: Primary text and borders */
     --primary-color: #D84315;  /* Burnt Orange: Brand highlight color */
     --secondary-color: #F9A825;/* Mustard Yellow: Accents and highlights */
+    --red-color: #BA160C; /* Red for the header gradient */
     --accent-color: #006064;   /* Deep Teal: Contrast color for shadows/headers */
 
     /* Typography 
@@ -67,7 +68,7 @@ body::before {
 header {
     text-align: center;
     padding: 4rem 1rem;
-    background: radial-gradient(circle, var(--secondary-color) 0%, var(--primary-color) 100%);
+    background: radial-gradient(circle, var(--secondary-color) 0%, var(--red-color) 100%);
     color: var(--bg-color);
     position: relative;
     /* Clip-path creates the curved bottom edge of the header */

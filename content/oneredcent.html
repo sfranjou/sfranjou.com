@@ -21,6 +21,53 @@
 
     <main class="container">
 
+        
+
+        <section id="concerts">
+            <div class="text-center">
+                <h2>Concerts</h2>
+            </div>
+            
+            <div class="concerts-section">
+                <!-- Dynamic Content Will Go Here -->
+                
+                <article id="next-gig-container" class="next-gig">
+                     <p style="text-transform: uppercase; font-weight: bold; letter-spacing: 2px;">Next Live Performance</p>
+                     <h3 id="next-gig-title">Loading...</h3>
+                     <p id="next-gig-date" style="font-size: 1.5rem;">Check back soon!</p>
+                     <p id="next-gig-location">Planet Earth</p>
+                </article>
+
+                <h3 style="font-family: var(--sub-header-font);">Upcoming Shows</h3>
+                <ul class="gig-list" id="upcoming-gigs">
+                    <li class="gig-item">Loading list...</li>
+                </ul>
+
+                <h3 style="font-family: var(--sub-header-font); margin-top: 2rem; color: #777;">Past Gigs</h3>
+                <ul class="gig-list" id="past-gigs" style="opacity: 0.7;">
+                    <li class="gig-item">Loading list...</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="media" class="text-center">
+            <h2>Media</h2>
+            <div class="media-grid">
+                <!-- Red Room -->
+               <div class="video-wrapper"> 
+                    <iframe title="Red Room - Hiatus Kayote" src="https://drive.google.com/file/d/1mAZhaMFOnjwVRe0xmeAwDFQoU6gLsdr8/preview" width="640" height="480"></iframe>
+                    <!-- The two that shouldn't be -->
+               </div>
+                              <div class="video-wrapper"> 
+<iframe title="The two that shouldn't be - Mariabelle Azemar" src="https://drive.google.com/file/d/1KybRVlA2xfSIKrPE3aI1x8SI73VvH-8g/preview" width="640" height="480"></iframe>
+               </div>
+               <!-- I wish -->
+               <div class="video-wrapper">
+<iframe title="I wish - Stevie Wonder" src="https://drive.google.com/file/d/1mo6O9GvdBEymrHAuadYEtQ4kltK9-s87/preview" width="640" height="480"></iframe>
+               </div>
+            </div>
+        </section>
+            
         <section id="band" class="text-center">
             <h2>The Band</h2>
             <div class="members-grid">
@@ -74,47 +121,24 @@
                     <p>The heartbeat of the band, precise and powerful.</p>
                 </article>
             </div>
-        </section>
-
-        <section id="concerts">
-            <div class="text-center">
-                <h2>Tour Dates</h2>
-            </div>
-            
-            <div class="concerts-section">
-                <!-- Dynamic Content Will Go Here -->
-                
-                <article id="next-gig-container" class="next-gig">
-                     <p style="text-transform: uppercase; font-weight: bold; letter-spacing: 2px;">Next Live Performance</p>
-                     <h3 id="next-gig-title">Loading...</h3>
-                     <p id="next-gig-date" style="font-size: 1.5rem;">Check back soon!</p>
-                     <p id="next-gig-location">Planet Earth</p>
-                </article>
-
-                <h3 style="font-family: var(--sub-header-font);">Upcoming Shows</h3>
-                <ul class="gig-list" id="upcoming-gigs">
-                    <li class="gig-item">Loading list...</li>
-                </ul>
-
-                <h3 style="font-family: var(--sub-header-font); margin-top: 2rem; color: #777;">Past Gigs</h3>
-                <ul class="gig-list" id="past-gigs" style="opacity: 0.7;">
-                    <li class="gig-item">Loading list...</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="media" class="text-center">
-            <h2>Media & Vibes</h2>
-            <div class="media-grid">
-               <!-- Placeholder for Video 1 -->
-               <div class="video-wrapper">
-                    <!-- Example YouTube Placeholder -->
-                   <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-               </div>
-               <!-- Placeholder for Video 2 -->
-               <div class="video-wrapper">
-                   <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-               </div>
+        <section id="contact" class="text-center">
+            <h2>Get in Touch</h2>
+            <div class="contact-container">
+                <p>For booking or general inquiries</p>
+                <div class="contact-links">
+                    <a href="mailto:oneredcentmusic@gmail.com" class="contact-link email-link">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </span> 
+                        oneredcentmusic@gmail.com
+                    </a>
+                    <a href="https://www.instagram.com/oneredcentmusic" target="_blank" class="contact-link insta-link">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </span> 
+                        @oneredcentmusic
+                    </a>
+                </div>
             </div>
         </section>
     </main>

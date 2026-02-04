@@ -1,0 +1,24 @@
+:root {
+  /* Based on Option 1 */
+  --bg-color: #0f172a;
+  --text-color: #f1f5f9;
+  --link-color: #38bdf8;
+  --link-visited: #94a3b8;
+}
+
+body {
+  margin: 40px auto;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 18px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 0 10px;
+}
+
+a:link {
+  color: var(--link-color);
+}
+a:visited {
+  color: var(--link-visited);
+}

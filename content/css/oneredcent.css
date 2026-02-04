@@ -111,64 +111,55 @@ h2 {
 }
 
 /* 
- * BAND MEMBERS GRID
- * Uses 'auto-fit' to automatically determine number of columns based on screen width.
- * Minmax(250px) ensures cards don't get too narrow before wrapping.
+ * 5. COMPONENT: PERSONNEL CREDITS (MOTOWN STYLE)
  */
-.members-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-}
-
-/* 
- * 5. COMPONENT: MEMBER CARDS
- */
-.member-card {
+.personnel-credits {
+    max-width: 600px;
+    margin: 2rem auto 4rem;
+    padding: 2rem;
     background: #fff;
     border: 2px solid var(--text-color);
-    padding: 1rem;
-    text-align: center;
-    /* Shifted shadow: creates a "brutalism" inspired look */
-    box-shadow: 8px 8px 0px var(--secondary-color);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 6px 6px 0px var(--secondary-color);
+    font-family: var(--body-font);
+    text-align: left;
 }
 
-.member-card:hover {
-    /* "Push-in" effect on hover */
-    transform: translate(-3px, -3px);
-    box-shadow: 11px 11px 0px var(--secondary-color);
+.credit-row {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
 }
 
-.member-photo {
-    width: 100%;
-    height: 250px;
-    background-color: var(--text-color);
-    margin-bottom: 1rem;
-    border-radius: 50%; /* Perfect circles */
-    overflow: hidden;
-    border: 4px solid var(--secondary-color);
-}
-
-.member-photo img {
-     width: 100%;
-     height: 100%;
-     object-fit: cover; /* Fill the circle without stretching */
-     display: block;
-}
-
-.member-name {
-    font-family: var(--sub-header-font);
-    font-size: 1.5rem;
-    margin: 0.5rem 0;
-}
-
-.member-role {
-    font-weight: bold;
-    color: var(--primary-color);
+.role {
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    white-space: nowrap;
+}
+
+.dots {
+    flex-grow: 1;
+    border-bottom: 2px dotted #ccc;
+    margin: 0 10px;
+}
+
+.name {
+    font-family: var(--sub-header-font);
+    font-size: 1.2rem;
+}
+
+.name a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.2s, border-bottom 0.2s;
+    border-bottom: 2px solid transparent;
+}
+
+.name a:hover {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 /* 

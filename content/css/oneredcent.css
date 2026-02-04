@@ -14,35 +14,35 @@
  * Modify these variables to change the entire theme of the site.
  */
 :root {
-    /* Palette Colors */
-    --bg-color: #F9F4EF;       /* Soft Cream: Main background */
-    --text-color: #3E2723;     /* Dark Brown: Primary text and borders */
-    --primary-color: #D84315;  /* Burnt Orange: Brand highlight color */
-    --secondary-color: #F9A825;/* Mustard Yellow: Accents and highlights */
-    --red-color: #BA160C; /* Red for the header gradient */
-    --accent-color: #006064;   /* Deep Teal: Contrast color for shadows/headers */
+  /* Palette Colors */
+  --bg-color: #f9f4ef; /* Soft Cream: Main background */
+  --text-color: #3e2723; /* Dark Brown: Primary text and borders */
+  --primary-color: #d84315; /* Burnt Orange: Brand highlight color */
+  --secondary-color: #f9a825; /* Mustard Yellow: Accents and highlights */
+  --red-color: #ba160c; /* Red for the header gradient */
+  --accent-color: #006064; /* Deep Teal: Contrast color for shadows/headers */
 
-    /* Typography 
+  /* Typography 
      * Shrikhand: Heavy, display font for main titles
      * Abril Fatface: Elegant, high-contrast serif for sub-headers
      * Syne: Modern, geometric sans-serif for body text
      */
-    --header-font: 'Shrikhand', cursive;
-    --sub-header-font: 'Abril Fatface', cursive;
-    --body-font: 'Syne', sans-serif;
+  --header-font: "Shrikhand", cursive;
+  --sub-header-font: "Abril Fatface", cursive;
+  --body-font: "Syne", sans-serif;
 }
 
 /* 
  * 2. CORE LAYOUT & GLOBAL STYLES
  */
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: var(--body-font);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    overflow-x: hidden; /* Prevent horizontal scroll from rotated elements */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll from rotated elements */
 }
 
 /* 
@@ -51,126 +51,132 @@ body {
  * Modify 'opacity' (currently 0.05) to increase or decrease the intensity of the grain.
  */
 body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Allow clicks to pass through to elements below */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    z-index: 999;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow clicks to pass through to elements below */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  z-index: 999;
 }
 
 /* 
  * 3. HEADER & TITLE STYLING
  */
 header {
-    text-align: center;
-    padding: 4rem 1rem;
-    background: radial-gradient(circle, var(--secondary-color) 0%, var(--red-color) 100%);
-    color: var(--bg-color);
-    position: relative;
-    /* Clip-path creates the curved bottom edge of the header */
-    clip-path: ellipse(150% 100% at 50% 0%);
+  text-align: center;
+  padding: 4rem 1rem;
+  background: radial-gradient(
+    circle,
+    var(--secondary-color) 0%,
+    var(--red-color) 100%
+  );
+  color: var(--bg-color);
+  position: relative;
+  /* Clip-path creates the curved bottom edge of the header */
+  clip-path: ellipse(150% 100% at 50% 0%);
 }
 
 h1 {
-    font-family: var(--header-font);
-    font-size: 5rem;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    /* Retro "Hard" Shadow: No blur, creates a 3D sticker effect */
-    text-shadow: 4px 4px 0px var(--accent-color);
-    /* Slight rotation adds dynamic/hand-drawn feel */
-    transform: rotate(-3deg);
+  font-family: var(--header-font);
+  font-size: 5rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* Retro "Hard" Shadow: No blur, creates a 3D sticker effect */
+  text-shadow: 4px 4px 0px var(--accent-color);
+  /* Slight rotation adds dynamic/hand-drawn feel */
+  transform: rotate(-3deg);
 }
 
 h2 {
-    font-family: var(--sub-header-font);
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 3px double var(--secondary-color);
-    display: inline-block;
-    padding-bottom: 0.5rem;
+  font-family: var(--sub-header-font);
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 3px double var(--secondary-color);
+  display: inline-block;
+  padding-bottom: 0.5rem;
 }
 
 /* 
  * 4. LAYOUT CONTAINERS
  */
 .container {
-    max-width: 1200px;
-    margin: 0 auto; /* Center the container */
-    padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto; /* Center the container */
+  padding: 2rem;
 }
 
 /* 
  * 5. COMPONENT: PERSONNEL CREDITS (MOTOWN STYLE)
  */
 .personnel-credits {
-    max-width: 600px;
-    margin: 2rem auto 4rem;
-    padding: 2rem;
-    background: #fff;
-    border: 2px solid var(--text-color);
-    box-shadow: 6px 6px 0px var(--secondary-color);
-    font-family: var(--body-font);
-    text-align: left;
+  max-width: 600px;
+  margin: 2rem auto 4rem;
+  padding: 2rem;
+  background: #fff;
+  border: 2px solid var(--text-color);
+  box-shadow: 6px 6px 0px var(--secondary-color);
+  font-family: var(--body-font);
+  text-align: left;
 }
 
 .credit-row {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 .role {
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    color: var(--primary-color);
-    white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  white-space: nowrap;
 }
 
 .dots {
-    flex-grow: 1;
-    border-bottom: 2px dotted #ccc;
-    margin: 0 10px;
+  flex-grow: 1;
+  border-bottom: 2px dotted #ccc;
+  margin: 0 10px;
 }
 
 .name {
-    font-family: var(--sub-header-font);
-    font-size: 1.2rem;
+  font-family: var(--sub-header-font);
+  font-size: 1.2rem;
 }
 
 .name a {
-    text-decoration: none;
-    color: var(--text-color);
-    transition: color 0.2s, border-bottom 0.2s;
-    border-bottom: 2px solid transparent;
+  text-decoration: none;
+  color: var(--text-color);
+  transition:
+    color 0.2s,
+    border-bottom 0.2s;
+  border-bottom: 2px solid transparent;
 }
 
 .name a:hover {
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 /* 
  * 6. SECTION: CONCERTS (TOUR DATES)
  */
 .concerts-section {
-    background-color: #fff; /* White background acts like a sheet of paper */
-    padding: 2rem;
-    border: 3px solid var(--text-color);
-    position: relative;
-    margin-bottom: 4rem;
+  background-color: #fff; /* White background acts like a sheet of paper */
+  padding: 2rem;
+  border: 3px solid var(--text-color);
+  position: relative;
+  margin-bottom: 4rem;
 }
 
 /* 
@@ -178,239 +184,261 @@ h2 {
  * A prominent, slightly tilted box to draw attention to the very next event.
  */
 .next-gig {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    padding: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    border: 4px dashed var(--secondary-color);
-    /* Tilted for a "flyer" look */
-    transform: rotate(1deg);
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  border: 4px dashed var(--secondary-color);
+  /* Tilted for a "flyer" look */
+  transform: rotate(1deg);
 }
 
 .next-gig h3 {
-    font-family: var(--header-font);
-    font-size: 3rem;
-    margin: 0;
-    color: var(--secondary-color);
+  font-family: var(--header-font);
+  font-size: 3rem;
+  margin: 0;
+  color: var(--secondary-color);
 }
 
 /* 
  * TOUR DATE LISTING
  */
 .gig-list {
-    list-style: none; /* Remove default bullets */
-    padding: 0;
+  list-style: none; /* Remove default bullets */
+  padding: 0;
 }
 
 .gig-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-    border-bottom: 1px solid #ccc;
-    font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  font-weight: 700;
 }
 
 .gig-header-row {
-     display: flex;
-     justify-content: space-between;
-     width: 100%;
-     align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: baseline;
 }
 
 .gig-item-link {
-    color: inherit;
-    text-decoration: underline;
+  color: inherit;
+  text-decoration: underline;
 }
 
 .gig-item-blurb {
-    font-size: 0.9em;
-    opacity: 0.8;
-    margin-top: 0.2rem;
-    font-weight: normal;
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin-top: 0.2rem;
+  font-weight: normal;
 }
 
 /* Links in the Next Gig section */
 .gig-link {
-    text-decoration: none;
-    color: inherit;
-    border-bottom: 2px solid currentColor;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 2px solid currentColor;
 }
 
 .next-gig-blurb {
-    font-style: italic;
-    margin-top: 0.5rem;
+  font-style: italic;
+  margin-top: 0.5rem;
 }
 
 .gig-item:last-child {
-    border-bottom: none; /* Clean finish for the last item */
+  border-bottom: none; /* Clean finish for the last item */
 }
 
 .gig-date {
-    color: var(--primary-color);
-    font-family: var(--sub-header-font);
-    font-size: 1.2rem;
-    white-space: nowrap;
-    margin-left: 1rem;
+  color: var(--primary-color);
+  font-family: var(--sub-header-font);
+  font-size: 1.2rem;
+  white-space: nowrap;
+  margin-left: 1rem;
 }
 
 /* 
  * 7. VIDEO & AUDIO SECTIONS
  */
-.video-grid, .audio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+.video-grid,
+.audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .video-grid,
+  .audio-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+  .container {
+    padding: 1rem; /* Less padding on mobile */
+  }
 }
 
 .audio-grid {
-    margin-top: 4rem;
+  margin-top: 4rem;
 }
 
 /* 
  * MEDIA CARDS (VIDEO & AUDIO)
  */
-.video-card, .audio-card {
-    background: #fff;
-    border: 4px solid var(--text-color);
-    box-shadow: 6px 6px 0px var(--primary-color);
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s, box-shadow 0.2s;
+.video-card,
+.audio-card {
+  background: #fff;
+  border: 4px solid var(--text-color);
+  box-shadow: 6px 6px 0px var(--primary-color);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
-.video-card:hover, .audio-card:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0px var(--primary-color);
+.video-card:hover,
+.audio-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px var(--primary-color);
 }
 
-.video-wrapper, .audio-wrapper {
-    position: relative;
-    height: 0;
-    background: #000;
-    margin-bottom: 1rem;
-    border: 2px solid var(--text-color);
+.video-wrapper,
+.audio-wrapper {
+  position: relative;
+  height: 0;
+  background: #000;
+  margin-bottom: 1rem;
+  border: 2px solid var(--text-color);
 }
 
 .video-wrapper {
-    padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%; /* 16:9 */
 }
 
 .audio-wrapper {
-    padding-bottom: 120px; /* Fixed height for audio player */
-    background: #fff; /* Lighter background for audio */
+  padding-bottom: 120px; /* Fixed height for audio player */
+  background: #fff; /* Lighter background for audio */
 }
 
-.video-wrapper iframe, .audio-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.video-wrapper iframe,
+.audio-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.video-info, .audio-info {
-    text-align: left;
+.video-info,
+.audio-info {
+  text-align: left;
 }
 
-.video-title, .audio-title {
-    font-family: var(--sub-header-font);
-    font-size: 1.4rem;
-    margin: 0;
-    color: var(--text-color);
+.video-title,
+.audio-title {
+  font-family: var(--sub-header-font);
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--text-color);
 }
 
-.video-subtitle, .audio-subtitle {
-    font-size: 0.9rem;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    font-weight: bold;
-    margin: 0.2rem 0 0 0;
-    letter-spacing: 1px;
+.video-subtitle,
+.audio-subtitle {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0.2rem 0 0 0;
+  letter-spacing: 1px;
 }
 
 /* 
  * 8. CONTACT SECTION
  */
 #contact {
-    margin-bottom: 6rem;
+  margin-bottom: 6rem;
 }
 
 .contact-container {
-    background: #fff;
-    border: 3px solid var(--text-color);
-    padding: 3rem 2rem;
-    max-width: 90%; /* Changed from fixed 800px to avoid clipping on small screens */
-    width: 800px;
-    margin: 4rem auto;
-    box-shadow: 10px 10px 0px var(--accent-color);
-    transform: rotate(-0.5deg);
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  background: #fff;
+  border: 3px solid var(--text-color);
+  padding: 3rem 2rem;
+  max-width: 90%; /* Changed from fixed 800px to avoid clipping on small screens */
+  width: 800px;
+  margin: 4rem auto;
+  box-shadow: 10px 10px 0px var(--accent-color);
+  transform: rotate(-0.5deg);
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
 .contact-link {
-    font-family: var(--sub-header-font);
-    font-size: 1.1rem;
-    text-decoration: none;
-    color: var(--bg-color);
-    background-color: var(--primary-color);
-    padding: 0.8rem 1.5rem;
-    border: 2px solid var(--text-color);
-    box-shadow: 5px 5px 0px var(--text-color);
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    overflow-wrap: break-word; /* Handle long text */
-    word-break: break-all; /* More aggressive for small screens */
-    max-width: 100%;
+  font-family: var(--sub-header-font);
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--bg-color);
+  background-color: var(--primary-color);
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--text-color);
+  box-shadow: 5px 5px 0px var(--text-color);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  overflow-wrap: break-word; /* Handle long text */
+  word-break: break-all; /* More aggressive for small screens */
+  max-width: 100%;
 }
 
 .contact-link:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 7px 7px 0px var(--text-color);
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px var(--text-color);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .contact-link.insta-link {
-    background-color: var(--accent-color);
+  background-color: var(--accent-color);
 }
 
 .contact-link.insta-link:hover {
-    background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
 .icon {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .icon svg {
-    width: 24px;
-    height: 24px;
-    display: block;
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 /* 
  * 9. FOOTER & UTILITIES
  */
 footer {
-    text-align: center;
-    padding: 2rem;
-    background-color: var(--text-color);
-    color: var(--bg-color);
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--text-color);
+  color: var(--bg-color);
 }
 
 /* Helper Class: Reuse for centering text anywhere */
-.text-center { text-align: center; }
+.text-center {
+  text-align: center;
+}

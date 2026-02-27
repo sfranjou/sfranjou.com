@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About This Website — Sebastian Franjou</title>
+    <meta
+      name="description"
+      content="How and why I built this website: no frameworks, no templates, and a healthy dose of AI-assisted CSS."
+    />
+    <link rel="stylesheet" href="../../css/index.css" />
+    <link rel="stylesheet" href="../../css/blog.css" />
+  </head>
+  <body>
+    <div class="container">
+      <a href="../../blog.html" class="blog-back-link">← Back to blog</a>
+
+      <article class="blog-post">
+        <h1>About This Website</h1>
+        <p>Finally enjoying web development?</p>
+        <div class="blog-post-meta">February 26, 2026</div>
+
+        <p>
+          Despite being a software engineer, I had never enjoyed web
+          development. I'd made a couple iterations of my personal website
+          before, mostly using
+          <a href="https://github.com/Cecilapp/the-butler"
+            >frameworks or templates</a
+          >, but it always felt like more of a chore than a fun coding project,
+          that I vaguely maintained for interviewers to take a look at. I'd keep
+          a distant eye on the state of the Javascript framework wars, telling
+          myself once things settle down, I'll bite the bullet and learn
+          whichever came out on top. But when the time came, turns out that
+          knowing that React was here to stay didn't make using it any more fun
+          to use. This wasn't helped by the fact that every new web design trend
+          felt like it made the general experience of using the internet worse:
+          less navigable, harder to search,
+          <a href="https://www.apple.com/macbook-air/"
+            >one long page full of animations</a
+          >
+          and devoid of any useful information. How far we've strayed from
+          <a href="https://en.wikipedia.org/wiki/Wikipedia">peak web-design</a>
+        </p>
+
+        <figure>
+          <img src="Wikipedia.png" alt="Wikipedia's article on wikipedia" />
+          <figcaption>
+            We solved conveying information on the internet in 2001, and it's
+            all been downhill since.
+          </figcaption>
+        </figure>
+
+        <p>
+          However, a couple things happened: first, writing a
+          <a href="https://github.com/oatpp/oatpp">C++ web-server</a> at my
+          previous job renewed my interest in the technical aspects of the web.
+          Most importantly though, spending too much time scrolling
+          <a href="https://news.ycombinator.com/">hacker news</a> showed me a
+          world of
+          <a href="https://motherfuckingwebsite.com/">simple HTML websites</a>:
+          people writing blogs, showing off small coding projects, on simple,
+          elegant websites that, for once, didn't feel hostile to use. "Inspect
+          Element" no longer yielded tons of obfuscated class names, but nice
+          semantic html like I'd learned in middle school. As I felt the need to
+          have an online presence for <a href="/">my bands</a>, I thought: "why
+          not make a simple website that I can fully understand"? No frameworks,
+          no templates, no build step, just html, basic css, and the minimum
+          amount of javascript required to get what I wanted.
+        </p>
+
+        <p>
+          Now you might look at the code, and think: "but Sebastian, this is
+          clearly AI-generated", and yep, it's pretty obvious: I'm using LLMs
+          pretty heavily for this project (I'll never have you read any
+          AI-generated text though: if I can't be bothered to write it, it's
+          really not worth anybody's time). The truth is I still don't really
+          want to deal with CSS, and the frameworks that are here to "simplify"
+          it look worse (at least to the untrained eye) than the problem they
+          are trying to solve.
+        </p>
+
+        <figure>
+          <img src="bootstrap_example.png" alt="Bootstrap nav example" />
+          <figcaption>
+            Seriously bootstrap, that's the first example you put on
+            <a href="https://getbootstrap.com/">your website</a>? That first
+            style doesn't even fit in a single line without scrolling, so here's
+            the whole thing for you.
+          </figcaption>
+          <pre><code>&lt;ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);"&gt;</code></pre>
+        </figure>
+
+        <p>
+          But I was also curious: a friend at Thanksgiving told me that google
+          had just released
+          <a href="https://antigravity.google/">Antigravity</a>, an LLM-assisted
+          code editor, for free. I'd never properly used LLMs for a project (it
+          was hopelessly useless on my work codebase back then), and I wondered
+          if this could be a good way to learn a new skill: give it a task,
+          inspect the implementation plan, ask about everything I don't
+          understand, only keep what I can fully grasp. And so far, it feels
+          like it's been going pretty well!
+          <!-- TODO: footnote: there was actually a previous attempt to learn rust by making this website in rust with AI,
+          and that didn't go too well, so this isn't the "new best way to learn everything"™ or anything like that...
+          But it's also not something to dismiss entirely -->
+          I do spent a lot of time asking it to simplify, remove dependencies
+          and animations, refactor, etc... But in the process of doing that, I
+          feel like my understanding of webdev is growing, and I have a much
+          better grasp of everything actually going on in this website that when
+          I used frameworks like Next.js, which hide all the magic. It's all
+          simple enough that I handwrite the content in html, and even tweak my
+          arch-nemesis css by hand, inspired by
+          <a href="http://bettermotherfuckingwebsite.com/"
+            >another titan of web design</a
+          >.
+        </p>
+
+        <p>
+          Granted, if I wanted to scale this site up, I'm sure these frameworks
+          would solve a lot of problems for me, but I'd rather encounter the
+          problems first hand before I reach for a magical solution.
+        </p>
+
+        <p>
+          This is why some of the website uses some, mmm.... unusual approaches.
+          Why use a small database when I can just read a public csv hosted in
+          google docs? Maybe I'll learn why at some point, but so far so good.
+        </p>
+
+        <p>
+          And in the end it happened: making this website is fun! I think about
+          things I could add to it (like this blog) and then actually add them,
+          without cursing at the <a href="https://www.w3.org/">W3C</a> the whole
+          time. Now to see if it'll help my band get more gigs...
+        </p>
+      </article>
+
+      <!-- Comments Section -->
+      <div id="comments-section" data-post-slug="about-this-website"></div>
+      <script src="../js/comments.js"></script>
+    </div>
+  </body>
+</html>

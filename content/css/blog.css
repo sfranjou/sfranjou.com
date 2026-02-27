@@ -50,6 +50,33 @@
   background: rgba(56, 189, 248, 0.05);
 }
 
+/* ---- Figures & Images ---- */
+
+/* Block-level break in text flow; centered; reasonable max width on wide screens */
+.blog-post figure {
+  display: block;
+  margin: 2rem auto;
+  max-width: min(
+    100%,
+    640px
+  ); /* never wider than the column, capped at 640px */
+  text-align: center;
+}
+
+/* Image fills the figure container; aspect ratio is always preserved */
+.blog-post figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.blog-post figcaption {
+  margin-top: 0.5rem;
+  color: var(--link-visited);
+  font-style: italic;
+}
+
 /* ---- Comments ---- */
 
 .comments-title {

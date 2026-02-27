@@ -20,6 +20,11 @@
   color: var(--link-visited);
 }
 
+.blog-post-summary {
+  text-indent: 16px;
+  font-style: italic;
+}
+
 /* ---- Blog Post ---- */
 
 .blog-post-meta {

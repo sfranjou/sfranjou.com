@@ -22,3 +22,69 @@ a:link {
 a:visited {
   color: var(--link-visited);
 }
+
+gig-info {
+  margin: 1rem 0 2rem 0;
+  display: block;
+}
+
+gig-info::part(next-container) {
+  background-color: #1e293b;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 1px solid #334155;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+gig-info::part(next-title) {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+gig-info::part(next-label) {
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+gig-info::part(next-date) {
+  font-size: 1.1rem;
+  color: #e2e8f0;
+}
+
+gig-info::part(next-location) {
+  color: #cbd5e1;
+}
+
+gig-info::part(link) {
+  color: var(--link-color);
+}
+
+gig-info::part(section-title) {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+gig-info::part(gig-item) {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #334155;
+}
+
+gig-info::part(gig-date) {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+gig-info::part(past-title) {
+  color: #64748b;
+}
+
+gig-info::part(past-list) {
+  opacity: 0.6;
+}

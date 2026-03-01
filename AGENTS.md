@@ -2,3 +2,4 @@
 - Avoid dependencies, unless they make things quite a lot simpler. The goal is a pure HTML/CSS/JS website as much as possible
 - Keep the CSS simple. If the choice is between a slight visual imperfection and 150 lines of css, keep the imperfection. We are aiming for clean, clear, readable.
 - Semantic HTML, as much as possible. If available, use html and css features, rather than rolling your own implementation in JS or reaching for a dependency.
+- Verifying changes with browser screenshots uses a lot of tokens, so ask for manual verifications instead.

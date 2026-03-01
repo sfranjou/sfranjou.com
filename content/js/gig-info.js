@@ -1,5 +1,4 @@
-const GIGS_SHEET_URL =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQM1FZ_1CDBMdL8jOOIrpHcQOaqag3lBE2o4yu5vLaDgGHE9btfRada2VJqMcqHyHaJe93qHOZ5uEsr/pub?gid=55127937&single=true&output=csv";
+
 
 class GigInfo extends HTMLElement
 {
@@ -89,25 +88,51 @@ class GigInfo extends HTMLElement
             await this.loadPapaParse();
         }
 
-        if (GIGS_SHEET_URL === "PLACEHOLDER_GOOGLE_SHEETS_CSV_URL")
+        const sourcesAttr = this.getAttribute("sources");
+        if (!sourcesAttr)
         {
-            console.warn("Google Sheets URL is missing in gig-info component.");
+            console.warn("No 'sources' attribute provided to gig-info component.");
             this.showError("Calendar configuration missing.");
             return;
         }
 
-        Papa.parse(GIGS_SHEET_URL, {
-            download: true,
-            header: true,
-            complete: (results) =>
+        const sourceUrls = sourcesAttr.split(",").map(url => url.trim()).filter(url => url);
+        if (sourceUrls.length === 0)
+        {
+            this.showError("Calendar configuration missing.");
+            return;
+        }
+
+        try
+        {
+            const fetchPromises = sourceUrls.map(url => this.fetchCsv(url));
+            const resultsArray = await Promise.all(fetchPromises);
+
+            // Combine all parsed rows from all spreadsheets
+            let combinedData = [];
+            resultsArray.forEach(dataset =>
             {
-                this.processGigs(results.data);
-            },
-            error: (err) =>
-            {
-                console.error("Error fetching gigs:", err);
-                this.showError("Error loading gigs.");
-            },
+                combinedData = combinedData.concat(dataset);
+            });
+
+            this.processGigs(combinedData);
+        } catch (err)
+        {
+            console.error("Error fetching gigs:", err);
+            this.showError("Error loading gigs.");
+        }
+    }
+
+    fetchCsv(url)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            Papa.parse(url, {
+                download: true,
+                header: true,
+                complete: (results) => resolve(results.data),
+                error: (err) => reject(err),
+            });
         });
     }
 

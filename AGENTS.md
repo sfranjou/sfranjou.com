@@ -1,5 +1,6 @@
 - Everything you write should be simple and easy to understand for me: I will not keep any code changes I don't understand, and I am not a web developer (although I am a software engineer). Keep things simple. If complexity is necessary, then justify and explain it.
 - Avoid dependencies, unless they make things quite a lot simpler. The goal is a pure HTML/CSS/JS website as much as possible
 - Keep the CSS simple. If the choice is between a slight visual imperfection and 150 lines of css, keep the imperfection. We are aiming for clean, clear, readable.
+- In CSS, prefer variables when appropriate: shared color variable named after their function rather than raw values so we can keep a unified command palette, same for font sizes etc...
 - Semantic HTML, as much as possible. If available, use html and css features, rather than rolling your own implementation in JS or reaching for a dependency.
 - Verifying changes with browser screenshots uses a lot of tokens, so ask for manual verifications instead.

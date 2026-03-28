@@ -21,8 +21,10 @@
   --secondary-color: #f9a825; /* Mustard Yellow: Accents and highlights */
   --red-color: #ba160c; /* Red for the header gradient */
   --accent-color: #006064; /* Deep Teal: Contrast color for shadows/headers */
+  --border-color: #c5a898; /* Warm light brown: dividers inside gig-info */
+  --muted-color: #9e8070; /* Mid-tone warm brown: de-emphasized text */
 
-  /* Typography 
+  /* Typography
      * Shrikhand: Heavy, display font for main titles
      * Abril Fatface: Elegant, high-contrast serif for sub-headers
      * Syne: Modern, geometric sans-serif for body text
@@ -188,7 +190,7 @@ gig-info {
   font-family: var(--body-font);
 }
 
-gig-info::part(next-container) {
+gig-info #next-container {
   background-color: var(--accent-color);
   color: var(--bg-color);
   padding: 2rem;
@@ -199,47 +201,47 @@ gig-info::part(next-container) {
   transform: rotate(1deg);
 }
 
-gig-info::part(next-label) {
+gig-info .next-label {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 2px;
   margin-top: 0;
 }
 
-gig-info::part(next-title) {
+gig-info #next-title {
   font-family: var(--header-font);
   font-size: 3rem;
   margin: 0;
   color: var(--secondary-color);
 }
 
-gig-info::part(link) {
+gig-info .next-link {
   color: var(--secondary-color);
   text-decoration: none;
   border-bottom: 2px solid currentColor;
   transition: color 0.3s ease;
 }
 
-gig-info::part(link):hover {
+gig-info .next-link:hover {
   color: var(--primary-color);
 }
 
-gig-info::part(next-date) {
+gig-info #next-date {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   margin-top: 0;
 }
 
-gig-info::part(next-location) {
+gig-info #next-location {
   margin-top: 0;
 }
 
-gig-info::part(next-blurb) {
+gig-info #next-blurb {
   font-style: italic;
   margin-top: 1rem;
 }
 
-gig-info::part(section-title) {
+gig-info .section-title {
   font-family: var(--sub-header-font);
   font-size: 1.5rem;
   margin-top: 2rem;
@@ -247,11 +249,7 @@ gig-info::part(section-title) {
   color: var(--primary-color);
 }
 
-gig-info::part(past-title) {
-  color: #777;
-}
-
-gig-info::part(past-list) {
+gig-info .past-list {
   opacity: 0.7;
 }
 
@@ -259,15 +257,15 @@ gig-info::part(past-list) {
  * TOUR DATE LISTING
  */
 
-gig-info::part(gig-item) {
+gig-info .gig-item {
   font-weight: 700;
 }
 
-gig-info::part(gig-blurb) {
+gig-info .gig-blurb {
   font-weight: normal;
 }
 
-gig-info::part(gig-date) {
+gig-info .gig-date {
   color: var(--primary-color);
   font-family: var(--sub-header-font);
   font-size: 1.2rem;

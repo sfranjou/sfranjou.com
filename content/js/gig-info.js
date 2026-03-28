@@ -161,12 +161,21 @@ class GigInfo extends HTMLElement
             }
 
             const dateObj = new Date(nextGig.date);
-            const dateStr = dateObj.toLocaleDateString(undefined, {
+            const dateOptions = {
                 weekday: "long",
                 year: "numeric",
                 month: "long",
                 day: "numeric",
-            });
+            };
+            
+            // Check if time is provided in the string (not just midnight via timezone offset)
+            const hasTime = nextGig.date.includes(':');
+            if (hasTime) {
+                dateOptions.hour = 'numeric';
+                dateOptions.minute = '2-digit';
+            }
+
+            const dateStr = dateObj.toLocaleString(undefined, dateOptions);
 
             this.querySelector("#next-date").innerHTML = `<time datetime="${ nextGig.date }">${ dateStr }</time>`;
             this.querySelector("#next-location").textContent = nextGig.location;
@@ -209,7 +218,13 @@ class GigInfo extends HTMLElement
             ? `<div class="gig-item-blurb">${ gig.blurb }</div>`
             : "";
 
-        const dateHtml = `<span class="gig-date"><time datetime="${ gig.date }">${ new Date(gig.date).toLocaleDateString() }</time></span>`;
+        const dateObj = new Date(gig.date);
+        const hasTime = gig.date.includes(':');
+        const dateStr = hasTime 
+            ? dateObj.toLocaleString(undefined, { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })
+            : dateObj.toLocaleDateString();
+
+        const dateHtml = `<span class="gig-date"><time datetime="${ gig.date }">${ dateStr }</time></span>`;
 
         return `
       <li class="gig-item">

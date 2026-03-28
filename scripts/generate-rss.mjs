@@ -57,7 +57,7 @@ function generateRSS()
   <channel>
     <title>Sebastian Franjou's Blog</title>
     <link>${ DOMAIN }/blog.html</link>
-    <description>Ramblings about music, tech, and music tech.</description>
+    <description>Thoughts about music, tech, and music tech.</description>
     <language>en-us</language>
     <atom:link href="${ DOMAIN }/rss.xml" rel="self" type="application/rss+xml" />
     <lastBuildDate>${ new Date().toUTCString() }</lastBuildDate>

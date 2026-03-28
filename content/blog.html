@@ -10,30 +10,14 @@
     />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/blog.css" />
+    <script src="js/blog-list.js" type="module"></script>
   </head>
   <body>
     <div class="container">
       <a href="index.html" class="blog-back-link">← Back to home</a>
       <h1>Blog</h1>
 
-      <ul class="blog-list">
-        <li>
-          <a
-            href="blog/about-this-website/About-this-website.html"
-            class="blog-post-link">About this website</a>
-          <span class="blog-post-date">February 26, 2026</span>
-          <p class="blog-post-summary">Finally enjoying web development?</p>
-        </li>
-        <li>
-          <a
-            href="blog/2-5-types-of-sheet-music/2-5-types-of-sheet-music.html"
-            class="blog-post-link"
-            >Two and a Half Types of Sheet Music</a>
-          <span class="blog-post-date">March 22, 2026</span>
-          <p class="blog-post-summary">The main ways I think about sheet music</p>
-        </li>
-        <!-- Add more posts here as <li> entries -->
-      </ul>
+      <blog-list></blog-list>
     </div>
   </body>
 </html>

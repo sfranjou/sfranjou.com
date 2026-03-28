@@ -1,0 +1,66 @@
+/* Layout and structure only — colors inherit from the page */
+
+gig-info {
+  display: block;
+}
+
+/* List reset */
+gig-info .gig-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+gig-info .gig-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 0;
+  /* Uses --border-color if the page defines it, otherwise falls back to a
+     semi-transparent version of the current text color */
+  border-bottom: 1px solid var(--border-color, currentColor);
+  opacity: 0.9;
+}
+
+gig-info .gig-item:last-child {
+  border-bottom: none;
+}
+
+gig-info .gig-header-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: baseline;
+}
+
+gig-info .gig-item-blurb {
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin-top: 0.2rem;
+}
+
+/* Dims the loading placeholder without picking a specific color */
+gig-info .loading-text {
+  opacity: 0.5;
+  text-align: center;
+}
+
+/* Collapsible "Past Gigs" details/summary */
+gig-info details {
+  margin-top: 2rem;
+}
+
+gig-info summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.17em; /* matches default h3 size */
+  margin-bottom: 1rem;
+}
+
+/* Next Gig label — purely typographic, no color */
+gig-info .next-label {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.85em;
+  opacity: 0.7;
+}

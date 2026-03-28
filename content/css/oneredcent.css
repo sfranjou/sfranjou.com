@@ -186,11 +186,6 @@ h2 {
  * NEXT GIG HIGHLIGHT
  * A prominent, slightly tilted box to draw attention to the very next event.
  */
-gig-info {
-  display: block;
-  font-family: var(--body-font);
-}
-
 gig-info #next-container {
   background-color: var(--accent-color);
   color: var(--bg-color);
@@ -237,11 +232,6 @@ gig-info #next-location {
   margin-top: 0;
 }
 
-gig-info #next-blurb {
-  font-style: italic;
-  margin-top: 1rem;
-}
-
 gig-info .section-title {
   font-family: var(--sub-header-font);
   font-size: 1.5rem;
@@ -250,20 +240,10 @@ gig-info .section-title {
   color: var(--primary-color);
 }
 
-gig-info .past-list {
-  opacity: 0.7;
-}
-
-/* 
- * TOUR DATE LISTING
- */
+/* TOUR DATE LISTING */
 
 gig-info .gig-item {
   font-weight: 700;
-}
-
-gig-info .gig-blurb {
-  font-weight: normal;
 }
 
 gig-info .gig-date {

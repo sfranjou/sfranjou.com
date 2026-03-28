@@ -94,6 +94,11 @@ gig-info .gig-item-blurb {
   margin-top: 0.2rem;
 }
 
+gig-info #next-blurb {
+  font-style: italic;
+  margin-top: 1rem;
+}
+
 /* Dims the loading placeholder without picking a specific color */
 gig-info .loading-text {
   opacity: 0.5;

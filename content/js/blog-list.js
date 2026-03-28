@@ -18,6 +18,8 @@
  *   ---
  */
 
+import { parseFrontmatter } from "./blog-utils.js";
+
 class BlogList extends HTMLElement
 {
     async connectedCallback()
@@ -44,7 +46,8 @@ class BlogList extends HTMLElement
         const posts = await Promise.all(index.map(async ({ slug }) =>
         {
             const md = await fetch(`blog/${ slug }/post.md`).then(r => r.text());
-            return { slug, ...parseFrontmatter(md) };
+            const { meta } = parseFrontmatter(md);
+            return { slug, ...meta };
         }));
 
         // Since we use YYYY-MM-DD, we can sort alphabetically with regular string compare
@@ -62,24 +65,6 @@ class BlogList extends HTMLElement
             ${ summary }
         </li>`;
     }
-}
-
-// Parses the --- frontmatter block at the top of a markdown file.
-// Returns an object with title, date, summary, tags, etc.
-function parseFrontmatter(text)
-{
-    const match = text.match(/^---\n([\s\S]*?)\n---/);
-    if (!match) return {};
-    const data = {};
-    for (const line of match[1].split("\n"))
-    {
-        const i = line.indexOf(":");
-        if (i === -1) continue;
-        const key = line.slice(0, i).trim();
-        const val = line.slice(i + 1).trim();
-        data[key] = val.startsWith("[") ? val.slice(1, -1).split(",").map(s => s.trim()) : val;
-    }
-    return data;
 }
 
 customElements.define("blog-list", BlogList);

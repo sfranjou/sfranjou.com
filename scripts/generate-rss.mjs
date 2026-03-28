@@ -1,31 +1,16 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { parseFrontmatter } from "../content/js/blog-utils.js";
+
+// __dirname is not available in ES modules by default
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const DOMAIN = "https://sfranjou.com";
 const POSTS_JSON = path.join(__dirname, "../content/blog/posts.json");
 const BLOG_DIR = path.join(__dirname, "../content/blog");
 const OUTPUT_FILE = path.join(__dirname, "../content/rss.xml");
-
-function parseFrontmatter(text)
-{
-  const match = text.match(/^---\n([\s\S]*?)\n---/);
-  if (!match) return {};
-  const data = {};
-  for (const line of match[1].split("\n"))
-  {
-    const i = line.indexOf(":");
-    if (i === -1) continue;
-    const key = line.slice(0, i).trim();
-    const val = line.slice(i + 1).trim();
-    data[key] = val.startsWith("[")
-      ? val
-        .slice(1, -1)
-        .split(",")
-        .map((s) => s.trim())
-      : val;
-  }
-  return data;
-}
 
 function generateRSS()
 {
@@ -44,7 +29,8 @@ function generateRSS()
       const mdPath = path.join(BLOG_DIR, slug, "post.md");
       if (!fs.existsSync(mdPath)) return null;
       const md = fs.readFileSync(mdPath, "utf-8");
-      return { slug, ...parseFrontmatter(md) };
+      const { meta } = parseFrontmatter(md);
+      return { slug, ...meta };
     })
     .filter(Boolean);
 

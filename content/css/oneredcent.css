@@ -22,7 +22,8 @@
   --red-color: #ba160c; /* Red for the header gradient */
   --accent-color: #006064; /* Deep Teal: Contrast color for shadows/headers */
   --border-color: #c5a898; /* Warm light brown: dividers inside gig-info */
-  --muted-color: #9e8070; /* Mid-tone warm brown: de-emphasized text */
+  --muted-color: #9e8070;  /* Mid-tone warm brown: de-emphasized text */
+  --surface-color: #fff;   /* White "paper" card surface */
 
   /* Typography
      * Shrikhand: Heavy, display font for main titles

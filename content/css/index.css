@@ -1,11 +1,11 @@
 :root {
-  /* Based on Option 1 */
   --bg-color: #0f172a;
   --text-color: #f1f5f9;
   --link-color: #38bdf8;
   --link-visited: #94a3b8;
-  --border-color: #334155; /* subtle dividers */
-  --muted-color: #94a3b8; /* de-emphasized text (dates, labels) */
+  --surface-color: #1e293b; /* slightly lifted card surface */
+  --border-color: #334155;  /* subtle dividers */
+  --muted-color: #94a3b8;   /* de-emphasized text (dates, labels) */
 }
 
 body {
@@ -23,55 +23,4 @@ a:link {
 }
 a:visited {
   color: var(--link-visited);
-}
-
-gig-info {
-  margin: 1rem 0 2rem 0;
-  display: block;
-}
-
-gig-info #next-container {
-  background-color: #1e293b; /* slightly lifted surface on the dark bg */
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow:
-    0 4px 6px -1px rgb(0 0 0 / 0.1),
-    0 2px 4px -2px rgb(0 0 0 / 0.1);
-  border: 1px solid var(--border-color);
-  text-align: left;
-  margin-bottom: 1.5rem;
-}
-
-gig-info #next-title {
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-gig-info #next-date {
-  font-size: 1.1rem;
-}
-
-gig-info .next-link {
-  color: var(--link-color);
-}
-
-gig-info .section-title {
-  font-size: 1.2rem;
-  color: var(--muted-color);
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-gig-info .gig-item {
-  padding: 0.5rem 0;
-}
-
-gig-info .gig-date {
-  color: var(--muted-color);
-  font-size: 0.9rem;
-  margin-left: 1rem;
-}
-
-gig-info .past-list {
-  opacity: 0.6;
 }

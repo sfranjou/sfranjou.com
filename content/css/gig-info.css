@@ -1,10 +1,61 @@
-/* Layout and structure only — colors inherit from the page */
+/* gig-info.css — Layout and defaults only.
+   Colors come from the page via CSS variables:
+     --surface-color  card background (slightly lifted vs --bg-color)
+     --border-color   dividers and card borders
+     --muted-color    de-emphasised text (dates, labels)
+     --link-color     link colour (standard across the site)
+*/
 
 gig-info {
   display: block;
+  margin: 1rem 0 2rem 0;
 }
 
-/* List reset */
+/* --- Next Gig highlight card --- */
+
+gig-info #next-container {
+  background-color: var(--surface-color, var(--bg-color));
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+gig-info .next-label {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.85em;
+  opacity: 0.7;
+  margin: 0;
+}
+
+gig-info #next-title {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+gig-info #next-date {
+  font-size: 1.1rem;
+}
+
+gig-info .next-link {
+  color: var(--link-color);
+}
+
+/* --- Section headings (Upcoming / Past) --- */
+
+gig-info .section-title {
+  font-size: 1.2rem;
+  color: var(--muted-color);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* --- Gig list --- */
+
 gig-info .gig-list {
   list-style: none;
   padding: 0;
@@ -15,11 +66,8 @@ gig-info .gig-item {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 1rem 0;
-  /* Uses --border-color if the page defines it, otherwise falls back to a
-     semi-transparent version of the current text color */
-  border-bottom: 1px solid var(--border-color, currentColor);
-  opacity: 0.9;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 gig-info .gig-item:last-child {
@@ -31,6 +79,13 @@ gig-info .gig-header-row {
   justify-content: space-between;
   width: 100%;
   align-items: baseline;
+}
+
+gig-info .gig-date {
+  color: var(--muted-color);
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  white-space: nowrap;
 }
 
 gig-info .gig-item-blurb {
@@ -45,7 +100,8 @@ gig-info .loading-text {
   text-align: center;
 }
 
-/* Collapsible "Past Gigs" details/summary */
+/* --- Collapsible Past Gigs --- */
+
 gig-info details {
   margin-top: 2rem;
 }
@@ -57,10 +113,6 @@ gig-info summary {
   margin-bottom: 1rem;
 }
 
-/* Next Gig label — purely typographic, no color */
-gig-info .next-label {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.85em;
-  opacity: 0.7;
+gig-info .past-list {
+  opacity: 0.6;
 }

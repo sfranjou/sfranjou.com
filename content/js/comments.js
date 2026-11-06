@@ -100,8 +100,8 @@
 
     function renderComment(comment, depth)
     {
-        const maxIndent = 4;
-        const indent = Math.min(depth, maxIndent) * 1.5;
+        // Replies are nested, so each margin adds to its parents' margins.
+        const indent = depth > 0 && depth <= 4 ? 1 : 0;
         const time = new Date(comment.created_at).toLocaleDateString(undefined, {
             year: "numeric",
             month: "short",

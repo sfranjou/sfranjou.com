@@ -17,7 +17,7 @@
 
 .blog-post-date {
   font-size: 0.85rem;
-  color: var(--link-visited);
+  color: var(--muted-color);
 }
 
 .blog-post-summary {
@@ -29,22 +29,22 @@
 
 .blog-post-meta {
   font-size: 0.9rem;
-  color: var(--link-visited);
-  border-bottom: 1px solid rgba(241, 245, 249, 0.15);
+  color: var(--muted-color);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 1rem;
   margin-bottom: 2rem;
 }
 
 .blog-post pre {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(241, 245, 249, 0.1);
+  background: var(--code-bg-color);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   padding: 1rem;
   overflow-x: auto;
 }
 
 .blog-post p code {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--code-bg-color);
   padding: 0.15em 0.4em;
   border-radius: 3px;
 }
@@ -52,7 +52,7 @@
 .blog-post blockquote {
   border-left: 3px solid var(--link-color);
   padding: 0.5rem 1rem;
-  background: rgba(56, 189, 248, 0.05);
+  background: var(--quote-bg-color);
 }
 
 .blog-post em {
@@ -83,14 +83,14 @@
 
 .blog-post figcaption {
   margin-top: 0.5rem;
-  color: var(--link-visited);
+  color: var(--muted-color);
   font-style: italic;
 }
 
 /* ---- Comments ---- */
 
 .comments-title {
-  border-top: 1px solid rgba(241, 245, 249, 0.15);
+  border-top: 1px solid var(--border-color);
   padding-top: 2rem;
   margin-top: 3rem;
 }
@@ -100,8 +100,8 @@
   width: 100%;
   padding: 0.6rem 0.8rem;
   margin-bottom: 0.5rem;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(241, 245, 249, 0.2);
+  background: var(--input-bg-color);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   color: var(--text-color);
   font-family: inherit;
@@ -148,7 +148,7 @@
 
 .comment {
   padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(241, 245, 249, 0.08);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .comment-author {
@@ -158,7 +158,7 @@
 
 .comment-time {
   font-size: 0.8rem;
-  color: var(--link-visited);
+  color: var(--muted-color);
 }
 
 .comment-body {
@@ -169,7 +169,7 @@
 .comment-reply-btn {
   background: none;
   border: none;
-  color: var(--link-visited);
+  color: var(--muted-color);
   cursor: pointer;
   font-size: 0.8rem;
   padding: 0;
@@ -177,7 +177,7 @@
 
 .reply-form-container .comment-form {
   padding-left: 0.5rem;
-  border-left: 2px solid rgba(56, 189, 248, 0.3);
+  border-left: 2px solid var(--border-color);
 }
 
 .no-comments,
@@ -186,5 +186,5 @@
 }
 
 .comments-error {
-  color: #f87171;
+  color: var(--error-color);
 }

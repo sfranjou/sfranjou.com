@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { parseFrontmatter } from "../content/js/blog-utils.js";
+import { isCalendarDate } from "../content/js/dates.js";
 
 // __dirname is not available in ES modules by default
 const __filename = fileURLToPath(import.meta.url);
@@ -12,27 +13,28 @@ const POSTS_JSON = path.join(__dirname, "../content/blog/posts.json");
 const BLOG_DIR = path.join(__dirname, "../content/blog");
 const OUTPUT_FILE = path.join(__dirname, "../content/rss.xml");
 
+function escapeXml(value)
+{
+  return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+}
+
 function generateRSS()
 {
   console.log("Generating RSS feed...");
-
-  if (!fs.existsSync(POSTS_JSON))
-  {
-    console.error("posts.json not found!");
-    return;
-  }
 
   const index = JSON.parse(fs.readFileSync(POSTS_JSON, "utf-8"));
   const posts = index
     .map(({ slug }) =>
     {
       const mdPath = path.join(BLOG_DIR, slug, "post.md");
-      if (!fs.existsSync(mdPath)) return null;
       const md = fs.readFileSync(mdPath, "utf-8");
       const { meta } = parseFrontmatter(md);
-      return { slug, ...meta };
-    })
-    .filter(Boolean);
+      if (!meta.title || !isCalendarDate(meta.date))
+      {
+        throw new Error(`Post ${ slug } needs a title and a valid YYYY-MM-DD date.`);
+      }
+      return { ...meta, slug };
+    });
 
   // Sort by date descending
   posts.sort((a, b) => b.date.localeCompare(a.date));
@@ -40,14 +42,14 @@ function generateRSS()
   const items = posts
     .map((post) =>
     {
-      const url = `${ DOMAIN }/blog/post.html?slug=${ post.slug }`;
+      const url = escapeXml(`${ DOMAIN }/blog/post.html?slug=${ encodeURIComponent(post.slug) }`);
       const pubDate = new Date(post.date).toUTCString();
       return `    <item>
-      <title>${ post.title || "Untitled" }</title>
+      <title>${ escapeXml(post.title) }</title>
       <link>${ url }</link>
       <guid isPermaLink="true">${ url }</guid>
       <pubDate>${ pubDate }</pubDate>
-      <description>${ post.summary || "" }</description>
+      <description>${ escapeXml(post.summary || "") }</description>
     </item>`;
     })
     .join("\n");

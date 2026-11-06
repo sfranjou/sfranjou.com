@@ -17,6 +17,7 @@
   /* Palette Colors */
   --bg-color: #f9f4ef; /* Soft Cream: Main background */
   --text-color: #3e2723; /* Dark Brown: Primary text and borders */
+  --link-color: var(--primary-color); /* Links use the band highlight color */
   --primary-color: #d84315; /* Burnt Orange: Brand highlight color */
   --secondary-color: #f9a825; /* Mustard Yellow: Accents and highlights */
   --red-color: #ba160c; /* Red for the header gradient */

@@ -160,13 +160,7 @@ class GigInfo extends HTMLElement
             nextContainer.style.display = "block";
 
             const titleEl = this.querySelector("#next-title");
-            if (nextGig.link)
-            {
-                titleEl.innerHTML = `<a href="${ nextGig.link }" target="_blank" class="next-link">${ nextGig.title }</a>`;
-            } else
-            {
-                titleEl.textContent = nextGig.title;
-            }
+            titleEl.replaceChildren(this.createTitle(nextGig, "next-link"));
 
             const dateObj = new Date(nextGig.date);
             const dateOptions = {
@@ -186,7 +180,10 @@ class GigInfo extends HTMLElement
 
             const dateStr = dateObj.toLocaleString(undefined, dateOptions);
 
-            this.querySelector("#next-date").innerHTML = `<time datetime="${ nextGig.date }">${ dateStr }</time>`;
+            const time = document.createElement("time");
+            time.dateTime = nextGig.date;
+            time.textContent = dateStr;
+            this.querySelector("#next-date").replaceChildren(time);
             this.querySelector("#next-location").textContent = nextGig.location;
             this.querySelector("#next-blurb").textContent = nextGig.blurb || "";
         } else
@@ -214,36 +211,59 @@ class GigInfo extends HTMLElement
         }));
     }
 
+    createTitle(gig, linkClass = "gig-link")
+    {
+        let url;
+        try
+        {
+            const parsed = new URL(gig.link);
+            if (["http:", "https:"].includes(parsed.protocol)) url = parsed.href;
+        } catch { /* Missing or invalid links are shown as plain text. */ }
+
+        const title = document.createElement(url ? "a" : "span");
+        title.textContent = gig.title;
+        title.className = url ? `gig-title ${ linkClass }` : "gig-title";
+        if (url)
+        {
+            title.href = url;
+            title.target = "_blank";
+            title.rel = "noopener";
+        }
+        return title;
+    }
+
     createGigListItem(gig)
     {
-        let content = `<span><span class="gig-title">${ gig.title }</span> @ <span class="gig-location">${ gig.location }</span></span>`;
+        const item = document.createElement("li");
+        item.className = "gig-item";
+        const row = document.createElement("div");
+        row.className = "gig-header-row";
+        const content = document.createElement("span");
+        const location = document.createElement("span");
+        location.className = "gig-location";
+        location.textContent = gig.location;
+        content.append(this.createTitle(gig), " @ ", location);
 
-        if (gig.link)
-        {
-            content = `<span><a href="${ gig.link }" target="_blank" class="gig-link"><span class="gig-title">${ gig.title }</span></a> @ <span class="gig-location">${ gig.location }</span></span>`;
-        }
-
-        const blurbHtml = gig.blurb
-            ? `<div class="gig-item-blurb">${ gig.blurb }</div>`
-            : "";
-
+        const time = document.createElement("time");
+        time.className = "gig-date";
+        time.dateTime = gig.date;
         const dateObj = new Date(gig.date);
-        const hasTime = gig.date.includes(':');
-        const dateStr = hasTime 
-            ? dateObj.toLocaleString(undefined, { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' })
-            : dateObj.toLocaleDateString(undefined, { timeZone: "UTC" });
-
-        const dateHtml = `<span class="gig-date"><time datetime="${ gig.date }">${ dateStr }</time></span>`;
-
-        return `
-      <li class="gig-item">
-        <div class="gig-header-row">
-            ${ content }
-            ${ dateHtml }
-        </div>
-        ${ blurbHtml }
-      </li>
-    `;
+        time.textContent = isCalendarDate(gig.date)
+            ? dateObj.toLocaleDateString(undefined, { timeZone: "UTC" })
+            : dateObj.toLocaleString(undefined, {
+                month: "numeric", day: "numeric", year: "numeric",
+                hour: "numeric", minute: "2-digit", timeZone: "America/New_York",
+            });
+        row.append(content, time);
+        item.append(row);
+        if (gig.blurb)
+        {
+            const blurb = document.createElement("div");
+            blurb.className = "gig-item-blurb";
+            blurb.textContent = gig.blurb;
+            item.append(blurb);
+        }
+        return item.outerHTML;
     }
 }
 

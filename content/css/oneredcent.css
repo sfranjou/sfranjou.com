@@ -256,18 +256,16 @@ gig-info .gig-date {
 }
 
 /* 
- * 7. VIDEO & AUDIO SECTIONS
+ * 7. VIDEO SECTION
  */
-.video-grid,
-.audio-grid {
+.video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
 @media (max-width: 600px) {
-  .video-grid,
-  .audio-grid {
+  .video-grid {
     grid-template-columns: 1fr; /* Single column on mobile */
   }
   .container {
@@ -275,15 +273,11 @@ gig-info .gig-date {
   }
 }
 
-.audio-grid {
-  margin-top: 4rem;
-}
 
 /* 
- * MEDIA CARDS (VIDEO & AUDIO)
+ * VIDEO CARDS
  */
-.video-card,
-.audio-card {
+.video-card {
   background: var(--surface-color);
   border: 4px solid var(--text-color);
   box-shadow: 6px 6px 0px var(--primary-color);
@@ -295,14 +289,12 @@ gig-info .gig-date {
     box-shadow 0.2s;
 }
 
-.video-card:hover,
-.audio-card:hover {
+.video-card:hover {
   transform: translate(-2px, -2px);
   box-shadow: 8px 8px 0px var(--primary-color);
 }
 
-.video-wrapper,
-.audio-wrapper {
+.video-wrapper {
   position: relative;
   height: 0;
   background: #000;
@@ -314,13 +306,8 @@ gig-info .gig-date {
   padding-bottom: 56.25%; /* 16:9 */
 }
 
-.audio-wrapper {
-  padding-bottom: 120px; /* Fixed height for audio player */
-  background: var(--surface-color); /* Lighter background for audio */
-}
 
-.video-wrapper iframe,
-.audio-wrapper iframe {
+.video-wrapper iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -328,21 +315,18 @@ gig-info .gig-date {
   height: 100%;
 }
 
-.video-info,
-.audio-info {
+.video-info {
   text-align: left;
 }
 
-.video-title,
-.audio-title {
+.video-title {
   font-family: var(--sub-header-font);
   font-size: 1.4rem;
   margin: 0;
   color: var(--text-color);
 }
 
-.video-subtitle,
-.audio-subtitle {
+.video-subtitle {
   font-size: 0.9rem;
   color: var(--primary-color);
   text-transform: uppercase;

@@ -41,12 +41,6 @@ class GigInfo extends HTMLElement
 
     async loadData()
     {
-        // Dynamically load PapaParse if it's not already on the window
-        if (typeof Papa === "undefined")
-        {
-            await this.loadPapaParse();
-        }
-
         const sourcesAttr = this.getAttribute("sources");
         if (!sourcesAttr)
         {
@@ -64,6 +58,12 @@ class GigInfo extends HTMLElement
 
         try
         {
+            // Dynamically load PapaParse if it's not already on the window
+            if (typeof Papa === "undefined")
+            {
+                await this.loadPapaParse();
+            }
+
             const fetchPromises = sourceUrls.map(url => this.fetchCsv(url));
             const resultsArray = await Promise.all(fetchPromises);
 

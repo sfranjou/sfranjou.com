@@ -19,7 +19,7 @@
  */
 
 import { parseFrontmatter } from "../blog-utils.js";
-import { formatCalendarDate } from "../dates.js";
+import { formatCalendarDate, isCalendarDate } from "../dates.js";
 
 class BlogList extends HTMLElement
 {
@@ -28,27 +28,37 @@ class BlogList extends HTMLElement
     const maxPosts = parseInt(this.getAttribute("count")) || Infinity;
     const tagFilter = (new URLSearchParams(window.location.search).get("tag") || this.getAttribute("tag") || "").toLowerCase();
 
-    const posts = await this.loadPosts();
+    try
+    {
+      const posts = await this.loadPosts();
 
-    const filtered = posts
-      .filter(p => !tagFilter || (p.tags || []).includes(tagFilter))
-      .slice(0, maxPosts);
+      const filtered = posts
+        .filter(p => !tagFilter || (p.tags || []).includes(tagFilter))
+        .slice(0, maxPosts);
 
-    this.innerHTML = filtered.length === 0
-      ? "<p>No posts found.</p>"
-      : `<ul class="blog-list">${ filtered.map(p => this.renderItem(p)).join("") }</ul>`;
+      this.innerHTML = filtered.length === 0
+        ? "<p>No posts found.</p>"
+        : `<ul class="blog-list">${ filtered.map(p => this.renderItem(p)).join("") }</ul>`;
+    } catch (error)
+    {
+      console.error(error);
+      this.innerHTML = '<p>Could not load posts. Please try again later.</p>';
+    }
   }
 
   async loadPosts()
   {
     const res = await fetch("blog/posts.json");
+    if (!res.ok) throw new Error("Could not load the post index.");
     const index = await res.json();
 
     const posts = await Promise.all(index.map(async ({ slug }) =>
     {
-      const md = await fetch(`blog/${ slug }/post.md`).then(r => r.text());
-      const { meta } = parseFrontmatter(md);
-      return { slug, ...meta };
+      const response = await fetch(`blog/${ encodeURIComponent(slug) }/post.md`);
+      if (!response.ok) throw new Error(`Could not load post: ${ slug }`);
+      const { meta } = parseFrontmatter(await response.text());
+      if (!meta.title || !isCalendarDate(meta.date)) throw new Error(`Invalid metadata: ${ slug }`);
+      return { ...meta, slug };
     }));
 
     // Since we use YYYY-MM-DD, we can sort alphabetically with regular string compare

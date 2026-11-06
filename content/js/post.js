@@ -9,7 +9,7 @@
  */
 
 import { parseFrontmatter } from "./blog-utils.js";
-import { formatCalendarDate } from "./dates.js";
+import { formatCalendarDate, isCalendarDate } from "./dates.js";
 
 const slug = new URLSearchParams(window.location.search).get("slug");
 
@@ -24,8 +24,15 @@ async function init()
         return;
     }
 
-    const text = await fetch(`${ encodeURIComponent(slug) }/post.md`).then(r => r.text());
-    const { meta, body } = parseFrontmatter(text);
+    const response = await fetch(`${ encodeURIComponent(slug) }/post.md`);
+    if (response.status === 404)
+    {
+        document.querySelector("#post-title").textContent = "Post not found.";
+        return;
+    }
+    if (!response.ok) throw new Error("Could not load the post.");
+    const { meta, body } = parseFrontmatter(await response.text());
+    if (!meta.title || !isCalendarDate(meta.date)) throw new Error("Invalid post metadata.");
 
     // Page title and meta description
     document.title = `${ meta.title } — Sebastian Franjou`;
@@ -52,4 +59,9 @@ async function init()
     document.body.appendChild(script);
 }
 
-init();
+init().catch(error =>
+{
+    console.error(error);
+    document.querySelector("#post-title").textContent = "Could not load this post.";
+    document.querySelector("#post-summary").textContent = "Please try again, or use the link above to return to the blog.";
+});

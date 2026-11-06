@@ -225,7 +225,9 @@
                 }, currentIndex === 0 ? 500 : 1000);
 
                 // Auto progress
-                animationTimer = setTimeout(showNextGreeting, DURATION + 1000);
+                if (currentIndex < greetings.length - 1) {
+                    animationTimer = setTimeout(showNextGreeting, DURATION + 1000);
+                }
             }
         }
 

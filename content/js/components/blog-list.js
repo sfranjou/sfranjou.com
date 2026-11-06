@@ -19,6 +19,7 @@
  */
 
 import { parseFrontmatter } from "../blog-utils.js";
+import { formatCalendarDate } from "../dates.js";
 
 class BlogList extends HTMLElement
 {
@@ -56,7 +57,7 @@ class BlogList extends HTMLElement
 
   renderItem(post)
   {
-    const date = new Date(post.date).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+    const date = formatCalendarDate(post.date);
     const tags = (post.tags || []).map(t => `<a href="blog.html?tag=${ t }">#${ t }</a>`).join(" ");
     const summary = post.summary ? `<p class="blog-post-summary">${ post.summary }</p>` : "";
     return `<li>

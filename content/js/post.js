@@ -9,6 +9,7 @@
  */
 
 import { parseFrontmatter } from "./blog-utils.js";
+import { formatCalendarDate } from "./dates.js";
 
 const slug = new URLSearchParams(window.location.search).get("slug");
 
@@ -36,7 +37,7 @@ async function init()
 
     if (meta.date)
     {
-        const date = new Date(meta.date).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+        const date = formatCalendarDate(meta.date);
         const tags = (meta.tags || []).map(t => `<a href="../blog.html?tag=${ t }">#${ t }</a>`).join(" ");
         document.querySelector("#post-meta").innerHTML = `${ date } ${ tags }`;
     }

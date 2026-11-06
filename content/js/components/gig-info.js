@@ -1,3 +1,5 @@
+import { isCalendarDate, isZonedTimestamp } from "../dates.js";
+
 
 class GigInfo extends HTMLElement
 {
@@ -130,7 +132,9 @@ class GigInfo extends HTMLElement
                     blurb: row["Blurb"],
                 };
             })
-            .filter((gig) => gig.title && gig.date);
+            .filter((gig) => gig.title && gig.date && (
+                isCalendarDate(gig.date) || isZonedTimestamp(gig.date)
+            ));
 
         this.renderConcerts(gigs);
     }
@@ -140,8 +144,12 @@ class GigInfo extends HTMLElement
         const today = new Date();
         concerts.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-        const upcoming = concerts.filter((c) => new Date(c.date) >= today);
-        const past = concerts.filter((c) => new Date(c.date) < today);
+        const todayInBoston = today.toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+        const isUpcoming = (concert) => isCalendarDate(concert.date)
+            ? concert.date >= todayInBoston
+            : new Date(concert.date) >= today;
+        const upcoming = concerts.filter(isUpcoming);
+        const past = concerts.filter(concert => !isUpcoming(concert));
 
         // 1. Render Next Gig
         const nextGig = upcoming[0];
@@ -166,6 +174,7 @@ class GigInfo extends HTMLElement
                 year: "numeric",
                 month: "long",
                 day: "numeric",
+                timeZone: isCalendarDate(nextGig.date) ? "UTC" : "America/New_York",
             };
             
             // Check if time is provided in the string (not just midnight via timezone offset)
@@ -221,8 +230,8 @@ class GigInfo extends HTMLElement
         const dateObj = new Date(gig.date);
         const hasTime = gig.date.includes(':');
         const dateStr = hasTime 
-            ? dateObj.toLocaleString(undefined, { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })
-            : dateObj.toLocaleDateString();
+            ? dateObj.toLocaleString(undefined, { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' })
+            : dateObj.toLocaleDateString(undefined, { timeZone: "UTC" });
 
         const dateHtml = `<span class="gig-date"><time datetime="${ gig.date }">${ dateStr }</time></span>`;
 

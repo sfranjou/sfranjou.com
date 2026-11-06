@@ -9,6 +9,7 @@
  */
 export function parseFrontmatter(text)
 {
+  text = text.replaceAll("\r\n", "\n");
   const match = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!match) return { meta: {}, body: text };
 

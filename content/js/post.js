@@ -14,7 +14,16 @@ const slug = new URLSearchParams(window.location.search).get("slug");
 
 async function init()
 {
-    const text = await fetch(`${ slug }/post.md`).then(r => r.text());
+    const indexResponse = await fetch("posts.json");
+    if (!indexResponse.ok) throw new Error("Could not load the post index.");
+    const index = await indexResponse.json();
+    if (!index.some(post => post.slug === slug))
+    {
+        document.querySelector("#post-title").textContent = "Post not found.";
+        return;
+    }
+
+    const text = await fetch(`${ encodeURIComponent(slug) }/post.md`).then(r => r.text());
     const { meta, body } = parseFrontmatter(text);
 
     // Page title and meta description

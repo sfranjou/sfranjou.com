@@ -146,6 +146,10 @@
             color: #666;
             line-height: 1.6;
         }
+        @media (prefers-reduced-motion: reduce) {
+            .ball-input, #check-btn { transition: none; }
+            #check-btn:hover { transform: none; }
+        }
     </style>
 </head>
 <body>

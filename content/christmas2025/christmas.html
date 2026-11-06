@@ -137,6 +137,16 @@
             display: block;
             margin-bottom: 0.5rem;
         }
+        #next-greeting {
+            position: fixed;
+            bottom: 1rem;
+            z-index: 101;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .snow-container { display: none; }
+            .greeting { transition: none; }
+        }
     </style>
 </head>
 <body>
@@ -169,7 +179,10 @@
         </div>
     </div>
 
+    <button id="next-greeting" type="button">Next greeting</button>
+
     <script>
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         // Personalization Logic
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('name');
@@ -184,7 +197,7 @@
 
         // Simple procedural snow for that "premium" feel
         const snowContainer = document.getElementById('snow');
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; !reducedMotion && i < 50; i++) {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
             
@@ -206,6 +219,7 @@
         const DURATION = 15000; // 15 seconds
 
         function showNextGreeting() {
+            if (currentIndex >= greetings.length - 1) return;
             if (animationTimer) clearTimeout(animationTimer);
 
             // Hide current
@@ -219,13 +233,11 @@
             // Show next
             if (currentIndex < greetings.length) {
                 const next = greetings[currentIndex];
-                // Wait for the exit animation of previous to finish if any
-                setTimeout(() => {
-                    next.classList.add('active');
-                }, currentIndex === 0 ? 500 : 1000);
+                next.classList.add('active');
+                document.getElementById('next-greeting').hidden = currentIndex === greetings.length - 1;
 
                 // Auto progress
-                if (currentIndex < greetings.length - 1) {
+                if (!reducedMotion && currentIndex < greetings.length - 1) {
                     animationTimer = setTimeout(showNextGreeting, DURATION + 1000);
                 }
             }
@@ -234,18 +246,8 @@
         // Start the sequence
         showNextGreeting();
 
-        // Click/Touch to skip
-        window.addEventListener('click', () => {
-            if (currentIndex < greetings.length - 1) {
-                showNextGreeting();
-            }
-        });
-        window.addEventListener('touchstart', (e) => {
-            // Prevent double trigger with click on some mobile browsers
-            if (currentIndex < greetings.length - 1) {
-                showNextGreeting();
-            }
-        });
+        // A native button works with mouse, touch, and keyboard.
+        document.getElementById('next-greeting').addEventListener('click', showNextGreeting);
     </script>
 </body>
 </html>

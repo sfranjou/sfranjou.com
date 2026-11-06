@@ -141,7 +141,9 @@
     {
         return `
       <form class="comment-form" data-parent-id="${ parentId || "" }">
+        <label for="author-${ parentId || "new" }">Name (optional)</label>
         <input
+          id="author-${ parentId || "new" }"
           type="text"
           name="author"
           placeholder="Name (optional)"
@@ -149,8 +151,10 @@
           maxlength="100"
         />
         <!-- Honeypot — hidden from humans, bots will fill it -->
-        <input type="text" name="website" class="comment-hp" tabindex="-1" autocomplete="off" />
+        <input type="text" name="website" class="comment-hp" aria-hidden="true" tabindex="-1" autocomplete="off" />
+        <label for="body-${ parentId || "new" }">Comment</label>
         <textarea
+          id="body-${ parentId || "new" }"
           name="body"
           placeholder="Write a comment…"
           class="comment-input comment-textarea"

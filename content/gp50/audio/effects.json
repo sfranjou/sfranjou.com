@@ -1,0 +1,346 @@
+{
+  "schema": 1,
+  "rate": 44100,
+  "block": 64,
+  "arm_base": 0.477,
+  "dsp_base": 0.002,
+  "gptc_dsp_budget": 0.583,
+  "effects": [
+    {
+      "key": "gr_comp",
+      "group": 1,
+      "id": 16777281,
+      "name": "GR Comp",
+      "arm_delta": 0.066,
+      "cost_source": "SDK instruction-count estimate",
+      "parameters": [
+        {
+          "name": "Thresh",
+          "min": -40,
+          "max": 0,
+          "step": 1,
+          "default": -20,
+          "storage_index": 0,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Ratio",
+          "min": 1,
+          "max": 20,
+          "step": 1,
+          "default": 4,
+          "storage_index": 1,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Attack",
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "default": 5,
+          "storage_index": 2,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Release",
+          "min": 20,
+          "max": 500,
+          "step": 1,
+          "default": 120,
+          "storage_index": 3,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Gain",
+          "min": 0,
+          "max": 24,
+          "step": 1,
+          "default": 6,
+          "storage_index": 4,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        }
+      ]
+    },
+    {
+      "key": "slap_echo",
+      "group": 1,
+      "id": 16777280,
+      "name": "Slap Echo",
+      "arm_delta": 0.097,
+      "cost_source": "SDK instruction-count estimate",
+      "parameters": [
+        {
+          "name": "Mix",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 40,
+          "storage_index": 0,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Time",
+          "min": 40,
+          "max": 200,
+          "step": 1,
+          "default": 110,
+          "storage_index": 1,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Feedback",
+          "min": 0,
+          "max": 95,
+          "step": 1,
+          "default": 20,
+          "storage_index": 2,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Tone",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 70,
+          "storage_index": 3,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "VOL",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 100,
+          "storage_index": 4,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        }
+      ]
+    },
+    {
+      "key": "chop_trem",
+      "group": 6,
+      "id": 67108912,
+      "name": "Chop Trem",
+      "arm_delta": 0.015,
+      "cost_source": "SDK instruction-count estimate",
+      "parameters": [
+        {
+          "name": "Depth",
+          "storage_index": 0,
+          "min": 0.0,
+          "max": 100.0,
+          "step": 1.0,
+          "default": 50.0,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Rate",
+          "storage_index": 1,
+          "min": 0.1,
+          "max": 10.0,
+          "step": 0.1,
+          "default": 2.0,
+          "knob": 0,
+          "flags": 0,
+          "display_code": 34
+        },
+        {
+          "name": "VOL",
+          "storage_index": 2,
+          "min": 0.0,
+          "max": 100.0,
+          "step": 1.0,
+          "default": 50.0,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        }
+      ]
+    },
+    {
+      "key": "long_echo",
+      "group": 7,
+      "id": 184549620,
+      "name": "Long Echo",
+      "arm_delta": 0.085,
+      "cost_source": "SDK instruction-count estimate",
+      "parameters": [
+        {
+          "name": "Mix",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 35,
+          "storage_index": 0,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Time",
+          "min": 20,
+          "max": 1800,
+          "step": 1,
+          "default": 450,
+          "storage_index": 1,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Feedback",
+          "min": 0,
+          "max": 95,
+          "step": 1,
+          "default": 40,
+          "storage_index": 2,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Tone",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 60,
+          "storage_index": 3,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "VOL",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 100,
+          "storage_index": 4,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        }
+      ]
+    },
+    {
+      "key": "afterglow_micro",
+      "group": 7,
+      "id": 184549616,
+      "name": "Afterglow Micro",
+      "arm_delta": 0.098,
+      "cost_source": "SDK instruction-count estimate",
+      "parameters": [
+        {
+          "name": "Mix",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 60,
+          "storage_index": 0,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Mode",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "default": 1,
+          "storage_index": 1,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Length",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 65,
+          "storage_index": 2,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Modify",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 72,
+          "storage_index": 3,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Clock",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "default": 8,
+          "storage_index": 4,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Bypass",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "default": 0,
+          "storage_index": 5,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "Level",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 75,
+          "storage_index": 6,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        },
+        {
+          "name": "VOL",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 100,
+          "storage_index": 7,
+          "knob": 255,
+          "flags": 0,
+          "display_code": 21
+        }
+      ]
+    }
+  ]
+}

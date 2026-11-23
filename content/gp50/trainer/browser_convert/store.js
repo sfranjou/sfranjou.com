@@ -1,0 +1,4 @@
+export async function database(){return new Promise((res,rej)=>{const r=indexedDB.open('tone-browser-convert070',1);r.onupgradeneeded=()=>{for(const name of ['sessions','targets','inputs','meta'])r.result.createObjectStore(name);};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});}
+export function get(db,name,key){return new Promise((res,rej)=>{const t=db.transaction(name),r=t.objectStore(name).get(key);t.oncomplete=()=>res(r.result);t.onerror=()=>rej(t.error);});}
+export function put(db,name,key,value){return new Promise((res,rej)=>{const t=db.transaction(name,'readwrite');t.objectStore(name).put(value,key);t.oncomplete=()=>res();t.onerror=()=>rej(t.error);});}
+export async function sha(text){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text))),x=>x.toString(16).padStart(2,'0')).join('');}

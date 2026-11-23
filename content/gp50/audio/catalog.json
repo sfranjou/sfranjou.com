@@ -1,0 +1,6874 @@
+{
+ "source": "protocol/catalog.py (GP50_CATALOG_E=logical), scripts/export_web_catalog.py",
+ "extension_sha256": "e220e8819455e9ff3b371d2fb8889c00a786651eb5285c9850a8abafdb967d9c",
+ "groups": [
+  "NR",
+  "PRE",
+  "DST",
+  "AMP",
+  "CAB",
+  "EQ",
+  "MOD",
+  "DLY",
+  "RVB",
+  "N→S"
+ ],
+ "effects": [
+  {
+   "group": 0,
+   "ordinal": 0,
+   "id": 27,
+   "name": "Gate",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "THRE",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff001547617465"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 0,
+   "id": 0,
+   "name": "COMP",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Sustain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01000015434f4d50"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 1,
+   "id": 1,
+   "name": "COMP4",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Sustain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1300"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Attack",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 60.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02000015ffff1e00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Clip",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 10.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015434f4d50"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 2,
+   "id": 26,
+   "name": "Boost",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff0b00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "+3dB",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 1.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "01ff0000ffff1000"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Bright",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 1.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "02ff0000426f6f73"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 3,
+   "id": 20,
+   "name": "Micro Boost",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "000000154d696372"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 4,
+   "id": 11,
+   "name": "B-Boost",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1300"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1700"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1c00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015422d426f"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 5,
+   "id": 16777231,
+   "name": "Toucher",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Sense",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Range",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01000015ffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Q",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1d00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2100"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Mode",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 73,
+     "meta": "04ff0049546f7563"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 6,
+   "id": 16777237,
+   "name": "Crier",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1300"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 22,
+     "display": 34,
+     "meta": "01ff1622ffff1800"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1c00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Low",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 25.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2000"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Q",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 70.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2200"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "High",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 60.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015ffff2700"
+    },
+    {
+     "slot": 6,
+     "storage": 6,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "06ff210043726965"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 7,
+   "id": 83886088,
+   "name": "C-Wah",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Range",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1000"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Q",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1200"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Volume",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1900"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Position",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2200"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 8,
+   "id": 16777249,
+   "name": "OCTA",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Low",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff0f00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "High",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1400"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Dry",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "020000154f435441"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 9,
+   "id": 16777251,
+   "name": "Pitch",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "High",
+     "min": 0.0,
+     "max": 24.0,
+     "step": 1.0,
+     "default": 12.0,
+     "flags": 0,
+     "display": 83,
+     "meta": "00000053ffff0b00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Low",
+     "min": -24.0,
+     "max": 0.0,
+     "step": 1.0,
+     "default": -12.0,
+     "flags": 0,
+     "display": 131,
+     "meta": "01ff0083ffff0f00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Dry",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1300"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "H-VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff1900"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "L-VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff001550697463"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 10,
+   "id": 16777257,
+   "name": "Detune",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Detune",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": -25.0,
+     "flags": 0,
+     "display": 88,
+     "meta": "00000058ffff0d00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Wet",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1100"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Dry",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff001544657475"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 11,
+   "id": 16777217,
+   "name": "AC Sim",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Body",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1000"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Top",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1400"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Volume",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1b00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Mode",
+     "min": 0.0,
+     "max": 3.0,
+     "step": 1.0,
+     "default": 2.0,
+     "flags": 0,
+     "display": 69,
+     "meta": "03ff004541432053"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 12,
+   "id": 16777342,
+   "name": "Probe",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "A0",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff0e00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "A1",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1100"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "V0",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1400"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "V1",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff1700"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "V2",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff1a00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "V3",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015ffff1d00"
+    },
+    {
+     "slot": 6,
+     "storage": 6,
+     "name": "OP",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "06ff0015ffff2000"
+    },
+    {
+     "slot": 7,
+     "storage": 7,
+     "name": "SEQ",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "07ff001550726f62"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 13,
+   "id": 16777340,
+   "name": "ARM Bench",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "A0",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "A1",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1500"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "V0",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1800"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "V1",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff1b00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "V2",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff1e00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "V3",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015ffff2100"
+    },
+    {
+     "slot": 6,
+     "storage": 6,
+     "name": "OP",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "06ff0015ffff2400"
+    },
+    {
+     "slot": 7,
+     "storage": 7,
+     "name": "SEQ",
+     "min": 0.0,
+     "max": 255.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "07ff001541524d20"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 14,
+   "id": 16777280,
+   "name": "Slap Echo",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1700"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 40.0,
+     "max": 200.0,
+     "step": 1.0,
+     "default": 110.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1c00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Feedback",
+     "min": 0.0,
+     "max": 95.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2500"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 70.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2a00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 100.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015536c6170"
+    }
+   ]
+  },
+  {
+   "group": 1,
+   "ordinal": 15,
+   "id": 16777281,
+   "name": "GR Comp",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Thresh",
+     "min": -40.0,
+     "max": 0.0,
+     "step": 1.0,
+     "default": -20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1a00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Ratio",
+     "min": 1.0,
+     "max": 20.0,
+     "step": 1.0,
+     "default": 4.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff2000"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Attack",
+     "min": 1.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 5.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2700"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Release",
+     "min": 20.0,
+     "max": 500.0,
+     "step": 1.0,
+     "default": 120.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2f00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 24.0,
+     "step": 1.0,
+     "default": 6.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff001547522043"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 0,
+   "id": 50331648,
+   "name": "Green OD",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1100"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 70.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1600"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff001547726565"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 1,
+   "id": 50331650,
+   "name": "Yellow OD",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff001559656c6c"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 2,
+   "id": 50331654,
+   "name": "Super OD",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1100"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1600"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff001553757065"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 3,
+   "id": 50331690,
+   "name": "SM Dist",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015534d2044"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 4,
+   "id": 50331689,
+   "name": "Plustortion",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1c00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015506c7573"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 5,
+   "id": 50331696,
+   "name": "La Charger",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1b00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff2000"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff00154c612043"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 6,
+   "id": 50331691,
+   "name": "Darktale",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1900"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Filter",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff2000"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff00154461726b"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 7,
+   "id": 50331682,
+   "name": "Sora Fuzz",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Fuzz",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff0f00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015536f7261"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 8,
+   "id": 50331684,
+   "name": "Red Haze",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Fuzz",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff0e00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff001552656420"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 9,
+   "id": 50331712,
+   "name": "Bass OD",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Blend",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1e00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2200"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2700"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff001542617373"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 10,
+   "id": 50331774,
+   "name": "Hard Clip",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1a00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff001548617264"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 11,
+   "id": 50331773,
+   "name": "Tube Drive",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1300"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1800"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff001554756265"
+    }
+   ]
+  },
+  {
+   "group": 2,
+   "ordinal": 12,
+   "id": 50331744,
+   "name": "FIR LowPass",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Cutoff",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 60.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1e00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff001546495220"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 0,
+   "id": 117440513,
+   "name": "Tweedy",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1700"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff001554776565"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 1,
+   "id": 117440515,
+   "name": "Bellman 59N",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1700"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1c00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2000"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2500"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2c00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff001542656c6c"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 2,
+   "id": 117440516,
+   "name": "Dark Twin",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 35.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1900"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1e00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2500"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 60.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2c00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Bright",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 1.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "05ff00004461726b"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 3,
+   "id": 117440529,
+   "name": "Foxy 30N",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1400"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone Cut",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bright",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "03ff0000466f7879"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 4,
+   "id": 117440532,
+   "name": "J-120 CL",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1300"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1800"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Bright",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "04ff00004a2d3132"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 5,
+   "id": 117440533,
+   "name": "Match CL",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 25.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1400"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 65.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1900"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1d00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 45.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2200"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2900"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 65.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff00154d617463"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 6,
+   "id": 117440537,
+   "name": "L-Star CL",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 25.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 65.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1e00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 45.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2300"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2a00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 65.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff00154c2d5374"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 7,
+   "id": 117440554,
+   "name": "UK 45",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 25.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1100"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 65.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1600"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1a00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 45.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff1f00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2600"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 65.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015554b2034"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 8,
+   "id": 117440559,
+   "name": "UK 50JP",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain 1",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1e00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2300"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2a00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015ffff3100"
+    },
+    {
+     "slot": 6,
+     "storage": 6,
+     "name": "Gain 2",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "06ff0015554b2035"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 9,
+   "id": 117440565,
+   "name": "UK 800",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1700"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1b00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2000"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2700"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015554b2038"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 10,
+   "id": 117440548,
+   "name": "Bellman 59B",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 35.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1700"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1c00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2000"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2500"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2c00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff001542656c6c"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 11,
+   "id": 117440551,
+   "name": "Foxy 30TB",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone Cut",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1e00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2200"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2700"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2e00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Char",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 4,
+     "meta": "05ff0004466f7879"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 12,
+   "id": 117440552,
+   "name": "SUPDual OD",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain 1",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone 1",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1f00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Gain 2",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2600"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Tone 2",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2d00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff001553555044"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 13,
+   "id": 117440583,
+   "name": "Solo100 OD",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1600"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2400"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2b00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015536f6c6f"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 14,
+   "id": 117440585,
+   "name": "Z38 OD",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone Cut",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2400"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2b00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff00155a333820"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 15,
+   "id": 117440587,
+   "name": "Bad-KT OD",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1e00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2300"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Edge",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2800"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff00154261642d"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 16,
+   "id": 117440595,
+   "name": "Juice R100",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1c00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2800"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff00154a756963"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 17,
+   "id": 117440613,
+   "name": "Dizz VH",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1e00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2300"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2a00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff001544697a7a"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 18,
+   "id": 117440618,
+   "name": "Dizz VH+",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1600"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2400"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2b00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff001544697a7a"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 19,
+   "id": 117440607,
+   "name": "Eagle 120",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1700"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1c00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2000"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2500"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2c00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff00154561676c"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 20,
+   "id": 117440602,
+   "name": "EV 51",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1300"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1700"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1c00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2300"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2a00"
+    },
+    {
+     "slot": 5,
+     "storage": 6,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "06ff001545562035"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 21,
+   "id": 117440601,
+   "name": "Solo100 LD",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2d00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015536f6c6f"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 22,
+   "id": 117440616,
+   "name": "Mess DualV",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2d00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff00154d657373"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 23,
+   "id": 117440617,
+   "name": "Mess DualM",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2d00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff00154d657373"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 24,
+   "id": 117440611,
+   "name": "Power LD",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1600"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2400"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2b00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015506f7765"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 25,
+   "id": 117440605,
+   "name": "Flagman+",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1600"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2400"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2b00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015466c6167"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 26,
+   "id": 117440621,
+   "name": "Bog RedV",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1600"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "PRES",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2400"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2b00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015426f6720"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 27,
+   "id": 117440627,
+   "name": "Classic Bass",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff0d00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1700"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1e00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "MidFreq",
+     "min": 0.0,
+     "max": 4.0,
+     "step": 1.0,
+     "default": 1.0,
+     "flags": 0,
+     "display": 16,
+     "meta": "03ff0010ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2d00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015436c6173"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 28,
+   "id": 117440629,
+   "name": "Foxy Bass",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff0a00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1300"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015466f7879"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 29,
+   "id": 117440631,
+   "name": "Mess Bass",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1400"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff0a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1800"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff1f00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff00154d657373"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 30,
+   "id": 134217850,
+   "name": "AC Pre1",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Volume",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Balance",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2500"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "EQ Freq",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2d00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "EQ Q",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff3200"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "EQ Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff001541432050"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 31,
+   "id": 134217851,
+   "name": "AC Pre2",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Volume",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Balance",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2500"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "EQ Freq",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2d00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "EQ Q",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff3200"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "EQ Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff001541432050"
+    }
+   ]
+  },
+  {
+   "group": 3,
+   "ordinal": 32,
+   "id": 117440624,
+   "name": "Soft Amp",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Drive",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 60.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015536f6674"
+    }
+   ]
+  },
+  {
+   "group": 4,
+   "ordinal": 0,
+   "id": 167772161,
+   "name": "TWD 1x8",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff001554574420"
+    }
+   ]
+  },
+  {
+   "group": 5,
+   "ordinal": 0,
+   "id": 16777269,
+   "name": "Guitar EQ 1",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "125Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "00ff005dffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "400Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "01ff005dffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "800Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "02ff005dffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "1.6kHz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "03ff005dffff2800"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "4kHz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "04ff005dffff2d00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff001547756974"
+    }
+   ]
+  },
+  {
+   "group": 5,
+   "ordinal": 1,
+   "id": 16777270,
+   "name": "Guitar EQ 2",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "100Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "00ff005dffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "500Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "01ff005dffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "1kHz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "02ff005dffff2000"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "3kHz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "03ff005dffff2500"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "6kHz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "04ff005dffff2a00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff001547756974"
+    }
+   ]
+  },
+  {
+   "group": 5,
+   "ordinal": 2,
+   "id": 16777273,
+   "name": "Bass EQ 1",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "33Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "00ff005dffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "150Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "01ff005dffff1800"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "600Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "02ff005dffff1e00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "2kHz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "03ff005dffff2300"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "8kHz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "04ff005dffff2800"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff001542617373"
+    }
+   ]
+  },
+  {
+   "group": 5,
+   "ordinal": 3,
+   "id": 16777274,
+   "name": "Bass EQ 2",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "50Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "00ff005dffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "120Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "01ff005dffff1800"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "400Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "02ff005dffff1e00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "800Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "03ff005dffff2400"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "4.5kHz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "04ff005dffff2b00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff001542617373"
+    }
+   ]
+  },
+  {
+   "group": 5,
+   "ordinal": 4,
+   "id": 16777276,
+   "name": "Mess EQ",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "80Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "00ff005dffff1000"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "240Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "01ff005dffff1600"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "750Hz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "02ff005dffff1c00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "2.2kHz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "03ff005dffff2300"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "6.6kHz",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "04ff005d4d657373"
+    }
+   ]
+  },
+  {
+   "group": 5,
+   "ordinal": 5,
+   "id": 16777312,
+   "name": "Para EQ",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "LowF",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1000"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "LowG",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "01ff005dffff1500"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "MidF",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1a00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "MidG",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "03ff005dffff1f00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "MidQ",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2400"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "HighF",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015ffff2a00"
+    },
+    {
+     "slot": 6,
+     "storage": 6,
+     "name": "HighG",
+     "min": -50.0,
+     "max": 50.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 93,
+     "meta": "06ff005dffff3000"
+    },
+    {
+     "slot": 7,
+     "storage": 7,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "07ff001550617261"
+    }
+   ]
+  },
+  {
+   "group": 5,
+   "ordinal": 6,
+   "id": 16777313,
+   "name": "Auto Pan",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Rate",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1100"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 80.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1700"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff00154175746f"
+    }
+   ]
+  },
+  {
+   "group": 5,
+   "ordinal": 7,
+   "id": 16777314,
+   "name": "Wide",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Width",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff0e00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Freq",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1300"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff001557696465"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 0,
+   "id": 67108864,
+   "name": "A-Chorus",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1600"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 19,
+     "display": 34,
+     "meta": "01001322ffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2000"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff2100412d4368"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 1,
+   "id": 67108872,
+   "name": "B-Chorus",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1600"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 19,
+     "display": 34,
+     "meta": "01001322ffff1b00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff2100422d4368"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 2,
+   "id": 67108881,
+   "name": "Jet",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 20,
+     "display": 34,
+     "meta": "01001422ffff1700"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "P.Delay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "04ff21004a657400"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 3,
+   "id": 67108883,
+   "name": "N-Jet",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1400"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 20,
+     "display": 34,
+     "meta": "01001422ffff1900"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "P.Delay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2800"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "04ff21004e2d4a65"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 4,
+   "id": 67108889,
+   "name": "O-Phase",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 17,
+     "display": 34,
+     "meta": "00001122ffff1400"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 32,
+     "display": 0,
+     "meta": "01ff20004f2d5068"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 5,
+   "id": 67108895,
+   "name": "M-Vibe",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1400"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 18,
+     "display": 34,
+     "meta": "01001222ffff1900"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "02ff21004d2d5669"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 6,
+   "id": 67108885,
+   "name": "V-Roto",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 18,
+     "display": 34,
+     "meta": "01001222ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "02ff2100562d526f"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 7,
+   "id": 67108887,
+   "name": "Vibrato",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff0e00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 19,
+     "display": 34,
+     "meta": "01001322ffff1300"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1700"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff210056696272"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 8,
+   "id": 67108897,
+   "name": "O-Trem",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 18,
+     "display": 34,
+     "meta": "01001222ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "02ff21004f2d5472"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 9,
+   "id": 67108902,
+   "name": "Sync Trem",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 19,
+     "display": 34,
+     "meta": "01001322ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff210053796e63"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 10,
+   "id": 67108904,
+   "name": "Bias Trem",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 0.5,
+     "flags": 19,
+     "display": 34,
+     "meta": "01001322ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff2100ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Bias",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff001542696173"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 11,
+   "id": 67108912,
+   "name": "Chop Trem",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1800"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 10.0,
+     "step": 0.10000000149011612,
+     "default": 2.0,
+     "flags": 0,
+     "display": 34,
+     "meta": "01000022ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff001543686f70"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 12,
+   "id": 67108990,
+   "name": "Probe Out",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Word",
+     "min": 0.0,
+     "max": 3.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff001550726f62"
+    }
+   ]
+  },
+  {
+   "group": 6,
+   "ordinal": 13,
+   "id": 67108913,
+   "name": "Tail Doubler",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 70.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1900"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Delay",
+     "min": 20.0,
+     "max": 85.0,
+     "step": 1.0,
+     "default": 35.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1f00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2500"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Rate",
+     "min": 0.10000000149011612,
+     "max": 5.0,
+     "step": 0.10000000149011612,
+     "default": 0.6000000238418579,
+     "flags": 0,
+     "display": 34,
+     "meta": "03ff0022ffff2a00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 100.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff00155461696c"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 0,
+   "id": 184549376,
+   "name": "Pure",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff0f00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 1000.0,
+     "step": 1.0,
+     "default": 500.0,
+     "flags": 19,
+     "display": 25,
+     "meta": "01001319ffff1400"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1b00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff2100ffff2000"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "04ff000050757265"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 1,
+   "id": 184549377,
+   "name": "Analog",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1100"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 4000.0,
+     "step": 1.0,
+     "default": 500.0,
+     "flags": 19,
+     "display": 25,
+     "meta": "01001319ffff1600"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Feedback",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff2100ffff2400"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "04ff0000416e616c"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 2,
+   "id": 184549381,
+   "name": "Slapback",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1300"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 300.0,
+     "step": 1.0,
+     "default": 150.0,
+     "flags": 0,
+     "display": 130,
+     "meta": "01ff0082ffff1800"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02000015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 4,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "04ff0000536c6170"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 3,
+   "id": 184549389,
+   "name": "Sweet Echo",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 1000.0,
+     "step": 1.0,
+     "default": 500.0,
+     "flags": 19,
+     "display": 25,
+     "meta": "01001319ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff2100ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "04ff000053776565"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 4,
+   "id": 184549378,
+   "name": "Tape",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff0f00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 1000.0,
+     "step": 1.0,
+     "default": 500.0,
+     "flags": 19,
+     "display": 25,
+     "meta": "01001319ffff1400"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1b00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff2100ffff2000"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "04ff000054617065"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 5,
+   "id": 184549387,
+   "name": "Tube",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff0f00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 1000.0,
+     "step": 1.0,
+     "default": 500.0,
+     "flags": 19,
+     "display": 25,
+     "meta": "01001319ffff1400"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1b00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff2100ffff2000"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "04ff000054756265"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 6,
+   "id": 184549395,
+   "name": "Rev Echo",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1300"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 780.0,
+     "step": 1.0,
+     "default": 500.0,
+     "flags": 19,
+     "display": 25,
+     "meta": "01ff1319ffff1800"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02000015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff2100ffff2400"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "04ff000052657620"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 7,
+   "id": 184549385,
+   "name": "Ring Echo",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1400"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 1000.0,
+     "step": 1.0,
+     "default": 500.0,
+     "flags": 22,
+     "display": 25,
+     "meta": "01001619ffff1900"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2000"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "R-Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Freq",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2b00"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015ffff3000"
+    },
+    {
+     "slot": 6,
+     "storage": 6,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "06ff2100ffff3500"
+    },
+    {
+     "slot": 7,
+     "storage": 7,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "07ff000052696e67"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 8,
+   "id": 184549382,
+   "name": "Sweep Echo",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1500"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 1000.0,
+     "step": 1.0,
+     "default": 500.0,
+     "flags": 22,
+     "display": 25,
+     "meta": "01ff1619ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02000015ffff2100"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "S-Depth",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2900"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "S-Rate",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 21,
+     "display": 21,
+     "meta": "04ff1515ffff3000"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "S-Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 36,
+     "display": 0,
+     "meta": "05ff2400ffff3700"
+    },
+    {
+     "slot": 6,
+     "storage": 6,
+     "name": "D-Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "06ff2100ffff3e00"
+    },
+    {
+     "slot": 7,
+     "storage": 7,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "07ff000053776565"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 9,
+   "id": 184549380,
+   "name": "Ping Pong",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 20.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1400"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 500.0,
+     "step": 1.0,
+     "default": 500.0,
+     "flags": 19,
+     "display": 25,
+     "meta": "01ff1319ffff1900"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "F.Back",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02000015ffff2000"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Sync",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 33,
+     "display": 0,
+     "meta": "03ff2100ffff2500"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "04ff000050696e67"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 10,
+   "id": 184549616,
+   "name": "Afterglow Micro",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 60.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1e00"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Mode",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 1.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff2300"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Length",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 65.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2a00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Modify",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 72.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff3100"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Clock",
+     "min": 0.0,
+     "max": 10.0,
+     "step": 1.0,
+     "default": 8.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff3700"
+    },
+    {
+     "slot": 5,
+     "storage": 5,
+     "name": "Capture",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015ffff3f00"
+    },
+    {
+     "slot": 6,
+     "storage": 6,
+     "name": "Level",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 75.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "06ff0015ffff4500"
+    },
+    {
+     "slot": 7,
+     "storage": 7,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 100.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "07ff001541667465"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 11,
+   "id": 184549620,
+   "name": "Long Echo",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 35.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1900"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 1800.0,
+     "step": 1.0,
+     "default": 450.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1e00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Feedback",
+     "min": 0.0,
+     "max": 95.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2700"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 60.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2c00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 100.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff00154c6f6e67"
+    }
+   ]
+  },
+  {
+   "group": 7,
+   "ordinal": 12,
+   "id": 184549621,
+   "name": "Ring Echo",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 35.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1900"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Time",
+     "min": 20.0,
+     "max": 9500.0,
+     "step": 1.0,
+     "default": 2000.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1e00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Feedback",
+     "min": 0.0,
+     "max": 95.0,
+     "step": 1.0,
+     "default": 40.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff2700"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Tone",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 60.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2c00"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 100.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff001552696e67"
+    }
+   ]
+  },
+  {
+   "group": 8,
+   "ordinal": 0,
+   "id": 201326603,
+   "name": "Air",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff0f00"
+    },
+    {
+     "slot": 1,
+     "storage": 2,
+     "name": "Decay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1500"
+    },
+    {
+     "slot": 2,
+     "storage": 4,
+     "name": "Damp",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff1a00"
+    },
+    {
+     "slot": 3,
+     "storage": 6,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "06ff000041697200"
+    }
+   ]
+  },
+  {
+   "group": 8,
+   "ordinal": 1,
+   "id": 201326592,
+   "name": "Room",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1000"
+    },
+    {
+     "slot": 1,
+     "storage": 2,
+     "name": "Decay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1600"
+    },
+    {
+     "slot": 2,
+     "storage": 3,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "03ff0000526f6f6d"
+    }
+   ]
+  },
+  {
+   "group": 8,
+   "ordinal": 2,
+   "id": 201326593,
+   "name": "Hall",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1000"
+    },
+    {
+     "slot": 1,
+     "storage": 2,
+     "name": "Decay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1600"
+    },
+    {
+     "slot": 2,
+     "storage": 3,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "03ff000048616c6c"
+    }
+   ]
+  },
+  {
+   "group": 8,
+   "ordinal": 3,
+   "id": 201326594,
+   "name": "Church",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 2,
+     "name": "Decay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1800"
+    },
+    {
+     "slot": 2,
+     "storage": 3,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "03ff000043687572"
+    }
+   ]
+  },
+  {
+   "group": 8,
+   "ordinal": 4,
+   "id": 201326608,
+   "name": "Plate L",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1300"
+    },
+    {
+     "slot": 1,
+     "storage": 2,
+     "name": "Decay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1900"
+    },
+    {
+     "slot": 2,
+     "storage": 6,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "06ff0000506c6174"
+    }
+   ]
+  },
+  {
+   "group": 8,
+   "ordinal": 5,
+   "id": 201326607,
+   "name": "Plate",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1100"
+    },
+    {
+     "slot": 1,
+     "storage": 2,
+     "name": "Decay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1700"
+    },
+    {
+     "slot": 2,
+     "storage": 4,
+     "name": "Damp",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff1c00"
+    },
+    {
+     "slot": 3,
+     "storage": 6,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "06ff0000506c6174"
+    }
+   ]
+  },
+  {
+   "group": 8,
+   "ordinal": 6,
+   "id": 201326596,
+   "name": "Spring",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Decay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1800"
+    },
+    {
+     "slot": 2,
+     "storage": 3,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "03ff000053707269"
+    }
+   ]
+  },
+  {
+   "group": 8,
+   "ordinal": 7,
+   "id": 201326598,
+   "name": "N-Star",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1200"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Decay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1800"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "02ff00004e2d5374"
+    }
+   ]
+  },
+  {
+   "group": 8,
+   "ordinal": 8,
+   "id": 201326599,
+   "name": "Deepsea",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1300"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "Decay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1900"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "02ff000044656570"
+    }
+   ]
+  },
+  {
+   "group": 8,
+   "ordinal": 9,
+   "id": 201326613,
+   "name": "Sweet Space",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Mix",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 30.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00000015ffff1700"
+    },
+    {
+     "slot": 1,
+     "storage": 2,
+     "name": "Decay",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1d00"
+    },
+    {
+     "slot": 2,
+     "storage": 4,
+     "name": "Damp",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015ffff2200"
+    },
+    {
+     "slot": 3,
+     "storage": 5,
+     "name": "Mod",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "05ff0015ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 6,
+     "name": "Trail",
+     "min": 0.0,
+     "max": 1.0,
+     "step": 1.0,
+     "default": 0.0,
+     "flags": 0,
+     "display": 0,
+     "meta": "06ff000053776565"
+    }
+   ]
+  },
+  {
+   "group": 9,
+   "ordinal": 0,
+   "id": 251658240,
+   "name": "Empty",
+   "parameters": [
+    {
+     "slot": 0,
+     "storage": 0,
+     "name": "Gain",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "00ff0015ffff1600"
+    },
+    {
+     "slot": 1,
+     "storage": 1,
+     "name": "VOL",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "01ff0015ffff1a00"
+    },
+    {
+     "slot": 2,
+     "storage": 2,
+     "name": "Bass",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "02ff0015ffff1f00"
+    },
+    {
+     "slot": 3,
+     "storage": 3,
+     "name": "Middle",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "03ff0015ffff2600"
+    },
+    {
+     "slot": 4,
+     "storage": 4,
+     "name": "Treble",
+     "min": 0.0,
+     "max": 100.0,
+     "step": 1.0,
+     "default": 50.0,
+     "flags": 0,
+     "display": 21,
+     "meta": "04ff0015456d7074"
+    }
+   ]
+  }
+ ]
+}

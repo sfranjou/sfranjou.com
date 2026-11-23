@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uploader · Peppercorn</title>
+<link rel="stylesheet" href="../site.css">
+<style>
+  #drop { width: 100% }
+  #slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 0 1.5rem }
+  #slots td { font-size: .875rem }
+  td.num, tr.empty td.name { color: var(--muted) }
+  td.num { width: 3rem; font-variant-numeric: tabular-nums }
+  tr.empty td.name { font-style: italic }
+  #log { font: .8125rem/1.5 var(--mono); color: var(--muted); max-height: 9rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere }
+</style>
+</head>
+<body class="utility">
+<header class="site-header">
+  <a class="site-brand" href="../">Peppercorn</a>
+  <nav class="site-nav" aria-label="Main"><a href="../#tools">All tools</a><a href="../captures/">Captures</a></nav>
+</header>
+<main>
+  <h1>Capture uploader</h1>
+  <ul class="sub">
+    <li>Send an LTTC capture (.lttc) or a Valeton SnapTone to a user slot (50–79) over USB.</li>
+    <li>Close Valeton Suite before connecting. Your browser needs Web MIDI with SysEx enabled.</li>
+    <li>If Firefox asks to install a site permission add-on, allow MIDI with SysEx for this site.</li>
+  </ul>
+
+  <section class="panel">
+    <h2>Pedal</h2>
+    <div class="row"><button id="connect" class="primary">Connect</button><span id="pedalStatus" class="status">Not connected</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>Tone file</h2>
+    <button class="file-pad" id="drop" type="button">Drop an LTTC or SnapTone file here, or click to choose</button>
+    <input id="file" type="file" hidden>
+    <div id="fileInfo" class="row status"></div>
+    <div class="row">
+      <label>Name on the pedal <input id="name" type="text" maxlength="15" size="16" placeholder="max 15 characters"></label>
+      <label>Slot <select id="slot" disabled></select></label>
+      <label id="overwriteBox" hidden><input id="overwrite" type="checkbox"> replace what is there</label>
+    </div>
+    <div class="row"><button id="upload" class="primary" disabled>Upload</button><button id="play" disabled>Play this slot</button></div>
+    <progress class="segment-meter" id="progress" max="146" value="0" hidden></progress>
+    <div id="uploadStatus" class="row status"></div>
+  </section>
+
+  <section class="panel">
+    <h2>User slots (N→S 50–79)</h2>
+    <div id="slots" class="grid status">Connect to read the slots.</div>
+  </section>
+
+  <section class="panel"><h2>Log</h2><div id="log"></div></section>
+</main>
+<script type="module" src="./uploader.mjs"></script>
+</body>
+</html>

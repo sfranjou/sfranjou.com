@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LTTC trainer · Peppercorn</title><link rel="stylesheet" href="../site.css"><script type="module" src="browser_convert/page.js"></script></head><body class="utility trainer"><header class="site-header"><a class="site-brand" href="../">Peppercorn</a><nav class="site-nav" aria-label="Main"><a href="../#tools">All tools</a><a href="../captures/">Captures</a></nav></header><main><h1>LTTC trainer</h1>
+<ul class="lede">
+<li>Choose a NAM A2 Full file and train an LTTC capture (.lttc) for your GP-50.</li>
+<li>Training runs in your browser. Your NAM file stays on your computer.</li>
+<li>The trainer downloads about 3 MB of guitar recordings to use as input.</li>
+</ul>
+<section class="panel"><label>Official GP-50 V1.1.0 firmware <input id="stock" type="file" accept=".bin"></label><p class="hint">The trainer reads the capture filter from this file on your computer.</p><label>NAM A2 Full file<input id="nam" type="file" accept=".nam"></label>
+<p class="hint" hidden><label>Capture format<select id="architecture"><option value="two_curve">LTTC (two-curve)</option></select></label></p>
+<label>Device<select id="backend"><option value="auto">Auto (WebGPU if available)</option><option value="webgpu">WebGPU</option><option value="cpu">CPU</option></select></label>
+<label>Updates<input id="steps" type="number" min="1" max="10000" value="1800"></label>
+<div class="training-actions"><button id="start">Train</button> <button id="provided" class="secondary">Try provided Peavey · generic start</button> <button id="resume" class="secondary" disabled>Resume</button> <button id="pause" class="secondary" disabled>Pause</button></div>
+<p id="status" role="status">Ready.</p><progress class="segment-meter" id="progress" max="1800" value="0"></progress><p id="saved" class="hint"></p>
+<ul class="hint">
+<li>Keep this tab open while training. To stop for now, click Pause and wait for confirmation before closing the tab.</li>
+<li>Progress is saved in this browser. Download a checkpoint if you want to keep a backup or resume on another computer.</li>
+<li>The trainer uses the first 20 seconds of each recording to train, and the last 10 seconds to check how well the capture matches.</li>
+</ul>
+<nav class="downloads"><button id="record" class="secondary" disabled>Download capture (.lttc)</button> <button id="model" class="secondary" disabled>Download model (JSON)</button> <button id="checkpoint" class="secondary" disabled>Download checkpoint</button> <a id="compare" hidden>Live comparison →</a></nav>
+<details><summary>Report and storage</summary><pre id="report">No completed fit.</pre><button id="persist" class="secondary">Request persistent storage</button> <button id="storage" class="secondary">Check storage</button><pre id="storage-json"></pre><label>Restore a checkpoint file<input id="restore" type="file" accept=".json"></label><label>Or paste it<textarea id="restore-text" rows="3"></textarea></label><button id="restore-paste" class="secondary">Restore pasted checkpoint</button><button id="compare-reference" class="secondary" disabled>Compare saved Peavey baseline</button><pre id="reference-report"></pre></details>
+<details><summary id="backup">Raw data</summary><pre id="package-json"></pre><pre id="checkpoint-json"></pre><pre id="model-json"></pre><pre id="record-json"></pre></details></section>
+<section class="panel" id="send-pedal"><h2>Send to pedal</h2></section>
+<footer><ul class="hint"><li>The loss score measures how closely the LTTC and NAM match in tone. Lower is closer.</li><li><a href="THIRD_PARTY.md">Third-party notices</a></li></ul></footer></main></body></html>

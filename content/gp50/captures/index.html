@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Captures · Peppercorn</title>
+<link rel="stylesheet" href="../site.css">
+<style>
+  .utility td a[download] { overflow-wrap: anywhere }
+  .utility .row-source { font-size: .875rem }
+</style>
+</head>
+<body class="utility">
+<header class="site-header">
+  <a class="site-brand" href="../">Peppercorn</a>
+  <nav class="site-nav" aria-label="Main"><a href="../#tools">All tools</a><a href="../trainer/">Trainer</a></nav>
+</header>
+<main>
+<h1>Captures</h1>
+<p><a class="button primary" href="../editor/#library">Open capture collection in editor</a></p>
+<ul class="lede">
+  <li>Here’s a selection of LTTC captures trained from TONE3000 NAM captures.</li>
+  <li>These require the <a href="../installer/">Peppercorn firmware</a> to run on the GP-50.</li>
+</ul>
+<div class="panel table-wrap"><table aria-label="Available LTTC captures">
+  <thead><tr><th scope="col">Capture</th><th scope="col">Original (author)</th><th scope="col">Get capture</th></tr></thead>
+  <tbody id="rows"></tbody>
+</table></div>
+<p id="catalog-status" role="status"></p>
+<section class="fine" aria-label="Capture credits"><ul>
+  <li>The T3K license allows you to share results from using a NAM capture. The original NAM file requires permission from its author to redistribute.</li>
+  <li>Brand and model names belong to their owners; no affiliation</li>
+</ul></section>
+</main>
+<script type="module">
+const rows = document.getElementById('rows');
+try {
+  const response = await fetch('captures.json');
+  if (!response.ok) throw new Error('Could not load the capture catalog.');
+  for (const c of (await response.json()).captures) {
+    const tr = document.createElement('tr');
+    const cell = (...nodes) => {
+      const td = document.createElement('td');
+      td.append(...nodes);
+      tr.append(td);
+      return td;
+    };
+    const src = Object.assign(document.createElement('a'), { href: c.source, textContent: 'TONE3000', rel: 'noopener' });
+    const dl = Object.assign(document.createElement('a'), { href: c.file, download: c.name + '.lttc', textContent: 'Download .lttc' });
+    const open = Object.assign(document.createElement('a'), { href: '../editor/?capture=' + encodeURIComponent(c.id) + '#library', textContent: 'Open in editor' });
+    cell(c.title);
+    cell(src, ` (${c.author})`).className = 'row-source';
+    cell(open, document.createElement('br'), dl);
+    rows.append(tr);
+  }
+} catch (error) {
+  document.getElementById('catalog-status').textContent = error.message;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A browser editor for the Valeton GP-50. Build a signal chain, edit presets and manage tone captures.">
+<title>Editor · Peppercorn</title><link rel="stylesheet" href="../site.css"><link rel="stylesheet" href="editor.css"><script type="module" src="editor.mjs"></script>
+</head>
+<body class="instrument">
+<a class="skip" href="#workspace">Skip to editor</a>
+<header class="masthead"><a class="site-brand" href="../">Peppercorn</a>
+<nav aria-label="Main"><a href="#workspace">Editor</a><a href="#library">Captures</a><a href="#help">Guide</a>
+</nav>
+<div class="connection"><span id="connection-state">Offline</span><button id="connect" class="primary">Connect pedal</button><button id="disconnect" hidden>Disconnect</button>
+</div>
+</header>
+<main>
+<section class="intro">
+<div>
+<h1>GP-50 editor</h1>
+<p>Edit presets, reorder effects and manage tone captures over USB.</p>
+</div>
+<aside class="intro-note"><strong id="mode-label">Not connected</strong>
+<p id="mode-note">Connect by USB with Valeton Suite closed, or try the demo without a pedal.</p><a id="demo-link" href="?demo">Explore the demo</a>
+</aside>
+</section>
+<p id="status" role="status" aria-live="polite">Loading effect catalog…</p>
+<section id="live-audio" class="panel live-audio" hidden>
+<div class="panel-heading"><h2>Live guitar</h2></div>
+<div class="live-controls">
+<label>Audio input <select id="live-device"><option value="">Default audio input</option></select></label>
+<label>Channel <select id="live-channel"><option value="0">1 / Left</option><option value="1">2 / Right</option></select></label>
+<label>Monitor level <input id="live-volume" type="range" min="0" max="100" value="15"></label>
+<label>Stock V1.1.0 firmware for LTTC playback <input id="live-stock" type="file" accept=".bin"></label>
+<div class="actions"><button id="live-start" class="primary" type="button">Start live input</button><button id="live-stop" type="button" disabled>Stop</button></div>
+</div>
+<p id="live-status" class="small" role="status">Connect your guitar through an audio interface, use headphones, then allow audio input when prompted.</p>
+<p id="live-chain-status" class="small muted"></p>
+</section>
+<div class="desk" id="workspace">
+<aside class="presets panel">
+<div class="panel-heading">
+<h2>Presets <span id="preset-count">100</span></h2>
+<div class="actions">
+<button id="open-import" class="icon" title="Import a preset (.prst)" aria-label="Import a preset (.prst)">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+<path d="M12 3v12m-4-4 4 4 4-4M4 15v6h16v-6"/>
+</svg>
+</button>
+<input id="import-preset" type="file" accept=".prst" hidden><button id="refresh" class="icon" title="Refresh from pedal" aria-label="Refresh from pedal">↻</button>
+</div>
+</div>
+<output id="import-info" class="small"></output>
+<label class="search"><span>Find a preset</span>
+<input id="preset-search" type="search" placeholder="Name or slot…">
+</label>
+<ol id="preset-list" class="preset-list" aria-label="Presets">
+</ol>
+<p class="muted small">Preset slots run from 00 to 99.</p>
+</aside>
+<div class="workspace-main">
+<section class="panel patch">
+<div class="patch-heading">
+<div>
+<p class="eyebrow">PRESET <span id="dirty">· SYNCED</span>
+</p>
+<h2><span id="slot-number">—</span> <span id="patch-name">Connect to begin</span>
+</h2>
+</div>
+<div class="actions"><button id="export-preset">Export .prst</button><button id="open-save" class="primary">Save as…</button>
+</div>
+</div>
+<div class="chain-caption"><span>SIGNAL CHAIN <small>INPUT → OUTPUT</small></span><span id="chain-hint">Click to edit · Double-click to turn on/off</span>
+</div>
+<div id="chain" class="chain patch-strip" aria-label="Signal chain">
+</div>
+<details class="chain-order"><summary>Arrange signal chain</summary>
+<p class="muted">Move the five free blocks around the fixed DST → N→S → AMP → CAB → EQ core.</p>
+<div id="order-controls">
+</div>
+</details>
+</section>
+<section class="panel block-editor">
+<div class="panel-heading">
+<div>
+<p class="eyebrow" id="block-category">BLOCK DETAIL</p>
+<h2 id="effect-name">No block selected</h2>
+</div>
+<button type="button" id="assign-block">Assign footswitch…</button>
+<label class="switch-key">
+<input id="block-enabled" type="checkbox"> Block enabled</label>
+</div>
+<div class="block-model">
+<label class="model-label">Model <select id="model"></select></label>
+<a id="choose-capture" href="#library" hidden>Choose a capture ↓</a>
+</div>
+<div id="parameters" class="parameters">
+<p class="muted">The controls for your selected block appear here.</p>
+</div>
+<p class="muted small" id="write-note">Live controls send individual commands to the pedal.</p>
+</section>
+<div class="bottom-row">
+<section class="panel load-panel">
+<div class="panel-heading">
+<h2>CPU load</h2><button id="read-load">Read load</button>
+</div>
+<p class="small muted">Requires Peppercorn firmware.</p>
+<label>ARM <meter class="segment-meter" id="arm-load" min="0" max="1" low=".8" high=".95" optimum=".3" value="0"></meter>
+<output id="arm-value">—</output>
+</label>
+<label>DSP <meter class="segment-meter" id="dsp-load" min="0" max="1" low=".8" high=".95" optimum=".3" value="0"></meter>
+<output id="dsp-value">—</output>
+</label>
+</section>
+</div>
+</div>
+</div>
+<section id="library" class="library-section" tabindex="-1">
+<div class="section-heading"><h2>LTTC captures</h2></div>
+<div class="library-grid">
+<section class="panel">
+<div class="panel-heading"><h3>LTTC collection</h3><button id="add-capture" type="button">Add LTTC files…</button></div>
+<input id="record-file" type="file" accept=".lttc,.gpts,.gptc,.bin" multiple hidden>
+<label>Capture <select id="collection-item" aria-describedby="record-info"></select></label>
+<p id="record-info" class="small muted">Loading the bundled captures…</p>
+<form id="upload-form" class="capture-transfer">
+<div id="upload-fields">
+<div class="capture-transfer-fields">
+<label>Destination slot <select id="copy-slot" aria-describedby="copy-info"></select></label>
+<label>After loading <select id="capture-target"><option value="9">Use in N→S</option><option value="2">Use in DST</option><option value="">Store only</option></select></label>
+</div>
+<p id="copy-info" class="small muted"></p>
+<label id="replace-label" class="filter" hidden><input id="replace-tone" type="checkbox"> Replace the capture in this slot</label>
+<button id="upload-tone" class="primary" type="submit">Load capture</button>
+<progress class="segment-meter" id="upload-progress" max="146" value="0" aria-label="Capture upload" hidden></progress>
+</div>
+</form>
+<div class="actions">
+<a href="../trainer/" target="_blank" rel="noopener">Train from a NAM file (new tab)</a><a href="../captures/">Downloads and credits</a>
+<button id="remove-capture" type="button" hidden>Remove from collection</button>
+</div>
+</section>
+<section class="panel capture-bank">
+<div class="panel-heading"><h3 id="bank-heading">Pedal slots</h3><button id="refresh-tones" type="button">Read slots</button></div>
+<label>Stored slot <select id="tone-slot" aria-describedby="tone-info"></select></label>
+<p id="tone-info" class="muted small">Connect your pedal to see its slots.</p>
+<div class="actions"><button id="use-tone" type="button">Use in N→S</button><button id="use-dst" type="button">Use in DST</button><button id="delete-tone" class="danger" type="button">Delete…</button></div>
+<details id="ir-bank"><summary>Cabinet IRs</summary>
+<button id="read-irs" type="button">Read IR bank</button>
+<label>IR <select id="ir-slot"></select></label><button id="use-ir" type="button">Use in CAB</button>
+</details>
+</section>
+</div>
+<p id="capture-status" class="small" role="status"></p>
+</section>
+<section id="help" class="help panel">
+<h2>Help</h2>
+<div class="help-columns">
+<details open><summary>Connect & edit</summary>
+<ul>
+<li>Close Valeton Suite</li>
+<li>Connect by USB, click Connect pedal and allow MIDI access, including SysEx.</li>
+<li>Connecting reads the current settings and preset names.</li>
+<li>Edits take effect on the pedal as you make them. Export a backup before editing.</li>
+</ul>
+</details>
+<details open><summary>Browsers</summary>
+<ul>
+<li>Use the demo and work with preset files without a USB connection.</li>
+<li>Connect over USB in Chrome, Edge or desktop Firefox.</li>
+</ul>
+</details>
+<details><summary>Save & recover</summary>
+<ul>
+<li>Export a .prst backup before overwriting a preset.</li>
+<li>If the pedal stops responding, the editor disconnects. Check the pedal and reconnect.</li>
+<li>Use the <a href="../installer/">firmware installer</a> to prepare an update.</li>
+<li>LTTC playback and CPU load readings require Peppercorn firmware.</li>
+<li>Click Refresh to read the current settings from the pedal.</li>
+</ul>
+</details>
+</div>
+</section>
+</main>
+<footer><span>Unofficial · not affiliated with Valeton · <a href="../THIRD_PARTY.md">credits & MIT notice</a></span>
+</footer>
+<dialog id="save-dialog">
+<form id="save-form">
+<h2>Save a preset</h2>
+<p id="save-source" class="muted">
+</p>
+<label>Name <input id="save-name" maxlength="10" pattern="[ -~]{1,10}" required>
+</label>
+<label>Destination <select id="save-slot">
+</select>
+</label>
+<p class="small">This replaces the destination preset with the current sound, including chain order and block settings.</p>
+<label class="filter">
+<input id="save-confirm" type="checkbox" required> I want to replace this destination.</label>
+<div class="actions"><button type="button" id="cancel-save">Cancel</button><button class="primary" id="commit-save">Save preset</button>
+</div>
+</form>
+</dialog>
+<dialog id="delete-dialog">
+<form method="dialog">
+<h2>Delete this capture?</h2>
+<p id="delete-description">
+</p>
+<p>This removes the user record from the pedal.</p>
+<div class="actions"><button value="cancel">Cancel</button><button value="delete" class="danger">Delete record</button>
+</div>
+</form>
+</dialog>
+<dialog id="assignment-dialog" aria-labelledby="assignment-title">
+<h2 id="assignment-title">Controller assignment</h2>
+<p id="assignment-info"></p>
+<div id="assignment-actions" class="actions"></div>
+<p class="muted small" id="assignment-note"></p>
+<form method="dialog"><button>Close</button></form>
+</dialog>
+</body></html>

@@ -1,0 +1,19 @@
+{
+ "schema": 1,
+ "releases": [
+  {
+   "patch": "patches/mod174_a110i.json",
+   "version": "A1.1.0i",
+   "title": "Peppercorn v0.1.0",
+   "notes": [
+    "Run LTTC captures in N→S or in the new DST Capture effect, which has its own gain, volume and three-band EQ.",
+    "Assign an effect parameter to a home-screen knob or use a footswitch to switch it between two values. Assignments are saved per preset.",
+    "Auto Engage turns an effect on when you move the expression pedal, with an adjustable delay before it turns off at heel-down.",
+    "Live gain-reduction meters when editing Gate, COMP and COMP4 on the pedal.",
+    "New Auto Swell and Cloud Verb effects, plus better tuning accuracy for Pitch, Octa and Detune.",
+    "See estimated and measured load in Global Settings. CPU FULL appears if turning on an effect would overload the pedal.",
+    "Custom boot animation"
+   ]
+  }
+ ]
+}

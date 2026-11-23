@@ -1,0 +1,116 @@
+{
+ "schema": 1,
+ "format": "LTTC (GPTC v2)",
+ "captures": [
+  {
+   "id": "rat",
+   "file": "files/rat.lttc",
+   "name": "RAT",
+   "title": "ProCo RAT",
+   "author": "hk",
+   "source": "https://www.tone3000.com/tones/proco-rat-26704",
+   "license": "T3K",
+   "bytes": 2696,
+   "sha256": "fca5f6af590e70ca610c77da4c1e5ffd3f1831a1391d163855749f091f1db3cf"
+  },
+  {
+   "id": "morning_glory",
+   "file": "files/morning_glory.lttc",
+   "name": "MGLORY",
+   "title": "JHS Morning Glory V4, Crunch",
+   "author": "autoguitarrig",
+   "source": "https://www.tone3000.com/tones/jhs-morning-glory-v4-89713",
+   "license": "T3K",
+   "bytes": 2696,
+   "sha256": "3e5deb5aecee3ecf86c27514358e1f2e3c4890306fbfbca916b9f258c86b559c"
+  },
+  {
+   "id": "klon",
+   "file": "files/klon.lttc",
+   "name": "KLON",
+   "title": "Klon, gain 5",
+   "author": "frank67",
+   "source": "https://www.tone3000.com/tones/klon-102029",
+   "license": "T3K",
+   "bytes": 2696,
+   "sha256": "b6f9aac96fa76ed39daf4ab659f6f54832a6fdd4fee05ad417694e01acca2f57"
+  },
+  {
+   "id": "friedman",
+   "file": "files/friedman.lttc",
+   "name": "BEOD",
+   "title": "Friedman BE-OD, 40%",
+   "author": "mick8187",
+   "source": "https://www.tone3000.com/tones/friedman-beod-87886",
+   "license": "T3K",
+   "bytes": 2696,
+   "sha256": "c9268a9644f3e7bb287435ed7851874e41f04702929b122027aaade03a7feae4"
+  },
+  {
+   "id": "marshall",
+   "file": "files/marshall.lttc",
+   "name": "MARSHL",
+   "title": "1968 Marshall Super Lead, Drive",
+   "author": "AmalgamAudio",
+   "source": "https://www.tone3000.com/tones/1968-marshall-super-lead-12-000-series-drive-a2-72145",
+   "license": "T3K",
+   "bytes": 2696,
+   "sha256": "145921b8ff69ed65713fe9f09a2e7c9cba491e69110705482fc6835d26a1c0b5"
+  },
+  {
+   "id": "orange",
+   "file": "files/orange.lttc",
+   "name": "ORANGE",
+   "title": "Orange Rockerverb 100 MKIII, Crunch (preamp)",
+   "author": "autoguitarrig",
+   "source": "https://www.tone3000.com/tones/orange-rockerverb-100-mkiii--90175",
+   "license": "T3K",
+   "bytes": 2696,
+   "sha256": "950e6c5848cefa79bcf84880fc17014cbb54a881b2022c3f64ba57beca0ad7aa"
+  },
+  {
+   "id": "jc120",
+   "file": "files/jc120.lttc",
+   "name": "JC120",
+   "title": "Roland JC-120B, bright on",
+   "author": "TONE3000",
+   "source": "https://www.tone3000.com/tones/roland-jc-120b-jazz-chorus-10912",
+   "license": "T3K",
+   "bytes": 2696,
+   "sha256": "3c6076dd448393c83b18e2befcea79b2eb783d3e75bc3b169f272e1abb8498e2"
+  },
+  {
+   "id": "vox",
+   "file": "files/vox.lttc",
+   "name": "VOX",
+   "title": "1964 VOX AC30 Top Boost, edge of breakup",
+   "author": "AmalgamAudio",
+   "source": "https://www.tone3000.com/tones/1964-vox-ac30-top-boost-super-twin-edge-of-breakup-a2-82521",
+   "license": "T3K",
+   "bytes": 2696,
+   "sha256": "2394f2b29454cd62a3d2e8967511fc7b191a215558bcaa16cdb52e829a382213"
+  },
+  {
+   "id": "fender",
+   "file": "files/fender.lttc",
+   "name": "FENDER",
+   "title": "Fender Deluxe Reverb Reissue, Iconic Clean",
+   "author": "AmalgamAudio",
+   "source": "https://www.tone3000.com/tones/fender-deluxe-reverb-reissue-iconic-clean-a2-69174",
+   "license": "T3K",
+   "bytes": 2696,
+   "sha256": "f6fb93facbb6fa83ac8ca225d115cb3940520fd585529f3d6a68567a28fff94c"
+  },
+  {
+   "id": "matchless",
+   "file": "files/matchless.lttc",
+   "name": "MATCH",
+   "title": "1997 Match Brave 2x12, Hi",
+   "author": "Tone Junkie",
+   "source": "https://www.tone3000.com/tones/tj-match-brave-2x12-80592",
+   "license": "T3K",
+   "bytes": 2696,
+   "sha256": "48320713cf4bb302503eac58a93771707458c74a8726390bd355b73003843055"
+  }
+ ]
+}

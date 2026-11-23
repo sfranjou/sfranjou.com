@@ -1,0 +1,53 @@
+{
+ "rate": 48000,
+ "provided_di": [
+  {
+   "file": "di0.f32",
+   "name": "PRS finger",
+   "samples": 1411200,
+   "source_sha256": "e4b7e6b7a87841d2a42b94cfea86336bdcbf5d696d45ed0e0131809f81c67777"
+  },
+  {
+   "file": "di1.f32",
+   "name": "PRS pick",
+   "samples": 1411200,
+   "source_sha256": "30d6d8cb8fe8e0fcd3758637eee5efca8d5948b95b4ef176f6ce020b53d5f92e"
+  },
+  {
+   "file": "di2.f32",
+   "name": "JSM10 pick",
+   "samples": 1411200,
+   "source_sha256": "5b73b5d94e79743572d60e1bfa17fea41b39bd06b19bcbf1f5ff9fcdc90b80a4"
+  }
+ ],
+ "provided_di_flac": [
+  {
+   "file": "di0.flac",
+   "name": "PRS finger",
+   "samples": 1411200,
+   "scale": 0.17477455139160156,
+   "sha256": "1995098278ee55b55f15f53d657095d3860f2ceafcf2506884341401a11f7444",
+   "decoded_sha256": "7449d8460d81f4d112a9cbe23b64b450bf67bcdfadb7f4900f286708f77a3114",
+   "error_dbfs_of_peak": -100.90726274408118
+  },
+  {
+   "file": "di1.flac",
+   "name": "PRS pick",
+   "samples": 1411200,
+   "scale": 0.3564628601074219,
+   "sha256": "ad17ca23f9c7882a989aec765efcdcf948b7d2c984b6609056ac09ecf67ddd64",
+   "decoded_sha256": "880b1f483eebc9d1aa628b6bf68346506bef5ce83817a34da3f0f680ad432267",
+   "error_dbfs_of_peak": -100.94163807878552
+  },
+  {
+   "file": "di2.flac",
+   "name": "JSM10 pick",
+   "samples": 1411200,
+   "scale": 0.07025894927978515,
+   "sha256": "4cf4331a4ee4bdede1e44bd55f6a0cfaacdc5a72607e8944516673e257f65e35",
+   "decoded_sha256": "ccbb20f9e444a1300c75b3d2475acee97cea2d7f5cfa14a7af92fafc3beb65d1",
+   "error_dbfs_of_peak": -101.01847543468473
+  }
+ ],
+ "provided_di_base": "https://lttc-data.sfranjou.workers.dev/trainer/v1/"
+}

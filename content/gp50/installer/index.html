@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installer · Peppercorn</title>
+<link rel="stylesheet" href="../site.css">
+<style>
+  .utility main { max-width: 53rem }
+  .utility .panel ul, .utility .panel ol { margin: 0 }
+  .utility #notes, .utility .status { margin-top: .75rem }
+  #drop { width: 100% }
+</style>
+</head>
+<body class="utility">
+<header class="site-header">
+  <a class="site-brand" href="../">Peppercorn</a>
+  <nav class="site-nav" aria-label="Main"><a href="../#tools">All tools</a><a href="../#recovery">Recovery</a></nav>
+</header>
+<main>
+  <h1>Firmware installer</h1>
+  <ul class="sub">
+    <li>Unofficial firmware for the Valeton GP-50</li>
+    <li>Build the modified firmware in your browser using your official GP-50 V1.1.0 file.</li>
+    <li>Your file stays on your computer.</li>
+  </ul>
+
+  <section class="panel">
+    <h2>1. Release</h2>
+    <select id="release" aria-label="Release"></select>
+    <ul id="notes"></ul>
+  </section>
+
+  <section id="stock-firmware" class="panel">
+    <h2>2. Your stock firmware</h2>
+    <ul><li>Download the <a href="https://www.valeton.net/wpfd_file/gp-50-firmware-v1-1-0-zip%EF%BC%88compatible-with-computer-software-v2-1-0-and-mobile-software-v2-1-0%EF%BC%89/">official GP-50 <strong>V1.1.0</strong> firmware from Valeton</a> and extract the <code>.bin</code> file.</li></ul>
+    <button class="file-pad" id="drop" type="button">Drop <code>Valeton GP-50 V1.1.0.bin</code> here, or click to choose it</button>
+    <input id="file" type="file" accept=".bin" hidden>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <button id="save" class="primary" disabled>Download modified firmware</button>
+    <p id="download-privacy" class="fine" hidden>Downloading sends the release version to Supabase to count download attempts. Your firmware file stays on your computer.</p>
+  </section>
+
+  <section class="panel">
+    <h2>3. Install with Valeton Suite</h2>
+    <ol>
+      <li>Connect the pedal, open Valeton Suite and select the downloaded file in Firmware Update.</li>
+      <li>Keep the pedal connected until the update finishes.</li>
+      <li>After the update, check the pedal’s Version screen. For v0.1.0, it should show A1.1.0i.</li>
+    </ol>
+    <p class="fine">If the GP-50 freezes or won’t start, see <a href="../#recovery">troubleshooting and recovery</a>.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Please read</h2>
+    <ul class="fine">
+      <li>This project is independent and is not affiliated with, endorsed by, or supported by Valeton.</li>
+      <li>Installing modified firmware is at your own risk and may void your warranty.</li>
+      <li>You need your own copy of the official firmware to build the mod.</li>
+      <li>The finished file contains Valeton’s firmware with our changes. Please keep it for your own use.</li>
+    </ul>
+  </section>
+</main>
+<script type="module">
+import {patchFirmware} from './patcher.mjs';
+
+const $ = id => document.getElementById(id);
+const status = (text, cls = '') => { $('status').textContent = text; $('status').className = 'status ' + cls; };
+const countDownloads = location.origin === 'https://sfranjou.com';
+$('download-privacy').hidden = !countDownloads;
+let releases = [], built = null;
+
+async function load() {
+  releases = (await (await fetch('releases.json')).json()).releases;
+  $('release').innerHTML = releases.map((r, i) => `<option value="${i}">${r.version}: ${r.title}</option>`).join('');
+  showNotes();
+}
+function showNotes() {
+  const r = releases[$('release').value];
+  $('notes').innerHTML = r.notes.map(n => `<li>${n}</li>`).join('');
+  built = null; $('save').disabled = true; status('');
+}
+async function build(file) {
+  built = null; $('save').disabled = true;
+  try {
+    const release = releases[$('release').value];
+    const patch = await (await fetch(release.patch)).json();
+    const image = await patchFirmware(new Uint8Array(await file.arrayBuffer()), patch, s => status(s + '…'));
+    built = {image, version: release.version, name: `GP-50_V1.1.0_mod_${release.version}.bin`};
+    $('save').disabled = false;
+    status(`Ready: ${release.version}, verified against the reviewed build (SHA-256 ${patch.image_sha256.slice(0, 12)}…).`, 'ok');
+  } catch (e) {
+    status(e.message, 'bad');
+  }
+}
+$('release').onchange = showNotes;
+$('drop').onclick = () => $('file').click();
+$('file').onchange = () => $('file').files[0] && build($('file').files[0]);
+$('drop').ondragover = e => { e.preventDefault(); $('drop').classList.add('over'); };
+$('drop').ondragleave = () => $('drop').classList.remove('over');
+$('drop').ondrop = e => { e.preventDefault(); $('drop').classList.remove('over'); e.dataTransfer.files[0] && build(e.dataTransfer.files[0]); };
+$('save').onclick = () => {
+  const url = URL.createObjectURL(new Blob([built.image], {type: 'application/octet-stream'}));
+  Object.assign(document.createElement('a'), {href: url, download: built.name}).click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  if (countDownloads) {
+    fetch('https://awytykefvjohmlkjnkps.supabase.co/rest/v1/rpc/count_peppercorn_download', {
+      method: 'POST',
+      headers: {
+        apikey: 'sb_publishable_3UYdDqK0tzZ792tVHhS7ag_3pB6WnTz',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({release_version: built.version}),
+      credentials: 'omit',
+      referrerPolicy: 'no-referrer',
+      keepalive: true,
+    }).catch(() => {});
+  }
+};
+window.gp50Installer = {build, get built() { return built; }};   // used by the automated page check
+load().catch(e => status('Could not load the release list: ' + e.message, 'bad'));
+</script>
+<p class="license" style="font-size:0.8em;opacity:0.75">This installer is free software under the GNU GPL v2
+(it includes miniLZO). License and complete source: <a href="LICENSE.md">LICENSE.md</a>,
+<a href="../lzo/src/minilzo.c">minilzo.c</a>, <a href="../lzo/build.sh">build.sh</a>.</p>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "core": {
+    "url": "https://codeload.github.com/sdatkinson/NeuralAmpModelerCore/tar.gz/1f42f88535884450104b8711d7595019afa0495b",
+    "sha256": "ac10cdabb0a7408e660d5cc403d1260c966bc839b5b5bb71511b663ca6e4a0cf",
+    "bytes": 794185,
+    "files": 126
+  },
+  "core/Dependencies/eigen": {
+    "url": "https://gitlab.com/libeigen/eigen/-/archive/bc3b39870ecb690a623a3f49149a358b95c5781d/eigen-bc3b39870ecb690a623a3f49149a358b95c5781d.tar.gz",
+    "sha256": "5f6557d1aca6e959a4b955c55f2935261fd30de59c0c79e35bc6d5cbe1de22d1",
+    "bytes": 2969440,
+    "files": 1913
+  },
+  "core/Dependencies/AudioDSPTools": {
+    "url": "https://codeload.github.com/sdatkinson/AudioDSPTools/tar.gz/0827c6c2fc0deced568536142ea86f189e0b98a1",
+    "sha256": "2557d2ee58481b1bafa63e528b9c6f2b2ae67adb2f55e2c1d13c90ea99b420d5",
+    "bytes": 168729,
+    "files": 30
+  }
+}

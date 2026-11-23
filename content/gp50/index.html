@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Peppercorn</title>
+<meta name="description" content="Unofficial GP-50 firmware mod, a browser preset editor, and tools for LTTC captures.">
+<link rel="stylesheet" href="site.css">
+<style>
+  main { width: min(100%, 86rem); margin: auto; padding: 0 var(--gutter) 3rem }
+  .hero { padding-block: clamp(2.5rem, 6vw, 5rem) }
+  .hero h1 { margin: .45rem 0 .9rem; font: 800 clamp(2.9rem, 7.4vw, 7.4rem)/.93 var(--sans); letter-spacing: -.065em }
+  .hero p { max-width: 29rem; margin: 0 0 .8rem; color: var(--muted) }
+  .hero .release { color: var(--green); font: .875rem var(--mono) }
+  .hero .lede { color: var(--ink); font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.35 }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.5rem }
+  .home-section { border-top: 2px solid var(--edge); padding: 1.6rem 0 2.5rem }
+  .home-section h2 { margin: 0 0 1.15rem; font: 750 clamp(1.65rem, 4.2vw, 2.8rem)/1.1 var(--sans); letter-spacing: -.06em }
+  .tools { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line) }
+  .tool {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, 1fr) 3fr;
+    align-items: baseline;
+    gap: .3rem 1.1rem;
+    padding: .8rem .35rem;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .tool strong { font: 700 .9375rem var(--mono); text-decoration: underline; text-underline-offset: .2em }
+  .tool:hover { background: var(--surface); color: var(--accent) }
+  .tool span { color: var(--muted); font-size: .9375rem }
+  .features { columns: 2 19rem; column-gap: 3rem; margin: 0; padding-left: 1.25rem }
+  .features > li { break-inside: avoid; margin-bottom: .85rem }
+  .prose { max-width: 53rem }
+  .prose h3 { margin: 1.2rem 0 .45rem; font-size: 1.05rem }
+  .prose p { margin: .65rem 0 }
+  footer { color: var(--muted); border-top: 1px solid var(--line); padding-top: 1rem; font-size: .875rem }
+  @media (max-width: 450px) { .tool { grid-template-columns: 1fr } }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-brand" href="./" aria-current="page">Peppercorn</a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="#tools">Tools</a>
+    <a href="#features">Firmware</a>
+    <a href="#recovery">Recovery</a>
+  </nav>
+</header>
+<main>
+<section class="hero" aria-labelledby="title">
+  <div>
+    <p class="release">v0.1.0</p>
+    <h1 id="title">Peppercorn</h1>
+    <p class="lede">Unofficial firmware mod and web tools for the Valeton GP-50.</p>
+    <p>Build the modified firmware in your browser using your copy of Valeton’s V1.1.0 file.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="installer/">Open installer</a>
+      <a class="button" href="editor/?demo">Try the editor demo</a>
+      <a class="button" href="https://github.com/sfranjou/Peppercorn">View on GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="home-section" id="tools">
+  <h2>Web tools</h2>
+  <ul class="tools">
+    <li><a class="tool" href="installer/"><strong>Installer</strong><span>Build the modified firmware from your official V1.1.0 file</span></a></li>
+    <li><a class="tool" href="editor/"><strong>Editor</strong><span>Edit presets and effect chains over USB</span></a></li>
+    <li><a class="tool" href="captures/"><strong>Captures</strong><span>Browse 10 ready-made LTTC captures with source credits</span></a></li>
+    <li><a class="tool" href="trainer/"><strong>Trainer</strong><span>Convert a NAM A2 Full file to an LTTC capture in your browser</span></a></li>
+    <li><a class="tool" href="uploader/"><strong>Uploader</strong><span>Send a capture to a user slot on your pedal</span></a></li>
+  </ul>
+</section>
+
+<section class="home-section" id="features">
+<h2>New on the pedal</h2>
+<ul class="features">
+  <li>LTTC captures (Lean Twin Trained Clippers)</li>
+  <li>LTTC capture and IR together, or two LTTC captures</li>
+  <li>New parameter assignment menu</li>
+  <li>Expression pedal Auto Engage</li>
+  <li>Gain-reduction meters</li>
+  <li>New CPU panel in Global settings</li>
+  <li>New effects — Auto Swell and Cloud Verb</li>
+</ul>
+<p><a href="RELEASE_NOTES.md">Read the full release notes</a></p>
+</section>
+
+<section id="recovery" class="home-section prose">
+<h2>Troubleshooting and recovery</h2>
+<h3>What if my GP-50 freezes?</h3>
+<p>Hold <strong>SAVE + EXIT + GLOBAL</strong> together for more than two seconds to force it off.
+Then hold <strong>SAVE + GLOBAL</strong> to turn it back on. Unsaved changes may be lost.
+Keep power and USB connected while a firmware update is in progress.</p>
+<h3>What if it still won’t boot?</h3>
+<ol>
+  <li>With the GP-50 off, hold <strong>both footswitches (A and B)</strong> and press and hold the <strong>PARA knob</strong>.</li>
+  <li>Connect the 9V power supply while holding all three. Release them when <strong>Firmware Update/Restore</strong> appears.</li>
+  <li>Connect the pedal by USB and use desktop Valeton Suite’s Firmware Update to install the
+    <a href="installer/#stock-firmware">official GP-50 V1.1.0 file</a>. Keep the pedal connected until the update finishes.</li>
+</ol>
+<p>If the pedal starts normally and you just want to return to stock, install the same official file in Valeton Suite from normal mode.</p>
+</section>
+
+<section class="home-section prose">
+<h2>Disclaimer</h2>
+<p>This project is independent and is not affiliated with, endorsed by, or supported by Valeton or its parent company.
+The software is provided “as is”, without warranty of any kind. Installing modified firmware is at your own risk; it may
+void your warranty and could make the pedal unusable. The authors are not liable for any damage or loss. Keep a copy of
+the official V1.1.0 firmware so you can return to it. All product names and trademarks belong to their owners.</p>
+</section>
+
+<footer>Close Valeton Suite before connecting over USB. MIT, installer GPL-2.0.
+<a href="LICENSING.md">licensing</a>, <a href="THIRD_PARTY.md">credits</a></footer>
+</main>
+</body>
+</html>

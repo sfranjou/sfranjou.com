@@ -124,7 +124,7 @@ export function parseNotification(msg) {
 // ---- our firmware's own commands (MOD056 N1.1.0d+; analysis/firmware/OWN_HOST_COMMANDS.md). Stock firmware and our
 // images before MOD056 do not answer the reads (use Pedal.identity(), which tolerates silence) and ACK the set with 0
 // without doing anything. Firmware side model-tested (scripts/test_nds_own_commands.py); hardware qualification pending.
-export const FEATURES = { load: 0, gptc: 1, knobAssign: 2, footswitchAssign: 3, userPrograms: 4, gpts: 9, twoCurveOnly: 13 };   // `12 70` feature bits
+export const FEATURES = { load: 0, gptc: 1, knobAssign: 2, footswitchAssign: 3, userPrograms: 4, gpts: 9, twoCurveOnly: 13, enableConstraints: 14 };   // `12 70` feature bits
 export const readIdentity = () => u8(0x12, 0x70);
 export const readAssignments = () => u8(0x12, 0x71);
 /** 11 71: assign Stomp knob dest 0..2 (3..4 = footswitches, reserved) to block group 0..9, parameter (slot) 0..7;
@@ -172,3 +172,12 @@ export function setFootswitchMasks(masks) {
 
 // Pending firmware integration; require identity feature bit 5 before sending.
 export { readTapTempo, setTapInterval, parseTapTempo } from "./tap.mjs";
+
+// Version 1: one reason per block (0 = allowed, 1 = CPU FULL,
+ // 2 = CAB must be off, 3 = N→S must be on, 4 = N→S needs a user capture).
+export const readEnableConstraints = () => u8(0x12, 0x7e);
+export function parseEnableConstraints(msg) {
+  if (msg.length !== 13 || msg[0] !== 0x12 || msg[1] !== 0x7e || msg[2] !== 1 ||
+      msg.subarray(3).some(reason => reason > 4)) throw new Error('Invalid block enable constraints reply.');
+  return Array.from(msg.subarray(3));
+}

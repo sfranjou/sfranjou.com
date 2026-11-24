@@ -54,10 +54,10 @@ function updateControls() {
   $('chain').querySelectorAll('button').forEach(b=>b.disabled=busy||!c);
   $('order-controls').querySelectorAll('button').forEach(b=>b.disabled=busy||!e||b.dataset.edge==='true');
   $('preset-list').querySelectorAll('button').forEach(b=>b.disabled=busy||!c);
-  $('parameters').querySelectorAll('input,select').forEach(b=>b.disabled=busy||!e);
+  $('parameters').querySelectorAll('input,select,button').forEach(b=>b.disabled=busy||!e);
   updateCaptureControls(c, e);
   $('use-ir').disabled = busy || !e || !$('ir-slot').options.length;
-  $('assignment-actions').querySelectorAll('button').forEach(b=>b.disabled=busy||!e);
+  $('assignment-actions').querySelectorAll('button').forEach(b=>b.disabled=busy||!e||b.dataset.unavailable==='true');
   $('open-import').disabled = busy || !c; $('commit-save').disabled = busy;
 }
 // Native dialog is shared by mouse context-menu, keyboard ContextMenu/Shift+F10,
@@ -92,29 +92,79 @@ function describeAB(r) {
 function openParameterAssignment(g,p) {
   $('assignment-title').textContent=`Assign ${BLOCKS[g]} · ${p.name}`;
   $('assignment-actions').replaceChildren();
-  if(!abCapable()) {
-    $('assignment-info').textContent='Parameter footswitches need the custom firmware (N1.1.0K or later). On the pedal: edit page, hold DRUM, turn this parameter’s knob, press FS1 or FS2 (A = current value), set B, press the same switch again.';
-    $('assignment-note').textContent='';
-    $('assignment-dialog').showModal(); return;
+  if (!editable() || busy || !session.state) return;
+  const knobCapable = !!identity?.has.knobAssign;
+  const ab = abCapable();
+  const {slot} = session;
+  const model = session.state.models[g];
+  const e=catalog.describe(g,model), index=e.parameters.indexOf(p), now=session.state.params[g][p.storage];
+  const checkTarget = async () => {
+    session.writable();
+    if (session.slot !== slot || await session.pedal.slot() !== slot ||
+        (await session.pedal.state()).models[g] !== model)
+      throw new Error('The pedal changed presets or effects. Refresh and reopen assignments.');
+  };
+  const actions = $('assignment-actions');
+  $('assignment-info').textContent = knobCapable || ab
+    ? 'Choose a home-screen knob or an A/B footswitch. Save the preset to keep the assignment.'
+    : 'Parameter assignments require compatible Peppercorn firmware.';
+  $('assignment-note').textContent = knobCapable || ab ? 'Reading current assignments…' : '';
+  if (knobCapable) {
+    for (const dest of [0, 1, 2]) {
+      const control = button('Knob ' + (dest + 1), () => run(async () => {
+        await checkTarget();
+        if (control.dataset.assigned === 'true') await session.pedal.clearAssignment(dest);
+        else await session.pedal.setAssignment(dest, g, index);
+        session.dirty = true;
+        $('assignment-dialog').close();
+      }, 'Knob assignment updated and verified.'));
+      control.dataset.knob = dest;
+      actions.append(control);
+    }
   }
-  const e=catalog.describe(g,session.state.models[g]), index=e.parameters.indexOf(p), now=session.state.params[g][p.storage];
-  $('assignment-info').textContent='A footswitch toggles this parameter between A and B (any other value goes to A). SAVE the preset to keep it.';
-  $('assignment-note').textContent='Reading footswitch assignments…';
   const field=(label,value)=>{const l=document.createElement('label');l.textContent=label+' ';const i=document.createElement('input');i.type=isBinary(p)?'number':'number';i.min=p.min;i.max=p.max;i.step=p.step;i.value=value;l.append(i);return [l,i];};
+  if (ab) {
   const [la,ia]=field('A',now), [lb,ib]=field('B',isBinary(p)?(now===1?0:1):(now===p.max?p.min:p.max));
-  const actions=$('assignment-actions'); actions.append(la,lb);
+  actions.append(la,lb);
   for(const fs of [0,1]) actions.append(button(`Assign to FS${fs+1}`,()=>run(async()=>{
     if(!ia.checkValidity()||!ib.checkValidity()){ia.reportValidity();ib.reportValidity();return;}
+    await checkTarget();
     await session.assignFootswitchParameter(identity,fs,g,index,Number(ia.value),Number(ib.value));
     $('assignment-dialog').close();render();
   },`FS${fs+1} toggles ${p.name}. Save the preset to keep it.`)));
-  for(const fs of [0,1]) actions.append(button(`Clear FS${fs+1}`,()=>run(async()=>{await session.clearFootswitchParameter(identity,fs);$('assignment-dialog').close();render();},`FS${fs+1} parameter assignment cleared.`)));
-  actions.querySelectorAll('button').forEach(b=>b.disabled=busy||!editable());
+  for(const fs of [0,1]) actions.append(button(`Clear FS${fs+1}`,()=>run(async()=>{await checkTarget();await session.clearFootswitchParameter(identity,fs);$('assignment-dialog').close();render();},`FS${fs+1} parameter assignment cleared.`)));
+  }
   $('assignment-dialog').showModal();
-  run(async()=>{const r=await session.footswitchParameters(identity);
-    $('assignment-note').textContent=r.metadataFault?'Assignment data of this preset is damaged: clear it on the pedal (hold DRUM, press a footswitch).':
-      r.records.map((x,i)=>`FS${i+1}: ${describeAB(x)}${r.blockedMask&(1<<i)?' (blocked)':''}`).join(' · ');});
+  if (!knobCapable && !ab) return;
+  run(async () => {
+    const info = [];
+    if (knobCapable) {
+      const current = await session.pedal.assignments();
+      for (const btn of actions.querySelectorAll('[data-knob]')) {
+        const dest = Number(btn.dataset.knob);
+        const binding = current.find(record => record.dest === dest);
+        const matches = binding && binding.group === g && binding.id === model && binding.parameter === index;
+        btn.dataset.assigned = String(!!matches);
+        const target = binding && catalog.describe(binding.group, binding.id)?.parameters?.[binding.parameter]?.name;
+        btn.textContent = matches ? `Clear knob ${dest + 1}` : `${binding ? 'Replace' : 'Assign to'} knob ${dest + 1}`;
+        info.push(`Knob ${dest + 1}: ${binding ? BLOCKS[binding.group] + ' · ' + (target ?? 'parameter ' + (binding.parameter + 1)) : 'unassigned'}`);
+      }
+    }
+    if (ab) {
+      const r = await session.footswitchParameters(identity);
+      if (r.metadataFault) info.push('Footswitch assignment data is damaged. Clear it on the pedal.');
+      else info.push(...r.records.map((x,i)=>`FS${i+1}: ${describeAB(x)}${r.blockedMask&(1<<i)?' (blocked)':''}`));
+    }
+    $('assignment-note').textContent = info.join(' · ');
+  }, undefined, (message, error) => {
+    if (error) {
+      for (const button of actions.querySelectorAll('button')) button.dataset.unavailable = 'true';
+      $('assignment-note').textContent = message;
+    }
+    status(message, error);
+  });
 }
+
 function renderPresets() {
   const term = $('preset-search').value.toLowerCase();
   $('preset-list').replaceChildren();
@@ -128,6 +178,31 @@ function renderPresets() {
   $('preset-count').textContent = count;
 }
 function modelName(g,id) { if(g===9) return tones.find(s=>s.slot===(id&255))?.name || 'N→S'; if(g===4 && id>=0x0a100000) return `User IR ${(id&255)+1}`; return catalog.describe(g,id)?.name || `0x${id.toString(16)}`; }
+async function setBlockEnabled(g, on) {
+  session.writable();
+  const explain = (reason) => [
+    '', 'CPU FULL: turn another block off first.', 'Turn CAB off first.',
+    'Turn N→S on first.', 'Select a user capture for N→S first.',
+  ][reason];
+  const constraints = on && identity?.has.enableConstraints;
+  if (constraints) {
+    const reason = (await session.pedal.enableConstraints())[g];
+    if (reason) throw new Error(explain(reason));
+  }
+  try {
+    await session.enabled(g, on);
+    if (Boolean(session.state.enabled[g]) === on) return;
+  } catch (error) {
+    if (error.message !== 'the pedal rejected the message' || !on) throw error;
+  }
+  if (!on) throw new Error('The pedal did not turn this block off.');
+  if (constraints) {
+    const reason = (await session.pedal.enableConstraints())[g];
+    throw new Error(explain(reason) || 'The pedal refused to enable this block.');
+  }
+  throw new Error('The pedal refused to enable this block. The current effect combination may exceed its CPU limit.');
+}
+
 function renderChain() {
   $('chain').replaceChildren(); $('order-controls').replaceChildren(); if(!session?.state) return;
   for (const g of session.state.order) {
@@ -138,7 +213,7 @@ function renderChain() {
     b.ondblclick=()=>{
       if(busy||!editable())return;
       const on=!session.state.enabled[g];
-      run(()=>session.enabled(g,on),`${BLOCKS[g]} turned ${on?'on':'off'}.`);
+      run(()=>setBlockEnabled(g,on),`${BLOCKS[g]} turned ${on?'on':'off'}.`);
     };
     bindContext(b,()=>openAssignment(g)); b.dataset.on=session.state.enabled[g]; const s=document.createElement('small'); s.textContent=modelName(g,session.state.models[g]); b.append(s); $('chain').append(b);
   }
@@ -207,7 +282,11 @@ function renderBlock() {
       num.onchange=()=>{if(!num.checkValidity()) {num.reportValidity();return;} run(()=>session.parameter(group,p.storage,Number(num.value)),`${p.name} updated.`);};
       row.append(num,fader);
     }
-    bindContext(row,()=>openParameterAssignment(group,p));
+    const block = group;
+    bindContext(row,()=>openParameterAssignment(block,p));
+    row.append(button('Assign', () => openParameterAssignment(block,p), {
+      'aria-label': `Assign ${p.name}`
+    }));
     $('parameters').append(row);
   }
   $('write-note').textContent = session.imported ? 'File staged for Save as. Live controls unlock after saving.' : editable() ? demo?'Demo presets and slots reset on reload.':'Changes go live on the pedal. Some pedal edits persist automatically; export a backup to keep a copy.' : 'Connect the pedal to edit.';
@@ -266,7 +345,7 @@ $('refresh').onclick=()=>run(async()=>{await session.refresh();session.imported=
 $('preset-search').oninput=()=>{renderPresets();updateControls();};
 bindContext($('block-enabled').parentElement,()=>openAssignment(group));
 $('assign-block').onclick=()=>openAssignment(group);
-$('block-enabled').onchange=()=>run(()=>session.enabled(group,$('block-enabled').checked),'Block updated.');
+$('block-enabled').onchange=()=>run(()=>setBlockEnabled(group,$('block-enabled').checked),'Block updated.');
 $('model').onchange=()=>run(()=>session.model(group,Number($('model').value)),'Model selected; pedal defaults loaded.');
 $('read-load').onclick=()=>run(async()=>{const load=await session.pedal.load();for(const key of ['arm','dsp']) {$(key+'-load').value=load[key];$(key+'-value').value=(100*load[key]).toFixed(0)+'%';}},'Load read from custom firmware.');
 function download(name,bytes,type='application/octet-stream') { const url=URL.createObjectURL(new Blob([bytes],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000); }

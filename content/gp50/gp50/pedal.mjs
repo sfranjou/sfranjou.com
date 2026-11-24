@@ -309,6 +309,11 @@ export class Pedal {
       return Tap.parseTapTempo(await this._read(Tap.readTapTempo(), 0x73));
     });
   }
+  /** Read the current enable constraints, in block order. Check identity().has.enableConstraints. */
+  enableConstraints() {
+    return this._op(async () => M.parseEnableConstraints(await this._read(M.readEnableConstraints(), 0x7e)));
+  }
+
   /** Knob assignments of the current preset (our firmware, check identity().has.knobAssign): [{dest, group, parameter, flags, id}]. */
   assignments() { return this._op(async () => M.parseAssignments(await this._read(M.readAssignments(), 0x71))); }
   /** Assign Stomp knob dest 0..2 to (group, parameter) — the pedal's own checks apply (refused: PedalError) — and read the

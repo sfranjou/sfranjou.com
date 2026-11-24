@@ -68,6 +68,8 @@ The RSS build fails if a listed post is missing or has invalid required metadata
   control access. There is no Supabase JavaScript dependency.
 - The band page uses Google Fonts and Google Drive video embeds. RSS icons come
   from Simple Icons.
+- Cloudflare Web Analytics runs on production through Netlify’s Snippet Injection.
+  See the [site privacy notice](content/privacy.html).
 
 For a new comments database, run `supabase-schema.sql` in the Supabase SQL Editor.
 For the existing original table, run `scripts/harden-comments.sql` **once** instead.

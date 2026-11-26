@@ -63,11 +63,25 @@
    "fuzz": "work/readme_media/suite_captures/fuzz.clo",
    "rat": "work/readme_media/suite_captures/rat.clo"
   },
-  "clip": {
-   "source": "prs_pick",
-   "start_s": 176,
-   "stop_s": 184,
-   "drive_db": 0
+  "clips": {
+   "default": {
+    "source": "prs_pick",
+    "start_s": 176,
+    "stop_s": 184,
+    "drive_db": 0
+   },
+   "finger": {
+    "source": "prs_finger",
+    "start_s": 88,
+    "stop_s": 96,
+    "drive_db": 0
+   },
+   "jsm": {
+    "source": "jsm_pick",
+    "start_s": 112,
+    "stop_s": 120,
+    "drive_db": 0
+   }
   }
  },
  "scores": {
@@ -299,6 +313,10 @@
    "snaptone": {
     "mfcc": 10.1702,
     "esr": 0.39495
+   },
+   "1126_shipped_recipe": {
+    "mfcc": 2.329,
+    "esr": 0.1074
    }
   },
   "bright_clean": {
@@ -353,6 +371,10 @@
    "snaptone": {
     "mfcc": 2.8608,
     "esr": 0.09083
+   },
+   "1126_shipped_recipe": {
+    "mfcc": 2.7059,
+    "esr": 0.44119
    }
   },
   "fender": {
@@ -413,6 +435,10 @@
    "snaptone": {
     "mfcc": 22.3256,
     "esr": 0.85135
+   },
+   "1126_shipped_recipe": {
+    "mfcc": 7.7271,
+    "esr": 0.72035
    }
   },
   "rat": {
@@ -497,6 +523,10 @@
    "snaptone": {
     "mfcc": 26.5109,
     "esr": 0.97145
+   },
+   "1126_shipped_recipe": {
+    "mfcc": 13.7559,
+    "esr": 0.96466
    }
   },
   "a2_reference": {
@@ -539,6 +569,10 @@
    "020_long1024": {
     "mfcc": 3.1871,
     "esr": 0.09483
+   },
+   "1126_shipped_recipe": {
+    "mfcc": 3.388,
+    "esr": 0.38826
    }
   }
  },

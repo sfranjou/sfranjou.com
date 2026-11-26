@@ -8,6 +8,7 @@
   "020_long1024",
   "020_long768",
   "020_native512",
+  "1126_shipped_recipe",
   "snaptone"
  ],
  "peavey": [
@@ -52,6 +53,7 @@
   "050_compact",
   "050_full",
   "050_tiny",
+  "1126_shipped_recipe",
   "snaptone"
  ],
  "bright_clean": [
@@ -67,6 +69,7 @@
   "050_compact",
   "050_full",
   "050_tiny",
+  "1126_shipped_recipe",
   "snaptone"
  ],
  "marshall": [
@@ -89,6 +92,7 @@
   "1109_plateau",
   "1112_spline1",
   "1112_spline2",
+  "1126_shipped_recipe",
   "snaptone"
  ],
  "fuzz": [
@@ -96,6 +100,7 @@
   "1109_plateau",
   "1112_spline1",
   "1112_spline2",
+  "1126_shipped_recipe",
   "snaptone"
  ],
  "rat": [

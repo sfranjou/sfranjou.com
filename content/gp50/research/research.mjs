@@ -9,8 +9,8 @@ import {diagram} from './diagram.mjs';
 // (GP50_reverse_engineer/tools/tone_trainer/data_worker). Files there never change: re-exported clips get a new version.
 const AUDIO = 'https://lttc-data.sfranjou.workers.dev/research/v1/audio';
 
-const [{teachers, short, sources, blocks, milestones}, rescored, live] = await Promise.all(
-  ['milestones.json', 'rescored.json', 'live/index.json'].map(file => fetch(file).then(r => r.json())));
+const [{teachers, short, sources, blocks, milestones}, rescored, live, levels] = await Promise.all(
+  ['milestones.json', 'rescored.json', 'live/index.json', 'levels.json'].map(file => fetch(file).then(r => r.json())));
 
 const TEACHER_IDS = Object.keys(teachers);
 const color = id => `var(--amp-${id})`;
@@ -233,9 +233,27 @@ card.addEventListener('focusin', showBlock);
 card.addEventListener('mouseout', event => { if (event.target.closest('[data-block]')) blockTip.hidden = true; });
 card.addEventListener('focusout', () => { blockTip.hidden = true; });
 
-function audioRow(label, src) {
-  return `<span>${label}</span><audio controls preload="none" src="${src}"></audio>`;
+// level: the clip's natural loudness relative to its NAM clip (levels.json). Files are all level-matched; with
+// "Match loudness" off, each clip's volume is set back to its natural level relative to the loudest in its group.
+function audioRow(label, src, level = 1) {
+  return `<span>${label}</span><audio controls preload="none" src="${src}" data-level="${level}"></audio>`;
 }
+
+let matchLoudness = true;
+function applyLoudness() {
+  for (const group of card.querySelectorAll('.clips')) {
+    const players = [...group.querySelectorAll('audio')];
+    const loudest = Math.max(...players.map(a => Number(a.dataset.level)));
+    for (const a of players) a.volume = matchLoudness ? 1 : Number(a.dataset.level) / loudest;
+  }
+}
+card.addEventListener('change', event => {
+  if (event.target.id !== 'match-loudness') return;
+  matchLoudness = event.target.checked;
+  applyLoudness();
+});
+
+const isLead = (model, t) => model.lead === true || !!model.lead?.includes?.(t);
 
 function renderCard() {
   const s = settings();
@@ -253,15 +271,25 @@ function renderCard() {
     `<td>${r.label}</td><td>${METRIC[r.metric]}</td><td class="number">${r.value.toPrecision(3)}</td></tr>`).join('');
 
   let clips = '';
-  if (s.mode === 'rescored' && model) {
-    clips = TEACHER_IDS.filter(t => rescored.scores[t]?.[model.id]).map(t => `<h4>${teachers[t]}</h4><div class="clips">` +
-      audioRow('Dry guitar', `${AUDIO}/rescored/${t}/dry.mp3`) +
-      audioRow('NAM (target)', `${AUDIO}/rescored/${t}/nam.mp3`) +
-      (rescored.scores[t].snaptone ? audioRow('SnapTone', `${AUDIO}/rescored/${t}/snaptone.mp3`) : '') +
-      audioRow(model.label, `${AUDIO}/rescored/${t}/${model.id}.mp3`) + '</div>').join('');
+  if (s.mode === 'rescored') {
+    // Per amp: the clicked model if it has this amp, otherwise this step's kept model for that amp.
+    const modelFor = t => [m.models.find(x => x.id === selected.model), ...m.models.filter(x => isLead(x, t)), ...m.models]
+      .find(x => x && rescored.scores[t]?.[x.id]);
+    const passages = m.passages ?? [{suffix: '', label: ''}];
+    clips = TEACHER_IDS.filter(t => modelFor(t)).map(t => {
+      const pick = modelFor(t), level = name => levels.rescored[t]?.[name] ?? 1;
+      const file = (name, p) => name + (p.suffix ? '_' + p.suffix : '');
+      const rows = passages.map(p => (p.label ? `<h5>${p.label}</h5>` : '') + '<div class="clips">' +
+        audioRow('Dry guitar', `${AUDIO}/rescored/${t}/${file('dry', p)}.mp3`, level(file('dry', p))) +
+        audioRow('NAM (target)', `${AUDIO}/rescored/${t}/${file('nam', p)}.mp3`, level(file('nam', p))) +
+        (rescored.scores[t].snaptone ? audioRow('SnapTone', `${AUDIO}/rescored/${t}/${file('snaptone', p)}.mp3`, level(file('snaptone', p))) : '') +
+        audioRow(pick.label, `${AUDIO}/rescored/${t}/${file(pick.id, p)}.mp3`, level(file(pick.id, p))) + '</div>').join('');
+      return `<details${hiddenTeachers.has(t) ? '' : ' open'}><summary>${teachers[t]}</summary>${rows}</details>`;
+    }).join('');
   } else if (s.mode === 'historical' && m.clips) {
-    clips = `<div class="clips">${audioRow('NAM (target)', `${AUDIO}/historical/${m.id}/teacher.mp3`)}` +
-      `${audioRow('This step', `${AUDIO}/historical/${m.id}/model.mp3`)}</div>` +
+    const level = levels.historical[m.id] ?? {teacher: 1, model: 1};
+    clips = `<div class="clips">${audioRow('NAM (target)', `${AUDIO}/historical/${m.id}/teacher.mp3`, level.teacher)}` +
+      `${audioRow('This step', `${AUDIO}/historical/${m.id}/model.mp3`, level.model)}</div>` +
       `<p class="note">The clip published at the time (listening pack ${m.clips.pack}).</p>`;
   }
 
@@ -278,8 +306,11 @@ function renderCard() {
     ${s.mode === 'rescored' && rows ? `<h3>Scores on the held-out audio</h3>
       <table><tr><th>Amp</th><th>Model</th><th>PaperMFCC</th><th>ESR</th><th>SnapTone MFCC</th></tr>${rows}</table>` : ''}
     ${reported ? `<h3>Recorded at the time</h3><table><tr><th>Amp</th><th>Model</th><th>Score</th><th></th></tr>${reported}</table>` : ''}
-    ${clips ? `<h3>Listen</h3><p class="note">All clips are level-matched to the NAM clip (same RMS loudness), so you compare tone, not volume.</p>${clips}`
+    ${clips ? `<h3>Listen</h3><p><label><input type="checkbox" id="match-loudness"${matchLoudness ? ' checked' : ''}> Match loudness</label>
+      <span class="note">On: every clip plays at the NAM clip's loudness (same RMS), so you compare tone, not volume.
+      Off: each clip plays at the level the model really produces.</span></p>${clips}`
       : '<p class="note">No audio for this step in this view.</p>'}`;
+  applyLoudness();
 }
 
 // ---------- live input: which amps and sources exist for the selected model ----------

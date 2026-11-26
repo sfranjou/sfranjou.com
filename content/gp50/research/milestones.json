@@ -1841,7 +1841,7 @@
    "id": "release1123",
    "date": "2026-11-23",
    "title": "Released",
-   "summary": "Peppercorn v0.1.0 ships LTTC captures. The released Peavey capture is compared with Suite's SnapTone and the NAM on the pedal.",
+   "summary": "Peppercorn v0.1.0 ships LTTC captures. The released Peavey capture is compared with Suite's SnapTone and the NAM on the pedal. For the re-scored view, every amp on the graph gets the shipped recipe: the shipped capture where there is one (RAT, Fender Deluxe, Marshall Super Lead), the released Peavey, and for the others the same recipe trained afterwards, on Nov 26.",
    "changed": "Release; Peavey retrained with the final recipe. A shorter 900-update budget is checked for the website trainer.",
    "architecture": [
     "Input gain ×0.5",
@@ -1875,12 +1875,52 @@
    "models": [
     {
      "id": "1123_release",
-     "label": "Released LTTC",
+     "label": "Released recipe (Peavey)",
      "lead": true
+    },
+    {
+     "id": "1121_two_curve",
+     "label": "Shipped capture",
+     "lead": [
+      "rat",
+      "fender"
+     ]
+    },
+    {
+     "id": "1122_schedule_free",
+     "label": "Shipped capture",
+     "lead": [
+      "marshall"
+     ]
+    },
+    {
+     "id": "1126_shipped_recipe",
+     "label": "Shipped recipe, trained afterwards",
+     "lead": [
+      "a2_reference",
+      "amalgam_marshall",
+      "bright_clean",
+      "vexter",
+      "fuzz"
+     ]
     },
     {
      "id": "1123_short",
      "label": "Shorter website budget"
+    }
+   ],
+   "passages": [
+    {
+     "suffix": "finger",
+     "label": "PRS, fingerstyle"
+    },
+    {
+     "suffix": "jsm",
+     "label": "JSM10, pick"
+    },
+    {
+     "suffix": "",
+     "label": "PRS, pick"
     }
    ]
   }

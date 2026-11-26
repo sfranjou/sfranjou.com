@@ -1,8 +1,24 @@
-# Peppercorn v0.1.0 (on-screen version A1.1.0i)
+# Peppercorn release notes
+
+## Peppercorn v0.2.0 (on-screen version A1.1.0j)
+
+### On the pedal
+
+- **Auto Swell (PRE):** General improvements to pick detection, especially when a note is still decaying. Reset pick detection on bypass.
+- **Home screen knob assignments:** Streamline flow and text: press Exit once to accept a complete assignment and leave the editor. Remove save reminder.
+- **Stomp A/B LEDs:** Footswitches assigned to a parameter have their color reflect the parameter value.
+
+### In the web editor
+
+- Parameter rows show current home screen knob and Stomp A/B footswitch assignments and let you edit either type.
+- Show limits on which block cannot be enabled, such as CPU load or an incompatible capture combination.
+- The web editor checks the connected pedal about twice per second while the editor is visible and idle, so knob turns, block toggles, and preset switches appear without clicking Refresh.
+
+## Peppercorn v0.1.0 (on-screen version A1.1.0i)
 
 This is an unofficial mod for firmware v1.1.0 for the Valeton GP-50. It is not affiliated with or endorsed by Valeton. It is built in the browser from your own official V1.1.0 file.
 
-## New Features
+### New Features
 
 - LTTC captures (Lean Twin Trained Clippers): a higher-fidelity alternative to SnapTone for tone captures.
   - Convert NAM captures to LTTC using the [in-browser trainer](https://sfranjou.com/gp50/trainer/).
@@ -40,7 +56,7 @@ This is an unofficial mod for firmware v1.1.0 for the Valeton GP-50. It is not a
 - Custom boot animation!
 - Full compatibility with existing presets: nothing is removed from the existing firmware.
 
-## On the computer
+### On the computer
 
 - [Installer](https://sfranjou.com/gp50/installer/): builds the firmware in the browser from your own V1.1.0 file. The file isn't uploaded.
 - [Editor](https://sfranjou.com/gp50/editor/): edit presets, reorder the effect chain, change parameters and manage captures over USB. It also opens preset files, and has a demo mode that works without a pedal.
@@ -48,7 +64,7 @@ This is an unofficial mod for firmware v1.1.0 for the Valeton GP-50. It is not a
 - [Captures](https://sfranjou.com/gp50/captures/): 10 ready-made LTTC captures (RAT, Klon, Morning Glory, BE-OD, and Marshall, Orange, JC-120, Vox, Fender and Matchless amps), with credits and links to the original TONE3000 captures.
 - [Uploader](https://sfranjou.com/gp50/uploader/): sends a capture to a user slot on the pedal.
 
-## SDK
+### SDK
 
 The SDK builds a complete firmware from your own V1.1.0 file plus your own C code. The features and effects in this release are included as source. You don't need to write assembly or choose memory addresses: the build places everything, and refuses an image that doesn't fit.
 
@@ -70,7 +86,7 @@ The SDK builds a complete firmware from your own V1.1.0 file plus your own C cod
   - Only tested on macOS.
 - Start with `sdk/README.md`. The full guide is `sdk/sdk/DEVELOPER_GUIDE.md`.
 
-## Install
+### Install
 
 1. Download the official GP-50 V1.1.0 firmware from Valeton's website.
 2. Back up your presets. A normal install shouldn't delete or break them, but can't be too careful!
@@ -78,13 +94,13 @@ The SDK builds a complete firmware from your own V1.1.0 file plus your own C cod
 4. In Valeton Suite, start a firmware update and select the file you downloaded. Don't unplug the pedal until it's done.
 5. The Version screen should now show A1.1.0i (in global settings -> about).
 
-## Go back
+### Go back
 
 - Install the official V1.1.0 file with Valeton Suite, the same way.
 - If the pedal doesn't start, use the [recovery steps](https://sfranjou.com/gp50/#recovery).
 - Effects and captures added by this mod won't work in the official firmware.
 
-## Known limits
+### Known limits
 
 - GP-50 only, and only built from the official V1.1.0 file.
 - The web tools need Chrome, Edge or desktop Firefox to connect to the pedal. Make sure Valeton Suite is closed when connecting via web tools.

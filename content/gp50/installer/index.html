@@ -38,7 +38,7 @@
     <input id="file" type="file" accept=".bin" hidden>
     <p id="status" class="status" role="status" aria-live="polite"></p>
     <button id="save" class="primary" disabled>Download modified firmware</button>
-    <p id="download-privacy" class="fine" hidden>Downloading sends the release version to Supabase to count download attempts. Your firmware file stays on your computer.</p>
+    <p id="download-privacy" class="fine" hidden>Downloading sends the release version to Supabase to count download attempts. Your firmware file stays on your computer. See the <a href="https://sfranjou.com/privacy.html">site privacy notice</a>.</p>
   </section>
 
   <section class="panel">
@@ -46,7 +46,7 @@
     <ol>
       <li>Connect the pedal, open Valeton Suite and select the downloaded file in Firmware Update.</li>
       <li>Keep the pedal connected until the update finishes.</li>
-      <li>After the update, check the pedal’s Version screen. For v0.1.0, it should show A1.1.0i.</li>
+      <li>After the update, check that the pedal’s Version screen matches the version selected above.</li>
     </ol>
     <p class="fine">If the GP-50 freezes or won’t start, see <a href="../#recovery">troubleshooting and recovery</a>.</p>
   </section>
@@ -123,6 +123,5 @@ load().catch(e => status('Could not load the release list: ' + e.message, 'bad')
 <p class="license" style="font-size:0.8em;opacity:0.75">This installer is free software under the GNU GPL v2
 (it includes miniLZO). License and complete source: <a href="LICENSE.md">LICENSE.md</a>,
 <a href="../lzo/src/minilzo.c">minilzo.c</a>, <a href="../lzo/build.sh">build.sh</a>.</p>
-<p class="fine"><a href="/privacy.html">Site privacy notice</a></p>
 </body>
 </html>

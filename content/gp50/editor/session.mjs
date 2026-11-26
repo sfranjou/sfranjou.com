@@ -8,6 +8,33 @@ export function moveUnit(order, at, delta) { const units = chainUnits(order); co
 export class EditorSession {
   constructor(pedal, catalog, { demo = false } = {}) { this.pedal = pedal; this.catalog = catalog; this.demo = demo; this.dirty = false; this.stale = false; this.imported = null; }
   async refresh() { this.slot = await this.pedal.slot(); this.state = await this.pedal.state(); this.names = await this.pedal.presetNames(); this.stale = false; return this; }
+  async pollActive(idle, interval) {
+    const previous = this.pollSlot;
+    this.pollSlot = null;
+    if (this.demo || this.imported || !idle()) return false;
+    // The previous cycle's closing slot read can also open this cycle.
+    const slot = previous && performance.now() - previous.time < interval
+      ? previous.slot : await this.pedal.slot();
+    if (!idle()) return false;
+    if (!validSlot(slot)) throw new Error('The pedal reported an invalid active preset.');
+    const state = await this.pedal.state();
+    if (!idle()) return false;
+    // A physical preset switch can land between reads. Publish only a stable sample.
+    const after = await this.pedal.slot();
+    if (!idle()) return false;
+    if (!validSlot(after)) throw new Error('The pedal reported an invalid active preset.');
+    this.pollSlot = {slot: after, time: performance.now()};
+    if (after !== slot) return false;
+    const switched = slot !== this.slot;
+    const prev = this.state?.raw;
+    if (!switched && !this.stale && prev?.length === state.raw.length &&
+        prev.every((byte, index) => byte === state.raw[index])) return false;
+    this.slot = slot;
+    this.state = state;
+    if (switched) this.dirty = false; // The edited badge belongs to the previous preset.
+    this.stale = false;
+    return true;
+  }
   async select(slot) { await this.pedal.selectPreset(slot); this.slot = await this.pedal.slot(); this.state = await this.pedal.state(); this.imported = null; this.dirty = false; this.stale = false; }
   writable() { if (this.stale) throw new Error('Pedal changed. Refresh before editing.'); if (this.imported) throw new Error('This file is staged. Save it to a preset before live editing.'); }
   async enabled(g, on) { this.writable(); await this.pedal.setEnabled(g, on); this.state = await this.pedal.state(); this.dirty = true; }

@@ -2,6 +2,17 @@
  "schema": 1,
  "releases": [
   {
+   "patch": "patches/mod175_a110j.json",
+   "version": "A1.1.0j",
+   "title": "Peppercorn v0.2.0",
+   "notes": [
+    "Improved Auto Swell pick detection, especially when a note is still decaying.",
+    "Press Exit once to accept a complete home screen knob assignment and leave the editor.",
+    "Stomp A/B LEDs reflect the assigned parameter value.",
+    "The editor shows current assignments and can explain why a block cannot be enabled."
+   ]
+  },
+  {
    "patch": "patches/mod174_a110i.json",
    "version": "A1.1.0i",
    "title": "Peppercorn v0.1.0",

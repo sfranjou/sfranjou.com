@@ -38,11 +38,63 @@ function button(title, fn, attrs = {}) { const b = document.createElement('butto
 const connected = () => !!session && !session.pedal.halted;
 const editable = () => connected() && !session.imported && !session.stale;
 const pause = (v) => { busy = v; updateControls(); };
+let pollRead = null, lastInteraction = -Infinity;
+const activePointers = new Set();
+const noteInteraction = () => { lastInteraction = performance.now(); };
+document.addEventListener('pointerdown', (event) => { activePointers.add(event.pointerId); noteInteraction(); }, true);
+for (const type of ['pointerup', 'pointercancel']) {
+  document.addEventListener(type, (event) => { activePointers.delete(event.pointerId); noteInteraction(); }, true);
+}
+window.addEventListener('blur', () => activePointers.clear());
+for (const type of ['keydown', 'input']) document.addEventListener(type, noteInteraction, true);
+
+function showRequestError(error, report = status) {
+  report(error.message, true);
+  if (session?.pedal.halted) {
+    $('connection-state').textContent = 'Stopped';
+    $('mode-note').textContent = 'A request failed. Check the pedal before reconnecting. No further requests will be sent.';
+  }
+}
+
+function startPedalPolling(current) {
+  const interval = 500;
+  const idle = () => session === current && connected() && !busy && !current.imported &&
+    !document.hidden && !document.querySelector('dialog[open]') && !activePointers.size &&
+    !document.activeElement?.matches('input[type="number"], select') &&
+    performance.now() - lastInteraction >= 800;
+  const schedule = (delay = interval) => setTimeout(tick, delay);
+  function tick() {
+    if (session !== current || current.pedal.halted) return;
+    if (!idle()) { current.pollSlot = null; schedule(); return; }
+    const started = performance.now();
+    pollRead = (async () => {
+      try {
+        if (await current.pollActive(idle, interval)) render();
+        schedule(Math.max(0, interval - (performance.now() - started)));
+      } catch (error) {
+        current.pedal.close();
+        showRequestError(error);
+        updateControls();
+      }
+    })().finally(() => { pollRead = null; });
+  }
+  schedule();
+}
+
 async function run(fn, message, report = status) {
   if (busy) return;
+  const pendingRead = pollRead;
   pause(true);
-  try { await fn(); if(message) report(message); }
-  catch(e) { report(e.message, true); if (session?.pedal.halted) { $('connection-state').textContent = 'Stopped'; $('mode-note').textContent = 'A request failed. Check the pedal before reconnecting. No further requests will be sent.'; } }
+  try {
+    if (pendingRead) {
+      await pendingRead;
+      if (session?.pedal.halted) return;
+    }
+    if (session) session.pollSlot = null;
+    await fn();
+    if (message) report(message);
+  }
+  catch(e) { showRequestError(e, report); }
   finally { pause(false); render(); }
 }
 function updateControls() {
@@ -329,19 +381,15 @@ async function connect() {
   await session.refresh();
   identity=await session.pedal.identity();
   if(demo)document.querySelector('.load-panel').hidden=true;   // no pedal to measure
-  session.pedal.on('notification', (n) => {
-    if (demo) return; // Demo has no external controls; local edits already read back.
-    if (busy || session.imported) return;
-    if (['parameter','effect','enable','preset','chain','dirty'].includes(n.type)) { session.stale = true; status('Pedal changed. Press Refresh to read its latest state before editing.'); updateControls(); }
-  });
   $('connection-state').textContent=demo?'Demo connected':'USB connected'; $('mode-label').textContent=demo?'Demo':'Connected to your GP-50';
   $('mode-note').textContent=demo?'Play through Peppercorn effects and LTTC captures with an audio interface. Demo presets and slots reset on reload.':'The pedal is ready. Export a backup before editing.';
   slotFormats.clear();
   await readTones();
+  if (!demo) startPedalPolling(session);
 }
 $('connect').onclick=()=>run(connect,demo?'Demo ready.':'Connected. Read-only state and names loaded.');
 $('disconnect').onclick=()=>{session?.pedal.close();session=null;tones=[];$('connection-state').textContent='Offline';location.reload();};
-$('refresh').onclick=()=>run(async()=>{await session.refresh();session.imported=null;session.dirty=false;},'Refreshed from the pedal.');
+$('refresh').onclick=()=>run(async()=>{const {slot, imported}=session;await session.refresh();session.imported=null;if(imported||session.slot!==slot)session.dirty=false;},'Refreshed from the pedal.');
 $('preset-search').oninput=()=>{renderPresets();updateControls();};
 bindContext($('block-enabled').parentElement,()=>openAssignment(group));
 $('assign-block').onclick=()=>openAssignment(group);
@@ -560,8 +608,6 @@ $('delete-dialog').addEventListener('close',()=>{if($('delete-dialog').returnVal
 $('read-irs').onclick=()=>run(async()=>{const irs=await session.pedal.irs();$('ir-slot').replaceChildren(...irs.map(i=>option(i.slot,`${i.slot+1} · ${i.name}`)));},'User IR names loaded.');
 $('use-ir').onclick=()=>run(async()=>{session.writable();await session.pedal.useIR(Number($('ir-slot').value));session.state=await session.pedal.state();session.dirty=true;group=4;},'User IR selected in CAB.');
 const logButton=button('Download MIDI session log',()=>download('gp50-midi-log.json',JSON.stringify({truncatedAt20000Frames:logs.length===20000,frames:logs},null,2),'application/json'));$('help').append(logButton);
-// Notifications are advisory; refresh explicitly to avoid traffic during unsolicited events.
-// No polling and no probing unknown selectors during connection.
 status(demo?'Starting simulated pedal…':'Ready. Connect a pedal, or open the demo.');render();
 const collectionReady = loadCollection();
 if(demo) await run(connect,'Demo ready.');

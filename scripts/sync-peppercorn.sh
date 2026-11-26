@@ -22,7 +22,7 @@ dirs=(audio captures editor gp50 installer lzo media test trainer uploader)
 files=(LICENSE LICENSING.md THIRD_PARTY.md site.css RELEASE_NOTES.md)
 managed=()
 for path in "${dirs[@]}" "${files[@]}"; do managed+=("content/gp50/$path"); done
-if [[ -n $(git -C "$site" status --porcelain) ]]; then
+if [[ -n $(git -C "$site" status --porcelain --untracked-files=all) ]]; then
   echo "Use a clean website checkout so the import cannot overwrite local edits." >&2
   exit 1
 fi
@@ -40,6 +40,8 @@ else
   echo "First import: review the file list for any website changes that belong in Peppercorn."
 fi
 
+# A release name should resolve to a tag even if a branch has the same name.
+if [[ $ref =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then ref="refs/tags/$ref"; fi
 commit=$(git -C "$peppercorn" rev-parse --verify --end-of-options "${ref}^{commit}")
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
@@ -95,7 +97,7 @@ for file in "${files[@]}"; do test -f "$tmp/site/$file"; done
 echo "Peppercorn commit: $commit"
 if ! $apply; then
   for dir in "${dirs[@]}"; do
-    rsync -rcni --delete --out-format="$dir/%n %i" "$tmp/site/$dir/" "$dest/$dir/"
+    rsync -rlpcn --delete --out-format="$dir/%n" "$tmp/site/$dir/" "$dest/$dir/"
   done
   for file in "${files[@]}"; do
     if ! cmp -s "$tmp/site/$file" "$dest/$file"; then echo "$file"; fi
@@ -107,7 +109,7 @@ if ! $apply; then
 fi
 
 if [[ $(git -C "$site" rev-parse HEAD) != "$website_head" ||
-      -n $(git -C "$site" status --porcelain) ]]; then
+      -n $(git -C "$site" status --porcelain --untracked-files=all) ]]; then
   echo "The website checkout changed during preparation. Import cancelled." >&2
   exit 1
 fi

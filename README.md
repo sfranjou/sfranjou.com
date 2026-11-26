@@ -29,6 +29,13 @@ with `file://`, because the blog and concerts fetch data over HTTP.
 2. Add `{ "slug": "my-post" }` to `content/blog/posts.json`.
 3. Run `node scripts/generate-rss.mjs` and preview the blog and feed.
 
+A post can also be a standalone page elsewhere on the site, like the LTTC research
+page: add its path as `"url"` in `posts.json` (for example
+`{ "slug": "lttc-research", "url": "/gp50/research/" }`) and keep a `post.md` with
+just the metadata. The blog list and RSS feed link to that page, and
+`post.html?slug=...` redirects there. The page adds its own comments section with
+`data-post-slug` set to the slug.
+
 Use lowercase words separated by hyphens for slugs. The Markdown starts with:
 
 ```text

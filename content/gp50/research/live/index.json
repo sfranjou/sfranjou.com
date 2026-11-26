@@ -1,0 +1,109 @@
+{
+ "a2_reference": [
+  "016_refit",
+  "017_stock",
+  "017_stock_post1024",
+  "018_stock",
+  "018_stock_post768",
+  "020_long1024",
+  "020_long768",
+  "020_native512",
+  "snaptone"
+ ],
+ "peavey": [
+  "021",
+  "022_B_longer",
+  "022_B_wide",
+  "022_cascade2_shared4x",
+  "022_shape",
+  "025_control",
+  "025_shape",
+  "025_spline33",
+  "029_eq_hf",
+  "029_neutral_control",
+  "035_parallel_stock",
+  "035_stock_control",
+  "037_band_magnitude",
+  "037_continuation",
+  "039_continuation",
+  "039_uppermid_loss",
+  "041",
+  "044_compact",
+  "044_control",
+  "048",
+  "050_compact",
+  "050_full",
+  "050_tiny",
+  "052",
+  "064",
+  "1123_release",
+  "snaptone"
+ ],
+ "amalgam_marshall": [
+  "021",
+  "022_B_longer",
+  "022_B_wide",
+  "022_cascade2_shared4x",
+  "022_shape",
+  "041",
+  "044_compact",
+  "044_control",
+  "048",
+  "050_compact",
+  "050_full",
+  "050_tiny",
+  "snaptone"
+ ],
+ "bright_clean": [
+  "021",
+  "022_B_longer",
+  "022_B_wide",
+  "022_cascade2_shared4x",
+  "022_shape",
+  "041",
+  "044_compact",
+  "044_control",
+  "048",
+  "050_compact",
+  "050_full",
+  "050_tiny",
+  "snaptone"
+ ],
+ "marshall": [
+  "1109_collection",
+  "1109_plateau",
+  "1112_spline1",
+  "1112_spline2",
+  "1121_two_curve",
+  "1122_schedule_free",
+  "1123_short",
+  "snaptone"
+ ],
+ "fender": [
+  "073",
+  "1121_two_curve",
+  "1123_short",
+  "snaptone"
+ ],
+ "vexter": [
+  "1109_plateau",
+  "1112_spline1",
+  "1112_spline2",
+  "snaptone"
+ ],
+ "fuzz": [
+  "1109_collection",
+  "1109_plateau",
+  "1112_spline1",
+  "1112_spline2",
+  "snaptone"
+ ],
+ "rat": [
+  "1109_collection",
+  "1109_plateau",
+  "1112_spline1",
+  "1112_spline2",
+  "1121_two_curve",
+  "snaptone"
+ ]
+}

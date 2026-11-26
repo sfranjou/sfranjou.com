@@ -18,7 +18,14 @@ async function init()
     const indexResponse = await fetch("posts.json");
     if (!indexResponse.ok) throw new Error("Could not load the post index.");
     const index = await indexResponse.json();
-    if (!index.some(post => post.slug === slug))
+    const entry = index.find(post => post.slug === slug);
+    if (entry?.url)
+    {
+        // This post is its own page (see posts.json "url").
+        location.replace(entry.url);
+        return;
+    }
+    if (!entry)
     {
         document.querySelector("#post-title").textContent = "Post not found.";
         return;

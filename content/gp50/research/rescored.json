@@ -1,0 +1,546 @@
+{
+ "protocol": {
+  "benchmark": "021 test regions past 60 s of the three owner DIs, never trained on or used for selection",
+  "regions": {
+   "prs_finger": [
+    [
+     88,
+     96
+    ]
+   ],
+   "prs_pick": [
+    [
+     112,
+     128
+    ],
+    [
+     176,
+     192
+    ],
+    [
+     240,
+     256
+    ],
+    [
+     304,
+     320
+    ]
+   ],
+   "jsm_pick": [
+    [
+     112,
+     128
+    ]
+   ]
+  },
+  "drives_db": [
+   -6,
+   0,
+   6
+  ],
+  "preroll_s": 2,
+  "window_samples": 16384,
+  "metric": "PaperMFCC (engine.PaperMFCC) and ESR after one fitted gain and integer lag per region",
+  "teachers": {
+   "a2_reference": "2d2d744516dc0197737a2c5001010429692d4cb20d72b08264781de626fcf4ca",
+   "peavey": "c8577f07335f3db0d42011a02d395f40d487163b1f2d44f91b27a303de561d31",
+   "amalgam_marshall": "27ff5090d7ed072c2bd32aa0b41c8d39c3afe73ae0e84ae2e89f75095c4dfa74",
+   "bright_clean": "c87078f1547f21bbe619104937e81c597e43664d580f3e4be0bc07259520ccd0",
+   "marshall": "59ae71a5d76b09d419ecee08f882f594e9f02254adc87597fd0995b6b93dfe55",
+   "fender": "eed1c147db2eea77b517dabe1f45d836d7e42200d200643bec48dc9f6ab456fa",
+   "vexter": "22a25644f4b8b492184d24f6f79335a6c05a080d86407f4279089558fb0f2dac",
+   "fuzz": "757b59066ed9281087e0f16b0ba4952120454e693af50e4c5d685c632d7a3c75",
+   "rat": "9836aecf99c7724522eb1f4fa6f73467795061aa2c9c3adfa08f2b4907d0ef3a"
+  },
+  "snaptone": {
+   "a2_reference": "work/tone_capture/vtsi_cells_016/full_model59_001",
+   "peavey": "work/readme_media/suite_captures/peavey.clo",
+   "amalgam_marshall": "work/readme_media/suite_captures/amalgam_marshall.clo",
+   "bright_clean": "work/readme_media/suite_captures/bright_clean.clo",
+   "marshall": "work/readme_media/suite_captures/marshall.clo",
+   "fender": "work/readme_media/suite_captures/fender.clo",
+   "vexter": "work/readme_media/suite_captures/vexter.clo",
+   "fuzz": "work/readme_media/suite_captures/fuzz.clo",
+   "rat": "work/readme_media/suite_captures/rat.clo"
+  },
+  "clip": {
+   "source": "prs_pick",
+   "start_s": 176,
+   "stop_s": 184,
+   "drive_db": 0
+  }
+ },
+ "scores": {
+  "peavey": {
+   "1123_release": {
+    "mfcc": 2.7862,
+    "esr": 0.22357
+   },
+   "snaptone": {
+    "mfcc": 10.9129,
+    "esr": 0.53538
+   },
+   "021": {
+    "mfcc": 19.9945,
+    "esr": 0.46391
+   },
+   "022_B_longer": {
+    "mfcc": 14.3346,
+    "esr": 0.3292
+   },
+   "022_B_wide": {
+    "mfcc": 11.6856,
+    "esr": 0.21896
+   },
+   "022_shape": {
+    "mfcc": 13.8853,
+    "esr": 0.28309
+   },
+   "022_cascade2_shared4x": {
+    "mfcc": 13.7749,
+    "esr": 0.30915
+   },
+   "041": {
+    "mfcc": 4.1827,
+    "esr": 0.06911
+   },
+   "044_control": {
+    "mfcc": 4.0799,
+    "esr": 0.06571
+   },
+   "044_compact": {
+    "mfcc": 4.9453,
+    "esr": 0.13209
+   },
+   "048": {
+    "mfcc": 4.2919,
+    "esr": 0.1187
+   },
+   "050_full": {
+    "mfcc": 3.4986,
+    "esr": 0.06987
+   },
+   "050_compact": {
+    "mfcc": 3.774,
+    "esr": 0.14786
+   },
+   "050_tiny": {
+    "mfcc": 13.9569,
+    "esr": 0.71292
+   },
+   "025_control": {
+    "mfcc": 9.3913,
+    "esr": 0.1653
+   },
+   "025_shape": {
+    "mfcc": 9.5072,
+    "esr": 0.16526
+   },
+   "025_spline33": {
+    "mfcc": 9.3469,
+    "esr": 0.16482
+   },
+   "029_neutral_control": {
+    "mfcc": 8.2602,
+    "esr": 0.14818
+   },
+   "029_eq_hf": {
+    "mfcc": 8.3307,
+    "esr": 0.14787
+   },
+   "029_compressor": {
+    "mfcc": 8.2839,
+    "esr": 0.14763
+   },
+   "035_stock_control": {
+    "mfcc": 5.7652,
+    "esr": 0.11357
+   },
+   "035_parallel_stock": {
+    "mfcc": 5.7177,
+    "esr": 0.10983
+   },
+   "035_parallel_hq": {
+    "mfcc": 7.851,
+    "esr": 0.12607
+   },
+   "037_continuation": {
+    "mfcc": 4.9952,
+    "esr": 0.09297
+   },
+   "037_band_magnitude": {
+    "mfcc": 4.8307,
+    "esr": 0.0929
+   },
+   "039_continuation": {
+    "mfcc": 4.2251,
+    "esr": 0.07262
+   },
+   "039_uppermid_loss": {
+    "mfcc": 4.1009,
+    "esr": 0.07072
+   },
+   "039_filtered_stage": {
+    "mfcc": 4.0902,
+    "esr": 0.07046
+   },
+   "052": {
+    "mfcc": 9.5242,
+    "esr": 0.87097
+   },
+   "064": {
+    "mfcc": 17.8282,
+    "esr": 0.53379
+   }
+  },
+  "marshall": {
+   "snaptone": {
+    "mfcc": 6.9807,
+    "esr": 0.27372
+   },
+   "1109_collection": {
+    "mfcc": 5.6855,
+    "esr": 0.18815
+   },
+   "1109_plateau": {
+    "mfcc": 3.3492,
+    "esr": 0.11879
+   },
+   "1112_control": {
+    "mfcc": 3.3296,
+    "esr": 0.11888
+   },
+   "1112_bank": {
+    "mfcc": 2.9761,
+    "esr": 0.10218
+   },
+   "1112_serial2": {
+    "mfcc": 3.3132,
+    "esr": 0.12107
+   },
+   "1112_serial3": {
+    "mfcc": 3.3379,
+    "esr": 0.12075
+   },
+   "1112_dynamic": {
+    "mfcc": 3.3101,
+    "esr": 0.118
+   },
+   "1112_spline1": {
+    "mfcc": 2.789,
+    "esr": 0.0994
+   },
+   "1112_spline2": {
+    "mfcc": 2.8017,
+    "esr": 0.09794
+   },
+   "1121_two_curve": {
+    "mfcc": 2.8669,
+    "esr": 0.0961
+   },
+   "1122_schedule_free": {
+    "mfcc": 2.8031,
+    "esr": 0.10844
+   },
+   "1123_short": {
+    "mfcc": 3.1776,
+    "esr": 0.12912
+   }
+  },
+  "amalgam_marshall": {
+   "021": {
+    "mfcc": 12.0131,
+    "esr": 0.25813
+   },
+   "022_B_longer": {
+    "mfcc": 9.1911,
+    "esr": 0.16759
+   },
+   "022_B_wide": {
+    "mfcc": 4.6306,
+    "esr": 0.07555
+   },
+   "022_shape": {
+    "mfcc": 8.636,
+    "esr": 0.12684
+   },
+   "022_cascade2_shared4x": {
+    "mfcc": 9.2557,
+    "esr": 0.16649
+   },
+   "041": {
+    "mfcc": 4.1179,
+    "esr": 0.07289
+   },
+   "044_control": {
+    "mfcc": 4.0828,
+    "esr": 0.07331
+   },
+   "044_compact": {
+    "mfcc": 5.3001,
+    "esr": 0.11311
+   },
+   "048": {
+    "mfcc": 3.9103,
+    "esr": 0.11339
+   },
+   "050_full": {
+    "mfcc": 3.5541,
+    "esr": 0.0767
+   },
+   "050_compact": {
+    "mfcc": 3.8531,
+    "esr": 0.11954
+   },
+   "050_tiny": {
+    "mfcc": 6.0824,
+    "esr": 0.17474
+   },
+   "snaptone": {
+    "mfcc": 10.1702,
+    "esr": 0.39495
+   }
+  },
+  "bright_clean": {
+   "021": {
+    "mfcc": 4.9822,
+    "esr": 0.11213
+   },
+   "022_B_longer": {
+    "mfcc": 4.6918,
+    "esr": 0.10991
+   },
+   "022_B_wide": {
+    "mfcc": 2.0078,
+    "esr": 0.03339
+   },
+   "022_shape": {
+    "mfcc": 1.5042,
+    "esr": 0.02884
+   },
+   "022_cascade2_shared4x": {
+    "mfcc": 1.3836,
+    "esr": 0.02803
+   },
+   "041": {
+    "mfcc": 1.9323,
+    "esr": 0.0334
+   },
+   "044_control": {
+    "mfcc": 1.9057,
+    "esr": 0.03336
+   },
+   "044_compact": {
+    "mfcc": 4.2829,
+    "esr": 0.0674
+   },
+   "048": {
+    "mfcc": 2.6593,
+    "esr": 0.06545
+   },
+   "050_full": {
+    "mfcc": 1.7407,
+    "esr": 0.03506
+   },
+   "050_compact": {
+    "mfcc": 3.1867,
+    "esr": 0.07019
+   },
+   "050_tiny": {
+    "mfcc": 6.1401,
+    "esr": 0.11331
+   },
+   "snaptone": {
+    "mfcc": 2.8608,
+    "esr": 0.09083
+   }
+  },
+  "fender": {
+   "073": {
+    "mfcc": 3.5904,
+    "esr": 0.39943
+   },
+   "1121_two_curve": {
+    "mfcc": 3.3732,
+    "esr": 0.40964
+   },
+   "1123_short": {
+    "mfcc": 3.604,
+    "esr": 0.4331
+   },
+   "snaptone": {
+    "mfcc": 3.7248,
+    "esr": 0.4061
+   }
+  },
+  "fuzz": {
+   "1109_collection": {
+    "mfcc": 18.1957,
+    "esr": 2.40761
+   },
+   "1109_plateau": {
+    "mfcc": 14.6486,
+    "esr": 1.3918
+   },
+   "1112_control": {
+    "mfcc": 14.0254,
+    "esr": 1.56603
+   },
+   "1112_bank": {
+    "mfcc": 14.6457,
+    "esr": 1.39596
+   },
+   "1112_serial2": {
+    "mfcc": 14.1421,
+    "esr": 1.4725
+   },
+   "1112_serial3": {
+    "mfcc": 12.3303,
+    "esr": 1.21898
+   },
+   "1112_dynamic": {
+    "mfcc": 14.1067,
+    "esr": 1.48925
+   },
+   "1112_spline1": {
+    "mfcc": 9.8788,
+    "esr": 0.83572
+   },
+   "1112_spline2": {
+    "mfcc": 9.39,
+    "esr": 0.82856
+   },
+   "snaptone": {
+    "mfcc": 22.3256,
+    "esr": 0.85135
+   }
+  },
+  "rat": {
+   "1109_collection": {
+    "mfcc": 6.2619,
+    "esr": 0.11566
+   },
+   "1109_plateau": {
+    "mfcc": 4.2877,
+    "esr": 0.10378
+   },
+   "1112_control": {
+    "mfcc": 4.2699,
+    "esr": 0.10287
+   },
+   "1112_bank": {
+    "mfcc": 4.197,
+    "esr": 0.09739
+   },
+   "1112_serial2": {
+    "mfcc": 4.3732,
+    "esr": 0.11572
+   },
+   "1112_serial3": {
+    "mfcc": 4.1774,
+    "esr": 0.12197
+   },
+   "1112_dynamic": {
+    "mfcc": 4.384,
+    "esr": 0.11574
+   },
+   "1112_spline1": {
+    "mfcc": 3.0145,
+    "esr": 0.09399
+   },
+   "1112_spline2": {
+    "mfcc": 2.8641,
+    "esr": 0.09584
+   },
+   "1121_two_curve": {
+    "mfcc": 2.7173,
+    "esr": 0.08747
+   },
+   "snaptone": {
+    "mfcc": 6.186,
+    "esr": 0.19793
+   }
+  },
+  "vexter": {
+   "1109_plateau": {
+    "mfcc": 17.5791,
+    "esr": 2.28971
+   },
+   "1112_control": {
+    "mfcc": 17.4221,
+    "esr": 2.1595
+   },
+   "1112_bank": {
+    "mfcc": 17.5841,
+    "esr": 2.29993
+   },
+   "1112_serial2": {
+    "mfcc": 17.1633,
+    "esr": 1.84726
+   },
+   "1112_serial3": {
+    "mfcc": 17.0166,
+    "esr": 1.78747
+   },
+   "1112_dynamic": {
+    "mfcc": 17.0084,
+    "esr": 1.1281
+   },
+   "1112_spline1": {
+    "mfcc": 15.2398,
+    "esr": 0.98833
+   },
+   "1112_spline2": {
+    "mfcc": 15.8507,
+    "esr": 0.9843
+   },
+   "snaptone": {
+    "mfcc": 26.5109,
+    "esr": 0.97145
+   }
+  },
+  "a2_reference": {
+   "snaptone": {
+    "mfcc": 6.1351,
+    "esr": 0.21924
+   },
+   "016_refit": {
+    "mfcc": 5.2373,
+    "esr": 0.1652
+   },
+   "017_stock": {
+    "mfcc": 5.834,
+    "esr": 0.17567
+   },
+   "017_stock_post1024": {
+    "mfcc": 5.4344,
+    "esr": 0.1384
+   },
+   "017_stock_tcn4": {
+    "mfcc": 5.7952,
+    "esr": 0.16866
+   },
+   "018_stock": {
+    "mfcc": 5.6987,
+    "esr": 0.1832
+   },
+   "018_stock_post768": {
+    "mfcc": 5.5931,
+    "esr": 0.15969
+   },
+   "020_native512": {
+    "mfcc": 3.3176,
+    "esr": 0.12982
+   },
+   "020_long768": {
+    "mfcc": 3.1955,
+    "esr": 0.10144
+   },
+   "020_long1024": {
+    "mfcc": 3.1871,
+    "esr": 0.09483
+   }
+  }
+ },
+ "errors": {}
+}

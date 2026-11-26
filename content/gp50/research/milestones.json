@@ -1,0 +1,1888 @@
+{
+ "note": "Editorial record for the LTTC research page. 'reported' holds numbers recorded at the time (each study's own validation set). 'models' lists ids re-scored afterwards on one held-out benchmark (rescored.json). 'direction.by' is a draft: owner, ai or unclear.",
+ "teachers": {
+  "peavey": "Peavey 5150 · high gain",
+  "amalgam_marshall": "Marshall JCM800 · AmalgamAudio",
+  "marshall": "Marshall Super Lead",
+  "bright_clean": "Fender Vibroverb · bright clean",
+  "fender": "Fender Deluxe",
+  "a2_reference": "NAM Core's sample A2 (gear unknown)",
+  "soldano": "Soldano",
+  "vexter": "Z.Vex Fuzz Factory (Vexter)",
+  "fuzz": "Fuzz Factory clone",
+  "rat": "ProCo RAT"
+ },
+ "short": {
+  "peavey": "Peavey 5150",
+  "amalgam_marshall": "JCM800",
+  "marshall": "Super Lead",
+  "bright_clean": "Vibroverb",
+  "fender": "Deluxe",
+  "a2_reference": "NAM sample A2",
+  "soldano": "Soldano",
+  "vexter": "Fuzz Factory",
+  "fuzz": "FF clone",
+  "rat": "RAT"
+ },
+ "sources": {
+  "peavey": "https://www.tone3000.com/tones/full-rig-peavey-5150-mesa-4x12-32868",
+  "amalgam_marshall": "https://www.tone3000.com/tones/marshall-jmp-100-2203-jcm800-1975-drive-a2-98643",
+  "marshall": "https://www.tone3000.com/tones/1968-marshall-super-lead-12-000-series-drive-a2-72145",
+  "bright_clean": "https://www.tone3000.com/tones/1964-fender-vibroverb-aa763-80770",
+  "fender": "https://www.tone3000.com/tones/fender-deluxe-reverb-reissue-iconic-clean-a2-69174",
+  "vexter": "https://www.tone3000.com/tones/zvex-fuzz-factory-vexter-68604",
+  "fuzz": "https://www.tone3000.com/tones/fuzz-factory-clone-115dbu-5849",
+  "rat": "https://www.tone3000.com/tones/proco-rat-26704",
+  "soldano": "https://www.tone3000.com/tones/soldano-slo100-90311"
+ },
+ "blocks": {
+  "Input gain ×0.5": {
+   "term": "Input gain",
+   "text": "The guitar signal is scaled by 0.5, which is what the pedal's GAIN knob does at noon. The model is trained with the knob there.",
+   "label": "0.5",
+   "shape": "gain"
+  },
+  "Pre biquad": {
+   "term": "Biquad filter (2nd-order IIR)",
+   "text": "A small recursive filter with five coefficients, part of Valeton's SnapTone structure. It shapes the tone before the clipper.",
+   "math": "<math display=\"block\"><mrow><mi>H</mi><mo>(</mo><mi>z</mi><mo>)</mo></mrow><mo>=</mo><mfrac><mrow><msub><mi>b</mi><mn>0</mn></msub><mo>+</mo><msub><mi>b</mi><mn>1</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><msub><mi>b</mi><mn>2</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>a</mi><mn>1</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><msub><mi>a</mi><mn>2</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></mfrac></math>",
+   "label": "Biquad"
+  },
+  "Post biquad": {
+   "term": "Biquad filter (2nd-order IIR)",
+   "text": "The second recursive filter of Valeton's structure, after the clipper.",
+   "math": "<math display=\"block\"><mrow><mi>H</mi><mo>(</mo><mi>z</mi><mo>)</mo></mrow><mo>=</mo><mfrac><mrow><msub><mi>b</mi><mn>0</mn></msub><mo>+</mo><msub><mi>b</mi><mn>1</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><msub><mi>b</mi><mn>2</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>a</mi><mn>1</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><msub><mi>a</mi><mn>2</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></mfrac></math>",
+   "label": "Biquad"
+  },
+  "Fixed biquad": {
+   "term": "Biquad filter (2nd-order IIR), fixed",
+   "text": "Valeton's post-clipper biquad (from the same fixed filter set as the decimator), kept with fixed coefficients rather than learned.",
+   "math": "<math display=\"block\"><mrow><mi>H</mi><mo>(</mo><mi>z</mi><mo>)</mo></mrow><mo>=</mo><mfrac><mrow><msub><mi>b</mi><mn>0</mn></msub><mo>+</mo><msub><mi>b</mi><mn>1</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><msub><mi>b</mi><mn>2</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>a</mi><mn>1</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><msub><mi>a</mi><mn>2</mn></msub><msup><mi>z</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></mfrac></math>",
+   "label": "Biquad"
+  },
+  "4× oversampling": {
+   "term": "4× oversampling (upsampling by linear interpolation)",
+   "text": "Clipping creates harmonics far above the input's frequencies. At 44.1 kHz anything above 22 kHz folds back down as inharmonic aliasing. So the signal is first raised to 176.4 kHz by inserting three linearly interpolated points between each pair of samples; the clipper runs at that rate, and the decimator brings it back down.",
+   "math": "<math display=\"block\"><mrow><mi>u</mi><mo>[</mo><mrow><mn>4</mn><mi>n</mi><mo>+</mo><mi>j</mi></mrow><mo>]</mo></mrow><mo>=</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo>]</mo></mrow><mo>+</mo><mfrac><mi>j</mi><mn>3</mn></mfrac><mrow><mo>(</mo><mrow><mi>x</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mo>−</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo>]</mo></mrow><mo>)</mo></mrow><mo>,</mo><mspace width=\"1em\"/><mi>j</mi><mo>=</mo><mn>0</mn><mo>…</mo><mn>3</mn></math>",
+   "label": "↑4"
+  },
+  "Asymmetric exp clipper": {
+   "term": "Waveshaper (static soft clipper), asymmetric exponential",
+   "text": "A memoryless curve applied to every sample: nearly linear for small signals, flattening to a ceiling for large ones. Each side (positive, negative) has its own ceiling and steepness; the asymmetry adds even harmonics. Four learned numbers. The exponential is computed as (1 + z/1024)¹⁰²⁴ on the pedal.",
+   "math": "<math display=\"block\"><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnalign=\"left\"><mtr><mtd><mrow><mi>a</mi><mo>(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>c</mi><mi>x</mi></mrow></msup><mo>)</mo></mrow></mtd><mtd><mrow><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd><mrow><mo>−</mo><mi>b</mi><mo>(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>d</mi><mi>x</mi></mrow></msup><mo>)</mo></mrow></mtd><mtd><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow></mtd></mtr></mtable></mrow></math>",
+   "label": "Exp clipper"
+  },
+  "Learned-knee clipper": {
+   "term": "Waveshaper with learned knee",
+   "text": "Like the exponential clipper, but an extra learned exponent p per side sets how sharp the bend into clipping is, from very soft (p small) to almost a hard clip (p large).",
+   "math": "<math display=\"block\"><mrow><mi>f</mi><mo>(</mo><mi>u</mi><mo>)</mo></mrow><mo>=</mo><mfrac><mrow><mi>A</mi><mi>u</mi></mrow><msup><mrow><mo>(</mo><mn>1</mn><mo>+</mo><msup><mrow><mo>|</mo><mi>u</mi><mo>|</mo></mrow><mi>p</mi></msup><mo>)</mo></mrow><mfrac><mn>1</mn><mi>p</mi></mfrac></msup></mfrac></math>"
+  },
+  "Learned curve 1": {
+   "term": "Waveshaper, piecewise-linear with 33 learned points",
+   "text": "A free-form clipping curve: 33 fixed input points, spaced finely near zero and coarsely for loud signals (sinh spacing), each with a learned output value, joined by straight lines, with straight-line tails beyond the ends. The centre point is pinned at 0 so it can't add DC. This is one of LTTC's two \"trained clippers\". Between knots xᵢ ≤ x < xᵢ₊₁ the output is a straight line; the knots get further apart for louder signals.",
+   "math": "<math display=\"block\"><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mo>=</mo><msub><mi>v</mi><mi>i</mi></msub><mo>+</mo><mfrac><mrow><mi>x</mi><mo>−</mo><msub><mi>x</mi><mi>i</mi></msub></mrow><mrow><msub><mi>x</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>x</mi><mi>i</mi></msub></mrow></mfrac><mrow><mo>(</mo><msub><mi>v</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>v</mi><mi>i</mi></msub><mo>)</mo></mrow><mo>,</mo><mspace width=\"1em\"/><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mrow><mi>sinh</mi><mo>(</mo><mo>−</mo><mi>asinh</mi><mn>16</mn><mo>+</mo><mi>i</mi><mi>Δ</mi><mo>)</mo></mrow></math>"
+  },
+  "Interstage FIR16 (at 4×)": {
+   "term": "FIR filter between the clippers, 16 taps at 176.4 kHz",
+   "text": "A short filter between the two clipping curves, running at the oversampled rate. Like the tone stack between two gain stages of an amp, it changes which frequencies hit the second clipper hardest.",
+   "math": "<math display=\"block\"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mn>15</mn></munderover><mrow><mi>h</mi><mo>[</mo><mi>k</mi><mo>]</mo></mrow><mo>⁢</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow><mo>]</mo></mrow></math>",
+   "label": "FIR16"
+  },
+  "Decimate ↓4 (40-tap LPF)": {
+   "term": "Decimation by 4 (anti-aliasing low-pass filter)",
+   "text": "Brings the signal back from 176.4 kHz to 44.1 kHz: a 40-tap low-pass FIR (Valeton's, fixed) removes everything above about 20 kHz, then only every 4th sample is kept. The filter is what stops the clipper's high harmonics from aliasing.",
+   "math": "<math display=\"block\"><mrow><mi>y</mi><mo>[</mo><mi>m</mi><mo>]</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mn>39</mn></munderover><mrow><mi>h</mi><mo>[</mo><mi>k</mi><mo>]</mo></mrow><mo>⁢</mo><mrow><mi>u</mi><mo>[</mo><mrow><mn>4</mn><mi>m</mi><mo>+</mo><mn>3</mn><mo>−</mo><mi>k</mi></mrow><mo>]</mo></mrow></math>",
+   "label": "↓4"
+  },
+  "Sum": {
+   "term": "Summing junction",
+   "text": "The parallel branches above are added together, still at the oversampled rate, before the shared decimator.",
+   "label": "+",
+   "shape": "sum"
+  },
+  "Branch gain": {
+   "term": "Branch gain",
+   "text": "The second branch is scaled by one learned number g before the sum. It starts small (0.05), so adding the branch doesn't change the model until training finds a use for it.",
+   "math": "<math display=\"block\"><mi>y</mi><mo>=</mo><msub><mi>f</mi><mn>1</mn></msub><mrow><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mo>+</mo><mi>g</mi><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub><mrow><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo></mrow></math>",
+   "label": "g",
+   "shape": "gain"
+  },
+  "Output FIR256 + cab IR": {
+   "term": "FIR filter fused with a cabinet impulse response",
+   "text": "On the pedal, the learned 256-tap output filter and a 512-tap cabinet IR are both linear, so they're combined offline into one 767-tap filter: one convolution instead of two.",
+   "math": "<math display=\"block\"><mrow><mo>(</mo><mi>x</mi><mo>∗</mo><mi>p</mi><mo>)</mo></mrow><mo>∗</mo><mi>r</mi><mo>=</mo><mi>x</mi><mo>∗</mo><mrow><mo>(</mo><mi>p</mi><mo>∗</mo><mi>r</mi><mo>)</mo></mrow></math>",
+   "label": "FIR256 + cab IR"
+  },
+  "Tone controls & volume": {
+   "term": "Tone stack and level",
+   "text": "The pedal's bass, middle, treble and volume knobs, as peaking and shelving biquad filters after the capture. Neutral at noon.",
+   "label": "Tone & volume"
+  },
+  "Extra clipping stages": {
+   "term": "Additional nonlinear stages",
+   "text": "Each arm of this campaign added something different after the parallel fronts: a bank of clipping curves, two or three more clippers in series, or a clipper whose bias follows the signal's envelope (the only one with memory)."
+  },
+  "Learned curve 2": {
+   "term": "Waveshaper, piecewise-linear with 33 learned points",
+   "text": "A free-form clipping curve: 33 fixed input points, spaced finely near zero and coarsely for loud signals (sinh spacing), each with a learned output value, joined by straight lines, with straight-line tails beyond the ends. The centre point is pinned at 0 so it can't add DC. This is the second of LTTC's two \"trained clippers\". Between knots xᵢ ≤ x < xᵢ₊₁ the output is a straight line; the knots get further apart for louder signals.",
+   "math": "<math display=\"block\"><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mo>=</mo><msub><mi>v</mi><mi>i</mi></msub><mo>+</mo><mfrac><mrow><mi>x</mi><mo>−</mo><msub><mi>x</mi><mi>i</mi></msub></mrow><mrow><msub><mi>x</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>x</mi><mi>i</mi></msub></mrow></mfrac><mrow><mo>(</mo><msub><mi>v</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>v</mi><mi>i</mi></msub><mo>)</mo></mrow><mo>,</mo><mspace width=\"1em\"/><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mrow><mi>sinh</mi><mo>(</mo><mo>−</mo><mi>asinh</mi><mn>16</mn><mo>+</mo><mi>i</mi><mi>Δ</mi><mo>)</mo></mrow></math>"
+  },
+  "Input FIR128": {
+   "term": "Input FIR filter, 128 taps",
+   "text": "A finite impulse response filter: each output sample is a weighted sum of the last 128 input samples, with 128 learned weights (taps). Before the clipper, it sets which frequencies get clipped hardest (like an amp's input stage). At 44.1 kHz, 128 taps cover 2.9 ms.",
+   "math": "<math display=\"block\"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mn>127</mn></munderover><mrow><mi>h</mi><mo>[</mo><mi>k</mi><mo>]</mo></mrow><mo>⁢</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow><mo>]</mo></mrow></math>",
+   "label": "FIR128"
+  },
+  "Input FIR32": {
+   "term": "Input FIR filter, 32 taps",
+   "text": "A finite impulse response filter: each output sample is a weighted sum of the last 32 input samples, with 32 learned weights (taps). Before the clipper, it sets which frequencies get clipped hardest (like an amp's input stage). At 44.1 kHz, 32 taps cover 0.7 ms.",
+   "math": "<math display=\"block\"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mn>31</mn></munderover><mrow><mi>h</mi><mo>[</mo><mi>k</mi><mo>]</mo></mrow><mo>⁢</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow><mo>]</mo></mrow></math>",
+   "label": "FIR32"
+  },
+  "Input FIR16": {
+   "term": "Input FIR filter, 16 taps",
+   "text": "A finite impulse response filter: each output sample is a weighted sum of the last 16 input samples, with 16 learned weights (taps). Before the clipper, it sets which frequencies get clipped hardest. At 44.1 kHz, 16 taps cover 0.4 ms.",
+   "math": "<math display=\"block\"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mn>15</mn></munderover><mrow><mi>h</mi><mo>[</mo><mi>k</mi><mo>]</mo></mrow><mo>⁢</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow><mo>]</mo></mrow></math>",
+   "label": "FIR16"
+  },
+  "Input FIR8": {
+   "term": "Input FIR filter, 8 taps",
+   "text": "A finite impulse response filter: each output sample is a weighted sum of the last 8 input samples, with 8 learned weights (taps). Before the clipper, it sets which frequencies get clipped hardest. At 44.1 kHz, 8 taps cover 0.2 ms.",
+   "math": "<math display=\"block\"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mn>7</mn></munderover><mrow><mi>h</mi><mo>[</mo><mi>k</mi><mo>]</mo></mrow><mo>⁢</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow><mo>]</mo></mrow></math>",
+   "label": "FIR8"
+  },
+  "Output FIR128": {
+   "term": "Output FIR filter, 128 taps",
+   "text": "A finite impulse response filter: each output sample is a weighted sum of the last 128 input samples, with 128 learned weights (taps). After the clipper, it shapes the final tone, including the speaker cabinet's response when the NAM captured a full rig. At 44.1 kHz, 128 taps cover 2.9 ms.",
+   "math": "<math display=\"block\"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mn>127</mn></munderover><mrow><mi>h</mi><mo>[</mo><mi>k</mi><mo>]</mo></mrow><mo>⁢</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow><mo>]</mo></mrow></math>",
+   "label": "FIR128"
+  },
+  "Output FIR256": {
+   "term": "Output FIR filter, 256 taps",
+   "text": "A finite impulse response filter: each output sample is a weighted sum of the last 256 input samples, with 256 learned weights (taps). After the clipper, it shapes the final tone, including the speaker cabinet's response when the NAM captured a full rig. At 44.1 kHz, 256 taps cover 5.8 ms.",
+   "math": "<math display=\"block\"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mn>255</mn></munderover><mrow><mi>h</mi><mo>[</mo><mi>k</mi><mo>]</mo></mrow><mo>⁢</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow><mo>]</mo></mrow></math>",
+   "label": "FIR256"
+  },
+  "Output FIR512": {
+   "term": "Output FIR filter, 512 taps",
+   "text": "A finite impulse response filter: each output sample is a weighted sum of the last 512 input samples, with 512 learned weights (taps). After the clipper, it shapes the final tone, including the speaker cabinet's response when the NAM captured a full rig. At 44.1 kHz, 512 taps cover 11.6 ms.",
+   "math": "<math display=\"block\"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mn>511</mn></munderover><mrow><mi>h</mi><mo>[</mo><mi>k</mi><mo>]</mo></mrow><mo>⁢</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow><mo>]</mo></mrow></math>",
+   "label": "FIR512"
+  },
+  "Output FIR768": {
+   "term": "Output FIR filter, 768 taps",
+   "text": "A finite impulse response filter: each output sample is a weighted sum of the last 768 input samples, with 768 learned weights (taps). After the clipper, it shapes the final tone, including the speaker cabinet's response when the NAM captured a full rig. At 44.1 kHz, 768 taps cover 17.4 ms.",
+   "math": "<math display=\"block\"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mn>767</mn></munderover><mrow><mi>h</mi><mo>[</mo><mi>k</mi><mo>]</mo></mrow><mo>⁢</mo><mrow><mi>x</mi><mo>[</mo><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow><mo>]</mo></mrow></math>",
+   "label": "FIR768"
+  }
+ },
+ "milestones": [
+  {
+   "id": "baseline016",
+   "date": "2026-10-13",
+   "title": "Recover the SnapTone baseline",
+   "summary": "Decode Suite-generated SnapTone records, reproduce Valeton's renderer offline and score the stock model before trying to beat it. Refitting the same structure ourselves already beats Suite's fit.",
+   "changed": "Starting point: Valeton's own capture structure.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Pre biquad",
+    "Input FIR128",
+    "4× oversampling",
+    "Asymmetric exp clipper",
+    "Decimate ↓4 (40-tap LPF)",
+    "Post biquad",
+    "Output FIR512"
+   ],
+   "training": {
+    "optimizer": "Suite's fit (SnapTone); Adam for our refit",
+    "loss": "MSE for our refit",
+    "data": "NAM Core's sample A2 model on Suite's own capture signal"
+   },
+   "direction": {
+    "by": "unclear",
+    "note": "Part of the agreed plan to measure the stock capture first."
+   },
+   "reported": [
+    {
+     "teacher": "a2_reference",
+     "metric": "esr",
+     "value": 0.252,
+     "label": "Suite's SnapTone (fitted level and lag)"
+    }
+   ],
+   "models": [
+    {
+     "id": "016_refit",
+     "label": "SnapTone structure, refit by us",
+     "lead": true
+    }
+   ]
+  },
+  {
+   "id": "structures017",
+   "date": "2026-10-14",
+   "title": "Try beyond the stock structure",
+   "summary": "Screen longer output filters, filtered cascades, other clipping curves and a small residual TCN on the same data.",
+   "changed": "Explored new structures; extra nonlinear stages and the TCN did not reliably help.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR128",
+    "4× oversampling",
+    "Asymmetric exp clipper",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR512"
+   ],
+   "training": {
+    "optimizer": "Adam (one L-BFGS smoke test)",
+    "loss": "ESR",
+    "data": "Guitar section of Suite's capture signal, NAM Core's sample A2 model"
+   },
+   "direction": {
+    "by": "ai",
+    "note": "Owner asked for strong offline candidates; the agent chose the structures."
+   },
+   "reported": [
+    {
+     "teacher": "a2_reference",
+     "metric": "esr",
+     "value": 0.12093,
+     "label": "Stock structure, guitar split",
+     "lead": true
+    }
+   ],
+   "models": [
+    {
+     "id": "017_stock",
+     "label": "Stock structure, guitar split",
+     "lead": true
+    },
+    {
+     "id": "017_stock_post1024",
+     "label": "1024-tap output FIR"
+    },
+    {
+     "id": "017_stock_tcn4",
+     "label": "Stock + residual TCN"
+    }
+   ],
+   "branches": [
+    {
+     "label": "Also tried",
+     "nodes": [
+      "Output FIR768 / FIR1024",
+      "Filtered cascades",
+      "tanh clipper",
+      "Residual TCN"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "realdi018",
+   "date": "2026-10-19",
+   "title": "Fit real playing; extend the tail",
+   "summary": "Switch to the owner's DI recordings at their real input level and compare the stock-length output filter with a 768-tap one.",
+   "changed": "Real guitar DI instead of synthetic signals; output FIR 512 → 768 taps.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR128",
+    "4× oversampling",
+    "Asymmetric exp clipper",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR768"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "ESR + 0.1 MRSTFT",
+    "data": "Guitar section of Suite's capture signal (per the run's result.json)"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner supplied the DI recordings and found the 768-tap version hard to tell from the teacher."
+   },
+   "reported": [
+    {
+     "teacher": "a2_reference",
+     "metric": "esr",
+     "value": 0.11608,
+     "label": "Long FIR768",
+     "lead": true
+    }
+   ],
+   "models": [
+    {
+     "id": "018_stock",
+     "label": "Stock 512-tap output"
+    },
+    {
+     "id": "018_stock_post768",
+     "label": "Long FIR768",
+     "lead": true
+    }
+   ]
+  },
+  {
+   "id": "shortlist020",
+   "date": "2026-10-19",
+   "title": "Candidate B becomes the lead",
+   "summary": "Balance PRS fingerstyle, PRS pick and JSM10 pick across training and validation, then freeze a three-candidate shortlist before scoring.",
+   "changed": "Training data mixes two guitars and two playing styles; candidate B (FIR768) is chosen.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR128",
+    "4× oversampling",
+    "Asymmetric exp clipper",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR768"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "ESR + 0.1 MRSTFT",
+    "data": "3 owner DIs, balanced groups"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner suggested mixing guitars and styles, and preferred B by ear."
+   },
+   "reported": [
+    {
+     "teacher": "a2_reference",
+     "metric": "esr",
+     "value": 0.06919,
+     "label": "Candidate B",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "shortlist020",
+    "candidate": "extended",
+    "passage": "prs_pick_02"
+   },
+   "models": [
+    {
+     "id": "020_native512",
+     "label": "A · real DI, 512 taps"
+    },
+    {
+     "id": "020_long768",
+     "label": "B · real DI, 768 taps",
+     "lead": true
+    },
+    {
+     "id": "020_long1024",
+     "label": "1024 taps"
+    }
+   ]
+  },
+  {
+   "id": "diversity021",
+   "date": "2026-10-19",
+   "title": "One architecture, three amps",
+   "summary": "Fit candidate B to three new NAM teachers: a bright clean amp, a Marshall and a Peavey 5150. The Peavey is clearly the hardest.",
+   "changed": "Three teacher amps instead of one; same architecture.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR128",
+    "4× oversampling",
+    "Asymmetric exp clipper",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR768"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine, 8 starts",
+    "loss": "ESR + 0.1 MRSTFT",
+    "data": "3 owner DIs × 3 drive levels"
+   },
+   "direction": {
+    "by": "unclear",
+    "note": "Multi-teacher check; unclear who proposed it."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "esr",
+     "value": 0.4415,
+     "label": "Candidate B",
+     "lead": true
+    },
+    {
+     "teacher": "amalgam_marshall",
+     "metric": "esr",
+     "value": 0.22922,
+     "label": "Candidate B",
+     "lead": true
+    },
+    {
+     "teacher": "bright_clean",
+     "metric": "esr",
+     "value": 0.00205,
+     "label": "Candidate B",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "diversity021_high_gain",
+    "candidate": "b768",
+    "passage": "prs_pick_neutral_p0"
+   },
+   "models": [
+    {
+     "id": "021",
+     "label": "Candidate B",
+     "lead": true
+    }
+   ]
+  },
+  {
+   "id": "nonlinear022",
+   "date": "2026-10-20",
+   "title": "Learn the clipping curve's shape",
+   "summary": "Longer fits, wider initializations, a learned smooth-to-hard curve and a two-stage cascade on all three amps.",
+   "changed": "Clipping curve gets learnable knees; filtered two-stage cascade tried.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR128",
+    "4× oversampling",
+    "Learned-knee clipper",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR768"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "ESR + 0.1 MRSTFT",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "ai",
+    "note": "Overnight agent research."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "esr",
+     "value": 0.31539,
+     "label": "Longer B",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "nonlinear022_high_gain",
+    "candidate": "B_longer",
+    "passage": "prs_pick_p0"
+   },
+   "models": [
+    {
+     "id": "022_B_longer",
+     "label": "Longer multi-level fit",
+     "lead": true
+    },
+    {
+     "id": "022_B_wide",
+     "label": "Wider initialization"
+    },
+    {
+     "id": "022_shape",
+     "label": "Learned smooth-to-hard curve"
+    },
+    {
+     "id": "022_cascade2_shared4x",
+     "label": "Two-stage cascade at 4×"
+    }
+   ],
+   "branches": [
+    {
+     "label": "Also tried",
+     "nodes": [
+      "Learned-knee clipper",
+      "Interstage FIR at 4×",
+      "Learned-knee clipper"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed025",
+   "date": "2026-10-20",
+   "title": "A stronger Peavey seed",
+   "summary": "Restart the Peavey from the best wide initialization; compare the exponential curve with a learned shape and a 33-knot monotone curve.",
+   "changed": "Better starting point; first 33-knot curve tried (later reused in LTTC).",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR128",
+    "4× oversampling",
+    "Asymmetric exp clipper",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR768"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "ESR + 0.1 MRSTFT",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "ai",
+    "note": "Agent follow-up of 022."
+   },
+   "reported": [],
+   "clips": {
+    "pack": "matched025_high_gain",
+    "candidate": "control",
+    "passage": "prs_pick_p0"
+   },
+   "models": [
+    {
+     "id": "025_control",
+     "label": "Continued stronger seed",
+     "lead": true
+    },
+    {
+     "id": "025_shape",
+     "label": "Learned smooth-to-hard curve"
+    },
+    {
+     "id": "025_spline33",
+     "label": "Monotone 33-knot curve"
+    }
+   ],
+   "branches": [
+    {
+     "label": "Also tried",
+     "nodes": [
+      "Learned-knee clipper",
+      "Monotone 33-knot curve"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "spectral028",
+   "date": "2026-10-20",
+   "title": "Chase the missing brightness",
+   "summary": "The Peavey still sounds dull. Test EQ-augmented training, frequency-weighted losses and level-dependent (compressor/state) variants.",
+   "changed": "Training data and loss aimed at high frequencies; dynamic variants tried.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR128",
+    "4× oversampling",
+    "Asymmetric exp clipper",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR768"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "ESR + MRSTFT, some arms frequency-weighted",
+    "data": "3 DIs × 3 drives, plus EQ'd copies"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Driven by the owner hearing the Peavey as dull."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "esr",
+     "value": 0.16252,
+     "label": "Neutral control",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "research029_peavey",
+    "candidate": "neutral_control",
+    "passage": "prs_pick_neutral_p0"
+   },
+   "models": [
+    {
+     "id": "029_neutral_control",
+     "label": "Longer neutral control",
+     "lead": true
+    },
+    {
+     "id": "029_eq_hf",
+     "label": "Frequency-weighted objective"
+    },
+    {
+     "id": "029_compressor",
+     "label": "Compressor before the curve"
+    }
+   ],
+   "branches": [
+    {
+     "label": "Also tried",
+     "nodes": [
+      "Level detector",
+      "Compressor",
+      "Asymmetric exp clipper"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "structure035",
+   "date": "2026-10-20",
+   "title": "Parallel clipping fronts",
+   "summary": "Check oversampling quality, then add a second filtered clipping branch summed at 4× before the shared decimator.",
+   "changed": "Second nonlinear branch in parallel (FIR + curve), summed at 4×.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR128",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR768"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "ESR + MRSTFT",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "ai",
+    "note": "Agent structural study."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "esr",
+     "value": 0.12872,
+     "label": "Single-front control"
+    },
+    {
+     "teacher": "peavey",
+     "metric": "esr",
+     "value": 0.1243,
+     "label": "Parallel fronts",
+     "lead": true
+    }
+   ],
+   "models": [
+    {
+     "id": "035_stock_control",
+     "label": "Single-front control"
+    },
+    {
+     "id": "035_parallel_stock",
+     "label": "Parallel fronts",
+     "lead": true
+    },
+    {
+     "id": "035_parallel_hq",
+     "label": "Parallel fronts, higher-quality oversampling"
+    }
+   ]
+  },
+  {
+   "id": "bandloss037",
+   "date": "2026-10-20",
+   "title": "Train on the high band directly",
+   "summary": "Add a loss term on high-band magnitude mismatch to the parallel-front model.",
+   "changed": "Loss: extra high-band magnitude term.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR128",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR768"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "ESR + MRSTFT (+ high-band magnitude)",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "unclear",
+    "note": "Follow-up of the brightness complaint."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "esr",
+     "value": 0.10646,
+     "label": "Further-training control",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "bandloss037_peavey",
+    "candidate": "continuation",
+    "passage": "prs_pick_p0"
+   },
+   "models": [
+    {
+     "id": "037_continuation",
+     "label": "Further-training control",
+     "lead": true
+    },
+    {
+     "id": "037_band_magnitude",
+     "label": "High-band magnitude loss"
+    }
+   ]
+  },
+  {
+   "id": "uppermid039",
+   "date": "2026-10-20",
+   "title": "Focus on abrasive upper mids",
+   "summary": "Target the upper-mid region with its own loss, optionally with an extra static or filtered stage.",
+   "changed": "Loss: upper-mid term; extra stage variants.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR128",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR768"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "ESR + MRSTFT (+ upper-mid term)",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "unclear",
+    "note": "Follow-up of listening notes on the Peavey."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "esr",
+     "value": 0.08349,
+     "label": "Continued control",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "uppermid039_peavey",
+    "candidate": "continuation",
+    "passage": "prs_pick_p0"
+   },
+   "models": [
+    {
+     "id": "039_continuation",
+     "label": "Further-training control",
+     "lead": true
+    },
+    {
+     "id": "039_uppermid_loss",
+     "label": "Targeted upper-mid loss"
+    },
+    {
+     "id": "039_filtered_stage",
+     "label": "Upper-mid loss + filtered stage"
+    }
+   ]
+  },
+  {
+   "id": "fitting041",
+   "date": "2026-10-20",
+   "title": "Make fitting practical",
+   "summary": "Compare ordinary joint training with periodic least-squares refits of the output filter, to cut fitting time.",
+   "changed": "Training recipe only (periodic least-squares tried); joint Adam kept.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR128",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR768"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine (joint)",
+    "loss": "ESR + 0.3 MRSTFT + 0.1 derivative ESR",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "unclear",
+    "note": "Needed for a user-facing trainer."
+   },
+   "reported": [],
+   "clips": {
+    "pack": "fitting041_high_gain",
+    "candidate": "joint",
+    "passage": "prs_pick_p0"
+   },
+   "models": [
+    {
+     "id": "041",
+     "label": "Joint training",
+     "lead": true
+    }
+   ]
+  },
+  {
+   "id": "compression044",
+   "date": "2026-10-20",
+   "title": "Shrink the filters",
+   "summary": "Cut the filters to fit the pedal: output FIR 768 → 384 → 256, and compact fronts of 32 and 16 taps.",
+   "changed": "Compact geometry: FIR32 + FIR16 fronts, 256-tap output FIR.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "ESR + 0.3 MRSTFT + 0.1 derivative ESR",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner asked for cheaper captures that leave room for an IR."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "esr",
+     "value": 0.07535,
+     "label": "Full-size control"
+    },
+    {
+     "teacher": "peavey",
+     "metric": "esr",
+     "value": 0.13954,
+     "label": "Compact",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "compression044_high_gain",
+    "candidate": "compact",
+    "passage": "prs_pick_p0"
+   },
+   "models": [
+    {
+     "id": "044_control",
+     "label": "Full-size control"
+    },
+    {
+     "id": "044_compact",
+     "label": "Compact 32/16 → 256",
+     "lead": true
+    }
+   ]
+  },
+  {
+   "id": "continuation048",
+   "date": "2026-10-21",
+   "title": "Give compact more training",
+   "summary": "Continue the compact model for 900 more updates to see how much of the gap to full size is just training budget.",
+   "changed": "Longer training of the compact model.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "ESR + 0.3 MRSTFT + 0.1 derivative ESR",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "ai",
+    "note": "Agent overnight queue."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "esr",
+     "value": 0.12517,
+     "label": "Compact, 900 more updates",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "compact048_high_gain",
+    "candidate": "compact048",
+    "passage": "prs_pick_p0"
+   },
+   "models": [
+    {
+     "id": "048",
+     "label": "Compact, 900 more updates",
+     "lead": true
+    }
+   ]
+  },
+  {
+   "id": "mfcc050",
+   "date": "2026-10-21",
+   "title": "Train on a perceptual metric",
+   "summary": "Ask which distances track hearing, then train full, compact and tiny models on the paper-supported MFCC distance.",
+   "changed": "Loss: PaperMFCC. Scores from here on are MFCC, not ESR.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "PaperMFCC (20 coefficients, L1)",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner pointed to perceptual metrics and the paper behind the MFCC distance."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "mfcc",
+     "value": 2.43214,
+     "label": "Full · MFCC"
+    },
+    {
+     "teacher": "peavey",
+     "metric": "mfcc",
+     "value": 2.68249,
+     "label": "Compact · MFCC",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "perceptual050_high_gain",
+    "candidate": "compact_mfcc",
+    "passage": "prs_pick_p0"
+   },
+   "models": [
+    {
+     "id": "050_full",
+     "label": "Full · MFCC"
+    },
+    {
+     "id": "050_compact",
+     "label": "Compact · MFCC",
+     "lead": true
+    },
+    {
+     "id": "050_tiny",
+     "label": "Tiny · MFCC"
+    }
+   ]
+  },
+  {
+   "id": "tiny052",
+   "date": "2026-10-21",
+   "title": "Tiny stays out of reach",
+   "summary": "Fix the tiny model's initialization; it improves but stays far from acceptable on the Peavey. Kept as a negative result.",
+   "changed": "Tiny geometry (FIR16 / FIR8 → 128) with a better start.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR8",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR128"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "PaperMFCC",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "ai",
+    "note": "Agent follow-up."
+   },
+   "reported": [],
+   "clips": {
+    "pack": "tiny052_high_gain",
+    "candidate": "prefix_mfcc",
+    "passage": "prs_pick_p0"
+   },
+   "models": [
+    {
+     "id": "052",
+     "label": "Tiny prefix · MFCC"
+    }
+   ]
+  },
+  {
+   "id": "compact063",
+   "date": "2026-10-21",
+   "title": "Compact goes to the pedal",
+   "summary": "Owner listening favours compact. Build it as a pedal effect (GPTC record, ARM loader, DSP kernel) and fuse an IR into the output filter.",
+   "changed": "Same model, now running on the GP-50.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256 + cab IR",
+    "Tone controls & volume"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "PaperMFCC",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner's listening verdict and request for the pedal implementation."
+   },
+   "reported": [],
+   "clips": {
+    "pack": "perceptual050_high_gain",
+    "candidate": "compact_mfcc",
+    "passage": "prs_pick_p0"
+   },
+   "models": []
+  },
+  {
+   "id": "trainer064",
+   "date": "2026-10-21",
+   "title": "A trainer anyone can run",
+   "summary": "NAM A2 Full → compact fitting with no research checkpoints: a generic 15-start initialization, then Adam on MFCC. Later moved fully into the browser.",
+   "changed": "Training recipe: cold start from any NAM, on the user's machine. First runs are short (180 updates).",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "PaperMFCC",
+    "data": "Any 1–8 DIs × 3 drives, first 60 s each"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner asked for browser-side NAM → capture fitting."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "mfcc",
+     "value": 9.52512,
+     "label": "Cold start, 180 updates (smoke test)"
+    }
+   ],
+   "models": [
+    {
+     "id": "064",
+     "label": "Cold start, 180 updates (smoke test)"
+    }
+   ]
+  },
+  {
+   "id": "teachers073",
+   "date": "2026-10-22",
+   "title": "New teachers, longer runs",
+   "summary": "Fender, Soldano and Vox teachers trained with the trainer at 1,800 updates; Soldano sounds too bright.",
+   "changed": "Same recipe, 10× the updates, new teachers.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "PaperMFCC",
+    "data": "3 provided DIs × 3 drives"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner requested the three teachers."
+   },
+   "reported": [
+    {
+     "teacher": "fender",
+     "metric": "mfcc",
+     "value": 2.74725,
+     "label": "Compact, 1,800 updates",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "requested073_fender",
+    "candidate": "compact_mfcc",
+    "passage": "di2_p0"
+   },
+   "models": [
+    {
+     "id": "073",
+     "label": "Compact, 1,800 updates",
+     "lead": true
+    }
+   ]
+  },
+  {
+   "id": "soldano076",
+   "date": "2026-10-22",
+   "title": "Train to a plateau",
+   "summary": "Owner corrects premature fixed-budget stopping: continue Soldano fits until validation stops improving.",
+   "changed": "Stopping rule: validation plateau instead of a fixed budget.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam, then ReduceLROnPlateau",
+    "loss": "MFCC + MRSTFT + ESR mix",
+    "data": "3 DIs × 3 drives"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner corrected the stopping policy."
+   },
+   "reported": [
+    {
+     "teacher": "soldano",
+     "metric": "mfcc",
+     "value": 3.2189,
+     "label": "Peavey start · mixed loss",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "soldano076_convergence",
+    "candidate": "continued_mixed",
+    "passage": "di2_p0"
+   },
+   "models": []
+  },
+  {
+   "id": "collection1109",
+   "date": "2026-11-09",
+   "title": "Nine new amps and pedals",
+   "summary": "Download nine A2 Full teachers from Tone3000 (Marshall, Friedman, Orange, JC120, Klon, RAT, a Fuzz Factory clone…) and fit each with the trainer, then continue to a plateau. The fuzz and the RAT end far behind the amps.",
+   "changed": "Much wider set of teachers; plateau continuation.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine, then plateau continuation",
+    "loss": "PaperMFCC",
+    "data": "3 provided DIs × 3 drives"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner chose the collection and authorized the downloads."
+   },
+   "reported": [
+    {
+     "teacher": "marshall",
+     "metric": "mfcc",
+     "value": 5.3362,
+     "label": "Compact, 1,800 updates",
+     "lead": true
+    },
+    {
+     "teacher": "rat",
+     "metric": "mfcc",
+     "value": 6.926,
+     "label": "Compact, 1,800 updates",
+     "lead": true
+    },
+    {
+     "teacher": "fuzz",
+     "metric": "mfcc",
+     "value": 11.492,
+     "label": "Compact, 1,800 updates",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "collection20261109_marshall",
+    "candidate": "plateau",
+    "passage": "di2_p0"
+   },
+   "models": [
+    {
+     "id": "1109_collection",
+     "label": "Compact, 1,800 updates"
+    },
+    {
+     "id": "1109_plateau",
+     "label": "Compact, trained to plateau",
+     "lead": [
+      "marshall",
+      "fuzz",
+      "rat"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vexter1109",
+   "date": "2026-11-09",
+   "title": "The real Fuzz Factory",
+   "summary": "The clone turned out not to be the popular reference, so the genuine Z.Vex Fuzz Factory (Vexter) is added. It needs a much higher-gain initialization screen (drive up to 131,072) before training gets anywhere.",
+   "changed": "New hardest teacher; initialization screen extended to very high drive.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam, plateau continuation",
+    "loss": "PaperMFCC",
+    "data": "3 provided DIs × 3 drives"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner asked for a genuine Fuzz Factory run with a high-gain initialization."
+   },
+   "reported": [
+    {
+     "teacher": "vexter",
+     "metric": "mfcc",
+     "value": 11.494,
+     "label": "Compact, trained to plateau",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "collection20261109_fuzz_vexter",
+    "candidate": "plateau",
+    "passage": "di2_p0"
+   },
+   "models": [
+    {
+     "id": "1109_plateau",
+     "label": "Compact, trained to plateau",
+     "lead": [
+      "vexter"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clipping1112",
+   "date": "2026-11-12",
+   "title": "More clipping stages",
+   "summary": "The fuzz pedals and the RAT are stuck far behind the amps. Try a bank of parallel clipping curves, two or three serial clipping stages, or envelope-biased clipping, on the Fuzz Factory, its clone, the RAT and the Marshall.",
+   "changed": "Extra clipping stages around the compact front.",
+   "architecture": [
+    "Input gain ×0.5",
+    {
+     "parallel": [
+      [
+       "Input FIR32",
+       "4× oversampling",
+       "Asymmetric exp clipper"
+      ],
+      [
+       "Input FIR16",
+       "4× oversampling",
+       "Asymmetric exp clipper",
+       "Branch gain"
+      ]
+     ]
+    },
+    "Sum",
+    "Extra clipping stages",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam",
+    "loss": "PaperMFCC",
+    "data": "3 provided DIs × 3 drives"
+   },
+   "direction": {
+    "by": "ai",
+    "note": "Agent-proposed architecture campaign, motivated by the poor fuzz and RAT fits."
+   },
+   "reported": [
+    {
+     "teacher": "marshall",
+     "metric": "mfcc",
+     "value": 2.8037,
+     "label": "Existing architecture continued"
+    },
+    {
+     "teacher": "marshall",
+     "metric": "mfcc",
+     "value": 2.5626,
+     "label": "Parallel clipping bank",
+     "lead": true
+    },
+    {
+     "teacher": "vexter",
+     "metric": "mfcc",
+     "value": 11.46,
+     "label": "Existing architecture continued"
+    },
+    {
+     "teacher": "vexter",
+     "metric": "mfcc",
+     "value": 10.711,
+     "label": "Envelope-biased clipping",
+     "lead": true
+    },
+    {
+     "teacher": "fuzz",
+     "metric": "mfcc",
+     "value": 9.223,
+     "label": "Existing architecture continued"
+    },
+    {
+     "teacher": "fuzz",
+     "metric": "mfcc",
+     "value": 8.662,
+     "label": "Three added serial stages",
+     "lead": true
+    },
+    {
+     "teacher": "rat",
+     "metric": "mfcc",
+     "value": 4.44,
+     "label": "Existing architecture continued"
+    },
+    {
+     "teacher": "rat",
+     "metric": "mfcc",
+     "value": 3.872,
+     "label": "Three added serial stages",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "architectures20261112_marshall",
+    "candidate": "bank",
+    "passage": "di2_p0"
+   },
+   "models": [
+    {
+     "id": "1112_control",
+     "label": "Existing architecture continued"
+    },
+    {
+     "id": "1112_bank",
+     "label": "Parallel clipping bank",
+     "lead": [
+      "marshall"
+     ]
+    },
+    {
+     "id": "1112_serial2",
+     "label": "Two added serial stages"
+    },
+    {
+     "id": "1112_serial3",
+     "label": "Three added serial stages",
+     "lead": [
+      "fuzz",
+      "rat"
+     ]
+    },
+    {
+     "id": "1112_dynamic",
+     "label": "Envelope-biased clipping",
+     "lead": [
+      "vexter"
+     ]
+    }
+   ],
+   "branches": [
+    {
+     "label": "Extra stages, one per arm",
+     "nodes": [
+      "Clipping bank",
+      "Serial clipping stages",
+      "Envelope-biased clipping"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "splines1112",
+   "date": "2026-11-12",
+   "title": "Learn the whole curve",
+   "summary": "Replace the entire nonlinear front with one or two learned 33-knot curves (with a 16-tap filter between them), trained to a plateau. The big gains are on the fuzz pedals: the Fuzz Factory drops from 10.1 to 6.8.",
+   "changed": "Nonlinearity: free-form learned curves replace exponentials and branches. Two curves = the future LTTC.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR32",
+    "4× oversampling",
+    "Learned curve 1",
+    "Interstage FIR16 (at 4×)",
+    "Learned curve 2",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam, plateau stopping",
+    "loss": "PaperMFCC",
+    "data": "3 provided DIs × 3 drives"
+   },
+   "direction": {
+    "by": "ai",
+    "note": "Agent proposed; owner asked to run it."
+   },
+   "reported": [
+    {
+     "teacher": "marshall",
+     "metric": "mfcc",
+     "value": 2.52,
+     "label": "Previous winner, same budget"
+    },
+    {
+     "teacher": "marshall",
+     "metric": "mfcc",
+     "value": 2.481,
+     "label": "One curve"
+    },
+    {
+     "teacher": "marshall",
+     "metric": "mfcc",
+     "value": 2.476,
+     "label": "Two curves",
+     "lead": true
+    },
+    {
+     "teacher": "vexter",
+     "metric": "mfcc",
+     "value": 10.096,
+     "label": "Previous winner, same budget"
+    },
+    {
+     "teacher": "vexter",
+     "metric": "mfcc",
+     "value": 7.336,
+     "label": "One curve"
+    },
+    {
+     "teacher": "vexter",
+     "metric": "mfcc",
+     "value": 6.792,
+     "label": "Two curves",
+     "lead": true
+    },
+    {
+     "teacher": "fuzz",
+     "metric": "mfcc",
+     "value": 7.708,
+     "label": "Previous winner, same budget"
+    },
+    {
+     "teacher": "fuzz",
+     "metric": "mfcc",
+     "value": 6.217,
+     "label": "One curve"
+    },
+    {
+     "teacher": "fuzz",
+     "metric": "mfcc",
+     "value": 5.927,
+     "label": "Two curves",
+     "lead": true
+    },
+    {
+     "teacher": "rat",
+     "metric": "mfcc",
+     "value": 3.283,
+     "label": "Previous winner, same budget"
+    },
+    {
+     "teacher": "rat",
+     "metric": "mfcc",
+     "value": 2.858,
+     "label": "One curve"
+    },
+    {
+     "teacher": "rat",
+     "metric": "mfcc",
+     "value": 2.809,
+     "label": "Two curves",
+     "lead": true
+    }
+   ],
+   "models": [
+    {
+     "id": "1112_spline1",
+     "label": "One learned curve"
+    },
+    {
+     "id": "1112_spline2",
+     "label": "Two learned curves",
+     "lead": true
+    }
+   ]
+  },
+  {
+   "id": "lttc1121",
+   "date": "2026-11-21",
+   "title": "LTTC: two curves on the pedal, from scratch",
+   "summary": "Port the two-curve model to the pedal as a new record format, and give the trainer a from-scratch recipe. An optimizer survey finds nothing that beats Adam outright.",
+   "changed": "Released architecture (Lean Twin Trained Clippers); trained from a cold start instead of a warm start.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR32",
+    "4× oversampling",
+    "Learned curve 1",
+    "Interstage FIR16 (at 4×)",
+    "Learned curve 2",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Adam + cosine",
+    "loss": "PaperMFCC",
+    "data": "3 provided DIs × 3 drives"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Owner: \"let's port the two spline capture\"."
+   },
+   "reported": [
+    {
+     "teacher": "marshall",
+     "metric": "mfcc",
+     "value": 2.54731,
+     "label": "LTTC from scratch",
+     "lead": true
+    },
+    {
+     "teacher": "fender",
+     "metric": "mfcc",
+     "value": 2.3132,
+     "label": "LTTC from scratch",
+     "lead": true
+    },
+    {
+     "teacher": "rat",
+     "metric": "mfcc",
+     "value": 2.543,
+     "label": "LTTC from scratch",
+     "lead": true
+    }
+   ],
+   "models": [
+    {
+     "id": "1121_two_curve",
+     "label": "LTTC from scratch",
+     "lead": true
+    }
+   ]
+  },
+  {
+   "id": "schedulefree1122",
+   "date": "2026-11-22",
+   "title": "Schedule-free AdamW",
+   "summary": "Schedule-free AdamW reaches plain Adam's 4,000-step score in about 1,000 steps; it becomes the trainer default.",
+   "changed": "Optimizer: schedule-free AdamW.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR32",
+    "4× oversampling",
+    "Learned curve 1",
+    "Interstage FIR16 (at 4×)",
+    "Learned curve 2",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Schedule-free AdamW",
+    "loss": "PaperMFCC",
+    "data": "3 provided DIs × 3 drives"
+   },
+   "direction": {
+    "by": "ai",
+    "note": "From the agent's optimizer literature survey."
+   },
+   "reported": [
+    {
+     "teacher": "marshall",
+     "metric": "mfcc",
+     "value": 2.4695,
+     "label": "LTTC, schedule-free",
+     "lead": true
+    }
+   ],
+   "clips": {
+    "pack": "optim20261122_marshall_adam6k_sf3k",
+    "candidate": "sf3k",
+    "passage": "di2_p0"
+   },
+   "models": [
+    {
+     "id": "1122_schedule_free",
+     "label": "LTTC, schedule-free",
+     "lead": true
+    }
+   ]
+  },
+  {
+   "id": "release1123",
+   "date": "2026-11-23",
+   "title": "Released",
+   "summary": "Peppercorn v0.1.0 ships LTTC captures. The released Peavey capture is compared with Suite's SnapTone and the NAM on the pedal.",
+   "changed": "Release; Peavey retrained with the final recipe. A shorter 900-update budget is checked for the website trainer.",
+   "architecture": [
+    "Input gain ×0.5",
+    "Input FIR32",
+    "4× oversampling",
+    "Learned curve 1",
+    "Interstage FIR16 (at 4×)",
+    "Learned curve 2",
+    "Decimate ↓4 (40-tap LPF)",
+    "Fixed biquad",
+    "Output FIR256"
+   ],
+   "training": {
+    "optimizer": "Schedule-free AdamW",
+    "loss": "PaperMFCC",
+    "data": "3 provided DIs × 3 drives"
+   },
+   "direction": {
+    "by": "owner",
+    "note": "Release decision."
+   },
+   "reported": [
+    {
+     "teacher": "peavey",
+     "metric": "mfcc",
+     "value": 2.31256,
+     "label": "Released LTTC",
+     "lead": true
+    }
+   ],
+   "models": [
+    {
+     "id": "1123_release",
+     "label": "Released LTTC",
+     "lead": true
+    },
+    {
+     "id": "1123_short",
+     "label": "Shorter website budget"
+    }
+   ]
+  }
+ ]
+}

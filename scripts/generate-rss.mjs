@@ -24,7 +24,7 @@ function generateRSS()
 
   const index = JSON.parse(fs.readFileSync(POSTS_JSON, "utf-8"));
   const posts = index
-    .map(({ slug }) =>
+    .map(({ slug, url }) =>
     {
       const mdPath = path.join(BLOG_DIR, slug, "post.md");
       const md = fs.readFileSync(mdPath, "utf-8");
@@ -33,7 +33,7 @@ function generateRSS()
       {
         throw new Error(`Post ${ slug } needs a title and a valid YYYY-MM-DD date.`);
       }
-      return { ...meta, slug };
+      return { ...meta, slug, url };
     });
 
   // Sort by date descending
@@ -42,7 +42,7 @@ function generateRSS()
   const items = posts
     .map((post) =>
     {
-      const url = escapeXml(`${ DOMAIN }/blog/post.html?slug=${ encodeURIComponent(post.slug) }`);
+      const url = escapeXml(post.url ? `${ DOMAIN }${ post.url }` : `${ DOMAIN }/blog/post.html?slug=${ encodeURIComponent(post.slug) }`);
       const pubDate = new Date(post.date).toUTCString();
       return `    <item>
       <title>${ escapeXml(post.title) }</title>

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leaner and Meaner Amp Modelers · Peppercorn</title>
+<meta name="description" content="How the LTTC capture architecture for the GP-50 evolved, with scores and audio at every step.">
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="/css/blog.css">
+<style>
+  :root {
+    /* blog.css (post meta and comments) uses these names; map them to Peppercorn's colours. */
+    --border-color: var(--line); --input-bg-color: var(--surface); --text-color: var(--ink);
+    --link-color: var(--accent); --bg-color: var(--paper); --muted-color: var(--muted); --error-color: var(--red);
+    /* One color per amp or pedal (validated for color-vision deficiency on --paper). The Valeton A2 and the
+       Soldano each have one or two historical points and never appear together, so they share a neutral grey. */
+    --amp-peavey: #2a78d6; --amp-amalgam_marshall: #eb6834; --amp-marshall: #1baf7a; --amp-bright_clean: #eda100;
+    --amp-fender: #e87ba4; --amp-rat: #008300; --amp-fuzz: #6250d6; --amp-vexter: #e34948;
+    --amp-a2_reference: var(--muted); --amp-soldano: var(--muted);
+    --small: .8125rem;
+  }
+  main { width: min(100%, 86rem); margin: auto; padding: 0 var(--gutter) 3rem }
+  h1 { margin: 1.5rem 0 .5rem; font-size: 2rem }
+  .lede { max-width: 46rem; margin-bottom: 1.5rem }
+  .lede p, .lede ul { margin: 0 0 .75rem }
+  .lede li { margin-bottom: .3rem }
+  h1 .subtitle { display: block; margin-top: .3rem; font-size: 1.1rem; font-weight: 500; color: var(--muted) }
+  .preamble { font-size: var(--small); font-style: italic; color: var(--muted) }
+  .post-footer { margin-top: 3rem }
+  .lede h2 { margin: 1.4rem 0 .4rem; font-size: 1.15rem }
+  fieldset { display: inline-flex; flex-wrap: wrap; gap: .3rem 1rem; border: 1px solid var(--line); margin: 0 .5rem .5rem 0 }
+  legend, .note { color: var(--muted); font-size: var(--small) }
+  .chart { position: relative }
+  .chart svg { display: block; width: 100%; height: auto; font: 11px var(--sans) }
+  .chart svg text { fill: var(--muted) }
+  .chart svg .grid { stroke: var(--line); stroke-width: 1 }
+  .chart svg .column:hover, .chart svg .column.selected { fill: var(--hover) }
+  .legend-item { cursor: pointer }
+  .chart svg .legend-item.off text { fill: var(--line) }
+  .chart svg .legend-item:hover text { fill: var(--ink) }
+  #block-tip { position: fixed; z-index: 1 }
+  .tip, #tooltip { position: absolute; pointer-events: none; max-width: 26rem; padding: .5rem .65rem;
+    background: var(--surface); border: 1px solid var(--edge); font-size: var(--small) }
+  .tip p, #tooltip p { margin: .2rem 0 }
+  .math math { margin: .4rem 0; font-size: 1.15em }
+  .icon { width: 1.2em; height: 1.2em; vertical-align: -.25em; fill: currentColor; color: var(--ink) }
+  .key { display: flex; flex-wrap: wrap; gap: .3rem 1.5rem; margin: .5rem 0; padding: 0; list-style: none; font-size: var(--small) }
+  .key svg[viewBox="0 0 20 12"] { width: 1.8em }
+  .swatch { display: inline-block; width: .7em; height: .7em; margin-right: .3em; border-radius: 50% }
+  #card { border-top: 2px solid var(--edge); margin-top: 1rem }
+  /* Architecture diagram (drawn by diagram.mjs). */
+  .diagram-scroll { overflow-x: auto }
+  .diagram { display: block; margin: .5rem 0; font: 12px var(--mono) }
+  .diagram .node rect, .diagram .node polygon, .diagram .node circle { fill: var(--surface); stroke: var(--edge); stroke-width: 1.2 }
+  .diagram .node[data-block] { cursor: help }
+  .diagram .node:hover rect, .diagram .node:hover polygon, .diagram .node:hover circle { fill: var(--hover) }
+  .diagram text { fill: var(--ink) }
+  .diagram .wire { fill: none; stroke: var(--muted); stroke-width: 1.2 }
+  .diagram .head, .diagram .dot { fill: var(--muted) }
+  .options { display: flex; flex-wrap: wrap; gap: .3rem; margin: .3rem 0; padding: 0; list-style: none }
+  .block { padding: .2rem .5rem; border: 1px solid var(--edge); background: var(--surface); font: var(--small) var(--mono) }
+  table { border-collapse: collapse; font-size: var(--small) }
+  th, td { padding: .25rem .75rem .25rem 0; border-bottom: 1px solid var(--line); text-align: left }
+  td.number { text-align: right; font-family: var(--mono) }
+  .clips { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; align-items: center; max-width: 40rem }
+  audio { width: 100%; height: 2rem }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-brand" href="../">Peppercorn</a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="../captures/">Captures</a>
+    <a href="../trainer/">Trainer</a>
+    <a href="./" aria-current="page">Research</a>
+  </nav>
+</header>
+<main>
+<h1>Leaner and Meaner Amp Modelers
+  <span class="subtitle">LTTC (Lean Twin Trained Clippers) research log</span></h1>
+<p class="blog-post-meta" id="post-meta"></p>
+<div class="lede">
+  <p class="preamble">This is a log of the AI-assisted research I did to improve on Valeton's SnapTone amp modelling format. This is part of the work on my custom <a href="../">Peppercorn firmware mod</a> for the Valeton GP-50. The
+    research is AI-assisted, but as always, this blog post is entirely human written.</p>
+
+  <p>Neural Amp Modeler (NAM) is an amazing piece of open-source technology that can be trained to reproduce the sound
+    of any amp or distortion pedal. It is, to my ears, basically perfect, and quite lightweight to run for what it is, but it
+    is no Doom: it's a real neural network, and there is still hardware out there that can't run it.</p>
+  <p>The Valeton GP-50 is one of those unfortunate cases, but Valeton came up with a solution: SnapTone trains a very
+    simple architecture (EQ → clipper → EQ) to match a NAM teacher. It works remarkably well on clean amps, and trains
+    incredibly fast, but leaves a lot to be desired for high-gain sounds.</p>
+  <p>I was already working on a firmware mod for the GP-50 (<a href="../">that you can install here</a>), so naturally,
+    the question was: can we do better?</p>
+
+  <h2>Learning from the Real Thing</h2>
+  <p>And it turns out we can! I conjured memories from my DSP and machine learning classes and tried a bunch of
+    different methods, iterating on architecture and training methods, to get better results. The two key changes I
+    contributed were inspired by how actual amps and distortion pedals work:</p>
+  <ul>
+    <li>The clipper itself needs to be flexible, since distortion pedals use clippers with very different characteristics
+      (diodes vs tubes etc.),</li>
+    <li>And emulating high-gain sounds produced with consecutive gain stages might require consecutive clippers.</li>
+  </ul>
+  <p>You can see both of these in the final LTTC architecture.</p>
+
+  <h2>BOGO Captures, Free IR with Every Purchase (Limit 2 per Customer)</h2>
+  <p>Some of these intermediate candidate architectures look a bit unusual or nonsensical, and part of that is the
+    constraint to have this run in the pedal, which doesn't give us that much processing power or flash firmware space
+    to work with. In fact, storage was arguably as much of a challenge as pure processing speed in this investigation.</p>
+  <p>Having a large FIR filter at the output was also basically imposed, for two reasons:</p>
+  <ul>
+    <li>Full combo amp captures have a cabinet at the end of the chain, and we know a large enough IR can capture that
+      well, so ending the chain with it makes a lot of intuitive sense.</li>
+    <li>But also, it lets us run IRs after the LTTC capture for free, simply by merging that IR with the output filter.
+      That's how I can get an LTTC capture running with an IR on the GP-50!</li>
+  </ul>
+  <p>The final architecture is lean enough that I can run two captures at once on the pedal.</p>
+
+  <h2>Behind the Screens</h2>
+  <p>I had the LLM hold a lab notebook, but as you can see some data is still missing (e.g. notebook steps with no new
+    architectures or scores), so I had it rescore all the architectures. We changed losses several times, and some
+    changes were guided by my human ears, so if some trends look weird in the data, that is part of why.</p>
+  <p>The graph below presents a chronological look into the research. For any point in time, you can listen to the
+    candidate architecture, look at its graph and metrics, and even play it live in the browser, compared to SnapTone
+    and NAM. I can't include the NAM files directly for license reasons, but you can download them from the link and
+    load them to play them here.</p>
+  <p>I also had it keep track of what directions were proposed by me vs the LLM, out of curiosity. This is not to say
+    the agent couldn't have reached an equivalent or better architecture without my input, but if you're curious what
+    AI-assisted research can look like when you don't have infinite tokens to spin up agent swarms, here's one example.</p>
+  <p>This research plus the firmware work was all done during evenings and weekends over about a month with an
+    Anthropic Pro subscription and a ChatGPT Plus subscription, using mostly GPT Sol 6.1 and Claude Opus 5.5, for a
+    total cost of ~$40. And I didn't brick the pedal once (although I had a few scares)!</p>
+
+  <h2>What's next</h2>
+  <p>There's still more I'd like to do on this: fuzzes are still so so hard for these architectures (see the Fuzz
+    Factory attempts), and although I really wanted to handle amp compression and dynamics, the experiments adding a
+    trainable compressor or any kind of state did not yield noticeable gains. You'll notice compressors and fuzzes are
+    the two novelties Neural DSP's Neural Capture v2 brought to the table. They use a much heavier architecture for
+    this no doubt, but I'd be curious to know how they did it, and if I can have that run on this pedal.</p>
+</div>
+
+<form id="controls">
+  <fieldset>
+    <legend>Data</legend>
+    <label><input type="radio" name="mode" value="rescored" checked> Re-scored afterwards</label>
+    <label><input type="radio" name="mode" value="historical"> As recorded at the time</label>
+  </fieldset>
+  <fieldset>
+    <legend>Score</legend>
+    <label><input type="radio" name="metric" value="mfcc" checked> PaperMFCC</label>
+    <label><input type="radio" name="metric" value="esr"> ESR</label>
+  </fieldset>
+</form>
+<p class="note" id="mode-note"></p>
+<ul class="key">
+  <li><svg class="icon" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5" fill="var(--ink)"/></svg> Kept: the line joins these</li>
+  <li><svg class="icon" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4" fill="none" stroke="var(--ink)" stroke-width="1.5"/></svg> Side experiment, not kept</li>
+  <li id="key-snaptone"><svg class="icon" viewBox="0 0 20 12"><path d="M0 6h20" stroke="var(--ink)" stroke-dasharray="4 3"/></svg> Valeton’s SnapTone for that amp</li>
+</ul>
+
+<div class="chart">
+  <svg id="chart" viewBox="0 0 1000 420" role="img" aria-label="Score of each research step over time"></svg>
+  <div id="tooltip" hidden></div>
+</div>
+<p class="note" id="idea-key">Idea from:
+  <svg class="icon"><use href="#icon-owner"/></svg> Sebastian ·
+  <svg class="icon"><use href="#icon-ai"/></svg> the AI agent ·
+  <svg class="icon"><use href="#icon-unclear"/></svg> unclear</p>
+
+<section id="card" aria-live="polite"></section>
+<div id="block-tip" class="tip" hidden></div>
+
+<section id="live">
+  <h3>Play it live</h3>
+  <p class="note">Plug in and try out the candidate architecture live!</p>
+  <label>Amp <select name="teacher"></select></label>
+  <fieldset>
+    <legend>Listen through</legend>
+    <label><input type="radio" name="source" value="nam" checked> NAM (target)</label>
+    <label><input type="radio" name="source" value="snaptone"> SnapTone</label>
+    <label><input type="radio" name="source" value="model"> <span data-label="model">This step</span></label>
+  </fieldset>
+  <p id="nam-file">I can't redistribute NAM files here, but you can download it from
+    <a href="" target="_blank" rel="noopener">its Tone3000 page</a>, then choose it:
+    <input type="file" name="namfile" accept=".nam"></p>
+  <p>
+    <label>Input <select name="device"></select></label>
+    <label>Channel <select name="channel"><option value="0">1 / Left</option><option value="1">2 / Right</option></select></label>
+    <label>Volume <input type="range" name="volume" min="0" max="100" value="50"></label>
+  </p>
+  <p><button type="button" class="button primary" data-action="start">Start</button>
+     <button type="button" class="button" data-action="stop">Stop</button> <output></output></p>
+</section>
+<footer class="post-footer">
+  <div id="comments-section" data-post-slug="lttc-research"></div>
+  <p><a href="/blog.html">← Back to blog</a> · <a href="/privacy.html">Site privacy notice</a></p>
+</footer>
+</main>
+<script type="module" src="research.mjs"></script>
+<script type="module" src="blog-meta.mjs"></script>
+<script src="/js/comments.js" defer></script>
+</body>
+</html>

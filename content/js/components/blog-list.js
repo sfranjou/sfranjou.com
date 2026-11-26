@@ -6,7 +6,8 @@
  *   tag    — optional, filters by tag (can also be set via ?tag= in the URL)
  *
  * Expected structure:
- *   content/blog/posts.json        — array of { "slug": "my-post-slug" }
+ *   content/blog/posts.json        — array of { "slug": "my-post-slug" }, optionally with "url" for a post
+ *                                    that is its own page (the list links there instead of post.html)
  *   content/blog/[slug]/post.md    — markdown file with frontmatter
  *
  * Frontmatter format (at the top of each post.md):
@@ -52,13 +53,13 @@ class BlogList extends HTMLElement
     if (!res.ok) throw new Error("Could not load the post index.");
     const index = await res.json();
 
-    const posts = await Promise.all(index.map(async ({ slug }) =>
+    const posts = await Promise.all(index.map(async ({ slug, url }) =>
     {
       const response = await fetch(`blog/${ encodeURIComponent(slug) }/post.md`);
       if (!response.ok) throw new Error(`Could not load post: ${ slug }`);
       const { meta } = parseFrontmatter(await response.text());
       if (!meta.title || !isCalendarDate(meta.date)) throw new Error(`Invalid metadata: ${ slug }`);
-      return { ...meta, slug };
+      return { ...meta, slug, url };
     }));
 
     // Since we use YYYY-MM-DD, we can sort alphabetically with regular string compare
@@ -71,7 +72,7 @@ class BlogList extends HTMLElement
     const tags = (post.tags || []).map(t => `<a href="blog.html?tag=${ t }">#${ t }</a>`).join(" ");
     const summary = post.summary ? `<p class="blog-post-summary">${ post.summary }</p>` : "";
     return `<li>
-            <a href="blog/post.html?slug=${ post.slug }" class="blog-post-link">${ post.title }</a>
+            <a href="${ post.url ?? `blog/post.html?slug=${ post.slug }` }" class="blog-post-link">${ post.title }</a>
             <span class="blog-post-date"> ${ date } ${ tags }</span>
             ${ summary }
         </li>`;

@@ -101,16 +101,32 @@ outside the published `content/` directory.
 
 ### Updating the GP-50 tools
 
-Peppercorn owns the shared editor, installer, and release notes. From a clean
-website checkout, import a reviewed release by its tag (or exact local commit
-when previewing):
+Peppercorn owns the shared editor, installer, and release notes. Its
+`RELEASE_NOTES.md` and default installer entry must agree on the version.
+Use a clean website checkout or a separate worktree.
 
-```sh
-scripts/sync-peppercorn.sh ../Peppercorn v0.2.0
-```
+1. Pick the latest published Peppercorn version. If the tag is only on GitHub,
+   fetch it explicitly:
 
-Fetch the latest published release into the Peppercorn checkout first if needed.
-The command copies the tools and release notes, updates the version badge,
-and records the exact source in `PEPPERCORN_COMMIT`. It leaves the rest of the
-landing page and the research pages in the website repo. Review the diff,
-then commit and deploy through the usual website workflow.
+   ```sh
+   git -C ../Peppercorn fetch origin tag v0.2.0
+   ```
+
+   For an unpublished local preview, use an exact commit from a local
+   Peppercorn checkout instead.
+
+2. Preview the files the website would change, then apply that exact commit
+   from the preview output:
+
+   ```sh
+   scripts/sync-peppercorn.sh ../Peppercorn v0.2.0
+   scripts/sync-peppercorn.sh --apply ../Peppercorn <commit-from-preview>
+   ```
+
+3. Review the website diff. Commit the bundle, version badge and
+   `PEPPERCORN_COMMIT` together, then use the usual website deployment.
+   On the first import, check that there are no website-only editor changes
+   left to port. After that, the importer stops if the website has committed
+   edits to imported files since the last import that the new bundle would replace. Move shared changes into
+   Peppercorn before upgrading. The rest of the site's landing page and its
+   research pages stay in this repo.

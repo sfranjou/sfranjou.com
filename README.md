@@ -98,3 +98,19 @@ node scripts/generate-rss.mjs
 The QLC proxy scripts and `qlcplan` notes are a separate local lighting-control
 utility. They are not needed to preview, build, or deploy this website and are
 outside the published `content/` directory.
+
+### Updating the GP-50 tools
+
+Peppercorn owns the shared editor, installer, and release notes. From a clean
+website checkout, import a reviewed release by its tag (or exact local commit
+when previewing):
+
+```sh
+scripts/sync-peppercorn.sh ../Peppercorn v0.2.0
+```
+
+Fetch the latest published release into the Peppercorn checkout first if needed.
+The command copies the tools and release notes, updates the version badge,
+and records the exact source in `PEPPERCORN_COMMIT`. It leaves the rest of the
+landing page and the research pages in the website repo. Review the diff,
+then commit and deploy through the usual website workflow.
